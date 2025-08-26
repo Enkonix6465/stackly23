@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import web from "../assets/web.mp4";
 import w1 from "../assets/w1.avif";
@@ -7,32 +6,32 @@ import w3 from "../assets/w3.webp";
 
 const faqs = [
   {
-    question: "How do I join a live web development class?",
+    question: "How do I join a live class?",
     answer:
-      "Simply browse our schedule, select your preferred class, and register. You’ll receive a link to join the live session with your mentor.",
+      "Browse our class schedule, select your preferred session, and register. You’ll receive a link to join the live session with your mentor.",
   },
   {
     question: "Are mentorship sessions one-on-one or group based?",
     answer:
-      "We offer both! Choose between personalized one-on-one mentorship or interactive group sessions, depending on your learning style.",
+      "We offer both! You can choose between personalized one-on-one mentorship or interactive group sessions, depending on your preference.",
   },
   {
     question: "Will I get recordings of live classes?",
     answer:
-      "Yes, all live sessions are recorded and made available for you to review at your convenience.",
+      "Yes, all live sessions are recorded and made available so you can review them anytime.",
   },
   {
     question: "Can I ask questions during live classes?",
     answer:
-      "Absolutely! Our live classes are highly interactive, allowing you to ask questions and get instant feedback from mentors.",
+      "Absolutely! Our live classes are interactive, allowing you to ask questions and get real-time feedback from mentors.",
   },
   {
     question: "What topics are covered in mentorship?",
     answer:
-      "Mentorship covers everything from HTML, CSS, JavaScript, React, backend development, deployment, and career guidance.",
+      "Mentorship spans a variety of topics including personal growth, career development, communication skills, digital literacy, and more.",
   },
   {
-    question: "Do I get a certificate after completing a mentorship program?",
+    question: "Do I get a certificate after completing a program?",
     answer:
       "Yes! Upon successful completion, you’ll earn a certificate to showcase your skills and progress.",
   },
@@ -80,10 +79,10 @@ export default function WebDevServicePage() {
         {/* Content */}
         <div className="relative z-10 px-4 sm:px-6">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 leading-snug" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>
-            Master Web Development with <span style={{ color: '#00bfff' }}>Live Classes</span> & <span style={{ color: '#00bfff' }}>Mentorship</span>
+            Learn Smarter with <span style={{ color: '#1e3a8a' }}>Live Classes</span> & <span style={{ color: '#1e3a8a' }}>Mentorship</span>
           </h1>
           <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${theme === 'dark' ? 'text-white' : 'text-white'}`}>
-            Join interactive live sessions, get personalized mentorship, and build real-world projects. Whether you’re a beginner or looking to advance, our programs are designed to help you become a job-ready web developer.
+            Join engaging live sessions, connect with expert mentors, and gain skills that matter. Whether you’re exploring new subjects or advancing your career, our programs are built to help you succeed.
           </p>
         </div>
       </section>
@@ -95,12 +94,12 @@ export default function WebDevServicePage() {
             Live Class & Mentorship Tracks
           </h2>
           <p className="text-center text-lg mb-10">
-            Choose from a variety of live classes and mentorship tracks tailored to your goals.
+            Choose from a range of tracks designed for personal, academic, and professional growth.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {[
               {
-                title: "Frontend Fundamentals",
+                title: "Personal Development Essentials",
                 mentor: "Jane Doe",
                 price: "Free Trial",
                 duration: "12h Live",
@@ -110,7 +109,7 @@ export default function WebDevServicePage() {
                 rating: 5,
               },
               {
-                title: "React Bootcamp",
+                title: "Communication & Leadership",
                 mentor: "John Smith",
                 price: "$49",
                 duration: "20h Live",
@@ -120,7 +119,7 @@ export default function WebDevServicePage() {
                 rating: 5,
               },
               {
-                title: "Fullstack Mentorship",
+                title: "Career Growth Mentorship",
                 mentor: "Emily Lee",
                 price: "$99",
                 duration: "30h Live",
@@ -160,20 +159,20 @@ export default function WebDevServicePage() {
       {/* Key Features / What You’ll Get */}
       <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818] text-white' : 'bg-[#e6f7ff] text-black'}`}> 
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#00BFFF' }}>Key Features / What You’ll Get</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>Key Features / What You’ll Get</h2>
           <div className="grid grid-cols-2 md:grid-cols-2 gap-10">
             {[
-              { num: '01', heading: 'Live Interactive Classes', desc: 'Engage in real-time with mentors and peers for a hands-on learning experience.' },
-              { num: '02', heading: 'Personalized Mentorship', desc: 'Get tailored guidance and feedback to accelerate your growth.' },
-              { num: '03', heading: 'Project-Based Learning', desc: 'Build real-world projects and portfolios to showcase your skills.' },
-              { num: '04', heading: 'Flexible Schedules', desc: 'Choose class times that fit your routine and learn at your own pace.' },
-              { num: '05', heading: 'Career Support', desc: 'Receive resume reviews, interview prep, and job search assistance.' },
-              { num: '06', heading: 'Community Access', desc: 'Join a vibrant community of learners, mentors, and industry professionals.' },
+              { num: '01', heading: 'Live Interactive Classes', desc: 'Engage in real-time with expert mentors and fellow learners.' },
+              { num: '02', heading: 'Personalized Mentorship', desc: 'Get guidance tailored to your personal or career goals.' },
+              { num: '03', heading: 'Practical Learning', desc: 'Apply what you learn through real-world activities and projects.' },
+              { num: '04', heading: 'Flexible Schedules', desc: 'Attend sessions at times that suit your routine.' },
+              { num: '05', heading: 'Career & Academic Support', desc: 'Get help with resumes, applications, and interview preparation.' },
+              { num: '06', heading: 'Community Access', desc: 'Join a supportive network of peers, mentors, and industry experts.' },
             ].map((item, idx) => (
               <div key={item.num} className="flex items-start mb-6">
                 <div className="relative flex-shrink-0 mr-4">
                   <span className="text-5xl font-extrabold text-black" style={{
-                    background: 'linear-gradient(90deg, #00BFFF 60%, transparent 60%)',
+                    background: 'linear-gradient(90deg, #1e3a8a 60%, transparent 60%)',
                     padding: '0.1em 0.5em',
                     borderRadius: '0.2em',
                     color: '#111',
@@ -193,14 +192,14 @@ export default function WebDevServicePage() {
       {/* Benefits / Outcomes */}
       <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`}> 
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ color: '#00BFFF' }}>Benefits / Outcomes</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ color: '#1e3a8a' }}>Benefits / Outcomes</h2>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
-            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Become Job-Ready <span className="text-gray-500">→ Gain practical skills and confidence to land your first web development job.</span></li>
-            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Portfolio Development <span className="text-gray-500">→ Build and showcase real projects to impress employers.</span></li>
-            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Mentor Support <span className="text-gray-500">→ Get help and feedback whenever you need it, even after class.</span></li>
-            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Flexible Learning <span className="text-gray-500">→ Attend live or watch recordings, and learn at your own pace.</span></li>
-            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Certification <span className="text-gray-500">→ Earn certificates to boost your resume and LinkedIn profile.</span></li>
-            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Community Networking <span className="text-gray-500">→ Connect with peers, mentors, and industry leaders.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>Confidence & Skills <span className="text-gray-500">→ Build practical knowledge and confidence to achieve your goals.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>Portfolio & Achievements <span className="text-gray-500">→ Create projects, activities, or case studies to showcase your progress.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>Ongoing Mentor Support <span className="text-gray-500">→ Receive guidance and feedback even after class hours.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>Flexible Learning <span className="text-gray-500">→ Join live or watch recordings whenever it works best for you.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>Certification <span className="text-gray-500">→ Earn certificates to strengthen your resume and profile.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>Networking <span className="text-gray-500">→ Connect with mentors, peers, and industry professionals.</span></li>
           </ul>
         </div>
       </section>
@@ -208,7 +207,7 @@ export default function WebDevServicePage() {
       {/* Frequently Asked Questions */}
       <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`}> 
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#00bfff' }}>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>
             Frequently Asked Questions
           </h2>
           <div className="grid  lg:grid-cols-2 gap-6">
@@ -221,7 +220,7 @@ export default function WebDevServicePage() {
                 {/* Question */}
                 <div className="flex justify-between items-center">
                   <h3 className="text-lg font-semibold">{faq.question}</h3>
-                  <span className="font-bold text-xl" style={{ color: '#00bfff' }}>
+                  <span className="font-bold text-xl" style={{ color: '#1e3a8a' }}>
                     {openIndex === index ? "-" : "+"}
                   </span>
                 </div>
@@ -237,17 +236,17 @@ export default function WebDevServicePage() {
 
       {/* CTA Section */}
       <section className={
-        `py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#00bfff]'}`
+        `py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`
       }>
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center px-6">
           {/* Left Content */}
           <div className="space-y-6 flex flex-col justify-center h-full">
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-              Start Your <span style={{ color: '#fff' }}>Web Development Journey</span> Today
+              Start Your <span style={{ color: '#fff' }}>Learning Journey</span> Today
             </h2>
             <p className={`text-lg ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}
             >
-              Join our live classes and mentorship programs to unlock your potential, build real projects, and connect with industry experts. Your future as a web developer starts here!
+              Join our live classes and mentorship programs to unlock your potential, gain new skills, and connect with inspiring mentors. Your growth starts here!
             </p>
             <button className={
               `px-8 py-4 font-semibold rounded-xl shadow-md transition self-start lg:self-auto ` +
@@ -260,7 +259,7 @@ export default function WebDevServicePage() {
           <div className="flex justify-center items-center h-full">
             <img
               src={w3}
-              alt="Web Development Live Classes"
+              alt="Live Classes and Mentorship"
               className="rounded-2xl shadow-lg w-full max-w-xl object-cover"
             />
           </div>

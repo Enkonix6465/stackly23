@@ -171,7 +171,7 @@ export default function BlogDetail() {
         `text-center py-20 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`
       }>
         <h2 className="text-2xl font-bold">Blog Not Found</h2>
-        <Link to="/blog" className="text-[#00bfff] underline mt-4 block">
+        <Link to="/blog" className="text-[#1e3a8a] underline mt-4 block">
           Back to Blogs
         </Link>
       </div>
@@ -181,7 +181,7 @@ export default function BlogDetail() {
   return (
     <div className={theme === 'dark' ? 'pt-20 min-h-screen bg-black text-white' : 'pt-20 min-h-screen bg-white text-black'}>
       {/* Back Link */}
-      <Link to="/blog" className="text-[#00bfff] underline mt-4 block">
+      <Link to="/blog" className="text-[#1e3a8a] underline mt-4 block">
         Back to Blogs
       </Link>
       {/* Blog Hero */}
@@ -201,7 +201,7 @@ export default function BlogDetail() {
         </p>
         {blog.sections.map((sec, index) => (
           <div key={index} className="mb-10">
-            <h2 className="text-2xl font-bold mb-4" style={{ color: '#00bfff' }}>
+            <h2 className="text-2xl font-bold mb-4" style={{ color: '#1e3a8a' }}>
               {sec.heading}
             </h2>
             <p className={`leading-relaxed ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>{sec.content}</p>

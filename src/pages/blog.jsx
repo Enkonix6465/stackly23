@@ -140,7 +140,7 @@ export default function BlogHero() {
           style={{ color: theme === "dark" ? "#fff" : "#fff" }}
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Explore Our <span style={{ color: "#00bfff" }}>Blogs</span>
+            Explore Our <span style={{ color: "#1e3a8a" }}>Blogs</span>
           </h1>
           <p
             className={`text-lg md:text-xl max-w-2xl mx-auto ${
@@ -148,7 +148,7 @@ export default function BlogHero() {
             }`}
           >
             Stay updated with expert tips, insights, and stories in{" "}
-            <span className="font-semibold" style={{ color: "#00bfff" }}>
+            <span className="font-semibold" style={{ color: "#1e3a8a" }}>
               Finance, Learning, Career Growth
             </span>{" "}
             and more. Learn, grow, and achieve your goals with us!
@@ -164,7 +164,7 @@ export default function BlogHero() {
       >
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-            Latest <span className="text-[#00bfff]">Blogs</span>
+            Latest <span className="text-[#1e3a8a]">Blogs</span>
           </h2>
           {latestBlogs.length > 0 ? (
             <div className="grid md:grid-cols-3 gap-8">
@@ -229,7 +229,7 @@ export default function BlogHero() {
 
       {/* Featured Articles */}
       <section
-        className={`py-16 ${theme === "dark" ? "bg-[#222]" : "bg-[#00bfff]"}`}
+        className={`py-16 ${theme === "dark" ? "bg-[#222]" : "bg-[#1e3a8a]"}`}
       >
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
@@ -267,7 +267,7 @@ export default function BlogHero() {
                   </p>
                   <Link
                     to={feature.link}
-                    className="text-[#00bfff] font-semibold hover:underline"
+                    className="text-[#1e3a8a] font-semibold hover:underline"
                   >
                     Read More →
                   </Link>
@@ -287,7 +287,7 @@ export default function BlogHero() {
         <div className="max-w-7xl mx-auto px-6 grid  md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Explore by <span style={{ color: "#00bfff" }}>Categories</span>
+              Explore by <span style={{ color: "#1e3a8a" }}>Categories</span>
             </h2>
             <p
               className={`text-lg mb-6 ${
@@ -295,7 +295,7 @@ export default function BlogHero() {
               }`}
             >
               Our blogs are organized to make learning easier — covering{" "}
-              <span className="font-semibold" style={{ color: "#00bfff" }}>
+              <span className="font-semibold" style={{ color: "#1e3a8a" }}>
                 Finance, Investments, Business,
               </span>{" "}
               and the future of learning through technology.
@@ -320,7 +320,7 @@ export default function BlogHero() {
               >
                 <h3
                   className="text-xl font-semibold mb-2"
-                  style={{ color: "#00bfff" }}
+                  style={{ color: "#1e3a8a" }}
                 >
                   {cat.name}
                 </h3>
@@ -339,7 +339,7 @@ export default function BlogHero() {
 
       {/* Service Comparison */}
       <section
-        className={`py-16 ${theme === "dark" ? "bg-[#222]" : "bg-[#00bfff]"}`}
+        className={`py-16 ${theme === "dark" ? "bg-[#222]" : "bg-[#1e3a8a]"}`}
       >
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
@@ -410,7 +410,7 @@ export default function BlogHero() {
         <div className="max-w-6xl mx-auto px-6">
           <h2
             className="text-4xl md:text-5xl font-bold text-center mb-12"
-            style={{ color: "#00bfff" }}
+            style={{ color: "#1e3a8a" }}
           >
             Myths & Facts
           </h2>

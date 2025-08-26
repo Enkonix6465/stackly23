@@ -75,7 +75,7 @@ export default function LearningResourcesPage() {
         <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
         <div className="relative z-10 px-6">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 leading-snug" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>
-            Access Powerful <span style={{ color: '#00bfff' }}>Learning Resources & Tools</span>
+            Access Powerful <span style={{ color: '#1e3a8a' }}>Learning Resources & Tools</span>
           </h1>
           <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${theme === 'dark' ? 'text-white' : 'text-white'}`}>
             Get e-books, recorded lectures, quizzes, assignments, and mobile app access. Learn anytime, anywhere, with downloadable content and lifelong resources.
@@ -84,7 +84,7 @@ export default function LearningResourcesPage() {
       </section>
 
       {/* Service Includes Section */}
-      <section className={`py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#00bfff]'}`}>
+      <section className={`py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-4 md:px-6">
           {/* Left Image */}
           <div className="flex justify-center">
@@ -117,7 +117,7 @@ export default function LearningResourcesPage() {
       {/* Key Features / What You’ll Get */}
       <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818] text-white' : 'bg-[#e6f7ff] text-black'}`}> 
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#00BFFF' }}>Key Features / What You’ll Get</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>Key Features / What You’ll Get</h2>
           <div className="grid grid-cols-2 md:grid-cols-2 gap-10">
             {[
               { num: '01', heading: 'E-books & Notes', desc: 'Downloadable resources to support your learning journey.' },
@@ -130,7 +130,7 @@ export default function LearningResourcesPage() {
               <div key={item.num} className="flex items-start mb-6">
                 <div className="relative flex-shrink-0 mr-4">
                   <span className="text-5xl font-extrabold text-black" style={{
-                    background: 'linear-gradient(90deg, #00BFFF 60%, transparent 60%)',
+                    background: 'linear-gradient(90deg, #1e3a8a 60%, transparent 60%)',
                     padding: '0.1em 0.5em',
                     borderRadius: '0.2em',
                     color: '#111',
@@ -150,14 +150,14 @@ export default function LearningResourcesPage() {
       {/* Benefits / Outcomes */}
       <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`}> 
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ color: '#00BFFF' }}>Benefits / Outcomes</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ color: '#1e3a8a' }}>Benefits / Outcomes</h2>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
-            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Learn Anytime, Anywhere <span className="text-gray-500">→ Access resources on desktop and mobile.</span></li>
-            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Study at Your Own Pace <span className="text-gray-500">→ Rewatch lectures and reattempt quizzes anytime.</span></li>
-            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Track Progress <span className="text-gray-500">→ Self-assess with quizzes and assignments.</span></li>
-            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Offline Learning <span className="text-gray-500">→ Download e-books and resources for use without internet.</span></li>
-            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Lifelong Access <span className="text-gray-500">→ Keep your resources forever, with regular updates.</span></li>
-            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Boost Productivity <span className="text-gray-500">→ Learn efficiently with structured tools and resources.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>Learn Anytime, Anywhere <span className="text-gray-500">→ Access resources on desktop and mobile.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>Study at Your Own Pace <span className="text-gray-500">→ Rewatch lectures and reattempt quizzes anytime.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>Track Progress <span className="text-gray-500">→ Self-assess with quizzes and assignments.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>Offline Learning <span className="text-gray-500">→ Download e-books and resources for use without internet.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>Lifelong Access <span className="text-gray-500">→ Keep your resources forever, with regular updates.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>Boost Productivity <span className="text-gray-500">→ Learn efficiently with structured tools and resources.</span></li>
           </ul>
         </div>
       </section>
@@ -165,7 +165,7 @@ export default function LearningResourcesPage() {
       {/* FAQ Section */}
       <section className={`py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-gray-50'}`}>
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#00bfff' }}>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>
             Frequently Asked Questions
           </h2>
           <div className="grid lg:grid-cols-2 gap-6">
@@ -177,7 +177,7 @@ export default function LearningResourcesPage() {
               >
                 <div className="flex justify-between items-center">
                   <h3 className="text-lg font-semibold">{faq.question}</h3>
-                  <span className="font-bold text-xl" style={{ color: '#00bfff' }}>
+                  <span className="font-bold text-xl" style={{ color: '#1e3a8a' }}>
                     {openIndex === index ? "-" : "+"}
                   </span>
                 </div>
@@ -191,7 +191,7 @@ export default function LearningResourcesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#00bfff]'}`}>
+      <section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
         <div className="max-w-7xl mx-auto grid  lg:grid-cols-2 gap-10 items-center px-6">
           {/* Left Content */}
           <div className="space-y-6 flex flex-col justify-center h-full">

@@ -71,7 +71,7 @@ export default function CertificationsCareerSupportPage() {
 				/>
 				<div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
 				<div className="relative z-10 px-6 flex flex-col items-center justify-center h-full">
-					<h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 leading-snug">
+					   <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 leading-snug" style={{ color: '#1e3a8a' }}>
 						Certifications & Career Support
 					</h1>
 					<p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto text-white">
@@ -100,7 +100,7 @@ export default function CertificationsCareerSupportPage() {
 					</div>
 					{/* Right Content */}
 					<div>
-						<h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 break-words leading-tight">
+						   <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 break-words leading-tight" style={{ color: '#1e3a8a' }}>
 							Your Pathway to Career Success
 						</h2>
 						<ul className="space-y-4 text-base sm:text-lg">
@@ -164,7 +164,7 @@ export default function CertificationsCareerSupportPage() {
 				}`}
 			>
 				<div className="max-w-6xl mx-auto px-6">
-					<h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+					   <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>
 						Key Features / What You’ll Get
 					</h2>
 					<div className="grid grid-cols-2 md:grid-cols-2 gap-10">
@@ -217,7 +217,7 @@ export default function CertificationsCareerSupportPage() {
 									</span>
 								</div>
 								<div>
-									<h3 className="text-xl font-bold mb-1 text-black">
+									   <h3 className="text-xl font-bold mb-1" style={{ color: '#1e3a8a' }}>
 										{item.heading}
 									</h3>
 									<p className="text-gray-600 text-base max-w-md">
@@ -237,7 +237,7 @@ export default function CertificationsCareerSupportPage() {
 				}`}
 			>
 				<div className="max-w-6xl mx-auto px-6">
-					<h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+					   <h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ color: '#1e3a8a' }}>
 						Benefits / Outcomes
 					</h2>
 					<ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
@@ -294,7 +294,7 @@ export default function CertificationsCareerSupportPage() {
 				}`}
 			>
 				<div className="max-w-6xl mx-auto px-6">
-					<h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+					   <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>
 						Frequently Asked Questions
 					</h2>
 					<div className="grid lg:grid-cols-2 gap-6">
@@ -307,7 +307,7 @@ export default function CertificationsCareerSupportPage() {
 								onClick={() => toggleFAQ(index)}
 							>
 								<div className="flex justify-between items-center">
-									<h3 className="text-lg font-semibold">{faq.question}</h3>
+									   <h3 className="text-lg font-semibold" style={{ color: '#1e3a8a' }}>{faq.question}</h3>
 									<span
 										className="font-bold text-xl"
 										style={{ color: "#1e3a8a" }}
@@ -335,7 +335,7 @@ export default function CertificationsCareerSupportPage() {
 			{/* Call to Action Section */}
 			<section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#e6f7ff]'}`}>
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: theme === 'dark' ? '#fff' : '#111' }}>
+		  <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#1e3a8a' }}>
             Ready to Take the Next Step?
           </h2>
           <p className={`text-lg mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>

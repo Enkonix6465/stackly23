@@ -98,20 +98,20 @@ export default function ContactHero() {
         {/* Content */}
         <div className={`relative text-center px-4 max-w-2xl ${theme === 'dark' ? 'text-white' : 'text-white'}`}> 
           <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
-            Get in <span className="text-[#00bfff]">Touch</span> Today
+            Get in <span className="text-[#1e3a8a]">Touch</span> Today
           </h1>
           <p className="text-lg md:text-2xl font-light mb-6">
-            Building <span className="text-[#00bfff] font-semibold">solutions</span>, 
-            creating <span className="text-[#00bfff] font-semibold">success</span> — let's make it happen together.
+            Building <span className="text-[#1e3a8a] font-semibold">solutions</span>, 
+            creating <span className="text-[#1e3a8a] font-semibold">success</span> — let's make it happen together.
           </p>
         </div>
       </section>
 
       {/* Contact Cards Section */}
-      <section className={`py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#00bfff]'}`}> 
+      <section className={`py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}> 
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Heading */}
-        <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${theme === 'dark' ? 'text-[#00bfff]' : 'text-white'}`}> 
+        <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${theme === 'dark' ? 'text-[#1e3a8a]' : 'text-white'}`}> 
           Meet Our Support Team
         </h2>
         {/* Cards Grid */}
@@ -126,7 +126,7 @@ export default function ContactHero() {
                 alt={card.title}
                 className="w-full h-56 object-cover rounded-xl mb-6"
               />
-              <h3 className="text-xl font-bold mb-2" style={{ color: '#00bfff' }}>
+              <h3 className="text-xl font-bold mb-2" style={{ color: '#1e3a8a' }}>
                 {card.title}
               </h3>
               <p className={theme === 'dark' ? 'text-gray-200' : 'text-gray-600'}>{card.text}</p>
@@ -141,12 +141,12 @@ export default function ContactHero() {
       <section className={`py-20 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`}>
       <div className="max-w-4xl mx-auto px-6">
         {/* Small Heading */}
-        <p className="text-[#00bfff] font-semibold uppercase mb-2">
+        <p className="text-[#1e3a8a] font-semibold uppercase mb-2">
           Get in Touch
         </p>
         {/* Main Heading */}
         <h2 className={`text-3xl md:text-4xl font-extrabold mb-10 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}` }>
-          Need help? <span className="text-[#00bfff]">Let's get in touch</span>
+          Need help? <span className="text-[#1e3a8a]">Let's get in touch</span>
         </h2>
 
         {/* Contact Form */}
@@ -161,32 +161,32 @@ export default function ContactHero() {
             <input
               type="text"
               placeholder="First Name"
-              className={`border rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-[#00bfff] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-200 bg-white text-black'}`}
+              className={`border rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-[#1e3a8a] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-200 bg-white text-black'}`}
             />
             <input
               type="text"
               placeholder="Last Name"
-              className={`border rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-[#00bfff] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-200 bg-white text-black'}`}
+              className={`border rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-[#1e3a8a] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-200 bg-white text-black'}`}
             />
           </div>
           <input
             type="email"
             placeholder="Email"
-            className={`border rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-[#00bfff] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-200 bg-white text-black'}`}
+            className={`border rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-[#1e3a8a] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-200 bg-white text-black'}`}
           />
           <input
             type="tel"
             placeholder="Phone"
-            className={`border rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-[#00bfff] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-200 bg-white text-black'}`}
+            className={`border rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-[#1e3a8a] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-200 bg-white text-black'}`}
           />
           <textarea
             rows="5"
             placeholder="Write a Message"
-            className={`border rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-[#00bfff] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-200 bg-white text-black'}`}
+            className={`border rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-[#1e3a8a] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-200 bg-white text-black'}`}
           ></textarea>
           <button
             type="submit"
-            className="w-full bg-[#00bfff] text-white font-semibold py-3 rounded-lg hover:bg-[#00a6d6] transition"
+            className="w-full bg-[#1e3a8a] text-white font-semibold py-3 rounded-lg hover:bg-[#1a5276] transition"
             disabled={formSubmitted}
           >
             {formSubmitted ? 'Submitted!' : 'Send Message'}
@@ -199,7 +199,7 @@ export default function ContactHero() {
     </section>
 
 
-      <section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#00bfff]'}`}>
+      <section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
       <div className="max-w-6xl mx-auto px-6">
         {/* Small heading */}
         <p className="text-[#fff] font-semibold uppercase mb-2">
@@ -233,11 +233,11 @@ export default function ContactHero() {
       <div className="max-w-7xl mx-auto px-6 grid  md:grid-cols-2 gap-12 items-center">
         {/* Left: Image and Heading */}
         <div>
-          <p className="text-[#00bfff] font-semibold uppercase mb-2">
+          <p className="text-[#1e3a8a] font-semibold uppercase mb-2">
             Frequently Asked Questions
           </p>
           <h2 className={`text-4xl md:text-5xl font-extrabold mb-8 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-            Got <span className="text-[#00bfff]">Questions?</span> We've Got Answers
+            Got <span className="text-[#1e3a8a]">Questions?</span> We've Got Answers
           </h2>
           <img 
             src={faqImage} 
@@ -261,7 +261,7 @@ export default function ContactHero() {
                 <span className={`font-semibold text-lg ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                   {faq.question}
                 </span>
-                <span className="text-[#00bfff] text-2xl">
+                <span className="text-[#1e3a8a] text-2xl">
                   {openIndex === index ? "−" : "+"}
                 </span>
               </button>
@@ -277,10 +277,10 @@ export default function ContactHero() {
     </section>
 
 
-      <section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#00bfff]'}`}>
+      <section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
       <div className="max-w-4xl mx-auto text-center px-6">
         {/* Heading */}
-        <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 ${theme === 'dark' ? 'text-[#00bfff]' : 'text-gray-900'}`}>
+        <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 ${theme === 'dark' ? 'text-[#1e3a8a]' : 'text-gray-900'}`}>
           Stay <span className="text-[#fff]">Updated</span>
         </h2>
         <p className={`text-lg mb-8 ${theme === 'dark' ? 'text-gray-200' : 'text-gray-600'}`}>
@@ -298,7 +298,7 @@ export default function ContactHero() {
           <input 
             type="email" 
             placeholder="Enter your email" 
-            className={`flex-1 px-6 py-4 rounded-xl border w-full sm:w-auto focus:outline-none focus:border-[#00bfff] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-300 text-gray-800 bg-white'}`}
+            className={`flex-1 px-6 py-4 rounded-xl border w-full sm:w-auto focus:outline-none focus:border-[#1e3a8a] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-300 text-gray-800 bg-white'}`}
             disabled={newsletterSubmitted}
           />
           <button 
