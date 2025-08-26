@@ -38,6 +38,31 @@ function useCountUp(target, duration = 1200) {
 
 // Main Home1 component
 export default function Home1({ theme = "light" }) {
+  // Theme state synced with Header
+  const [themeState, setThemeState] = useState('light');
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedTheme = localStorage.getItem('theme') || 'light';
+      setThemeState(storedTheme);
+      const handleThemeChange = () => {
+        const newTheme = localStorage.getItem('theme') || 'light';
+        setThemeState(newTheme);
+      };
+      window.addEventListener('theme-changed', handleThemeChange);
+      window.addEventListener('storage', handleThemeChange);
+      return () => {
+        window.removeEventListener('theme-changed', handleThemeChange);
+        window.removeEventListener('storage', handleThemeChange);
+      };
+    }
+  }, []);
+  // Section toggles
+  const [showHero, setShowHero] = useState(true);
+  const [showCourses, setShowCourses] = useState(true);
+  const [showAbout, setShowAbout] = useState(true);
+  const [showWhyChoose, setShowWhyChoose] = useState(true);
+  const [showTestimonials, setShowTestimonials] = useState(true);
+  const [showCTA, setShowCTA] = useState(true);
   // Courses array
   const courses = [
     {
@@ -117,36 +142,42 @@ export default function Home1({ theme = "light" }) {
   }
 
   return (
-    <div
-      className="min-h-screen bg-white text-black"
-    >
+    <div className={
+      themeState === 'dark'
+        ? 'min-h-screen bg-black text-white'
+        : 'min-h-screen bg-white text-black'
+    }>
+      {/* Hero Section Toggle */}
+      <button className="my-4 px-4 py-2 rounded bg-[#1e3a8a] text-white font-semibold" onClick={() => setShowHero((v) => !v)}>
+        {showHero ? "Hide" : "Show"} Hero Section
+      </button>
+      {showHero && (
+        <section className="relative w-full h-screen overflow-hidden bg-white">
+          <video
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            src={heroVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+          ></video>
+          <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+            <h1 className="text-4xl md:text-6xl font-bold" style={{ color: "#1e3a8a" }}>
+              Discover<span className="text-white">.Learn.</span>Achieve
+            </h1>
+            <p className="mt-4 max-w-3xl text-lg md:text-xl text-white">
+              Learn anytime, anywhere with expert-led courses, live classes, and
+              industry-recognized certifications designed to boost your career.
+            </p>
+            <button className="bg-white text-[#1e3a8a] px-6 py-3 mt-5 rounded-lg transition-colors font-semibold border border-[#1e3a8a] hover:bg-[#f0f4fa]">
+              Start Learning Today
+            </button>
+          </div>
+        </section>
+      )}
 
-      {/* Hero Section */}
-      <section className="relative w-full h-screen overflow-hidden bg-white">
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          src={heroVideo}
-          autoPlay
-          muted
-          loop
-          playsInline
-        ></video>
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-          <h1 className="text-4xl md:text-6xl font-bold" style={{ color: "#1e3a8a" }}>
-            Discover<span className="text-white">.Learn.</span>Achieve
-          </h1>
-          <p className="mt-4 max-w-3xl text-lg md:text-xl text-white">
-            Learn anytime, anywhere with expert-led courses, live classes, and
-            industry-recognized certifications designed to boost your career.
-          </p>
-          <button className="bg-white text-[#1e3a8a] px-6 py-3 mt-5 rounded-lg transition-colors font-semibold border border-[#1e3a8a] hover:bg-[#f0f4fa]">
-            Start Learning Today
-          </button>
-        </div>
-      </section>
-
-      {/* Popular Courses Section */}
-      <section className="w-full py-16 bg-white text-black">
+       
+        <section className="w-full py-16 bg-white text-black">
         <div className="max-w-7xl mx-auto px-6">
           <h2
             className="text-4xl font-bold text-center mb-4"
@@ -219,7 +250,8 @@ export default function Home1({ theme = "light" }) {
             </button>
           </div>
         </div>
-      </section>
+        </section>
+      )}
 
       {/* About Section */}
       <section className="w-full py-16 bg-[#1e3a8a] text-white">

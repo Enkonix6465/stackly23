@@ -146,9 +146,9 @@ export default function AboutPage() {
 
 
 
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#e6f7ff]'}`}>
+      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <h2 className="text-4xl font-bold text-center mb-12" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>
+          <h2 className="text-4xl font-bold text-center mb-12" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>
             Our Vision, Mission & Values
           </h2>
           <div className="grid grid-cols-3 md:grid-cols-3 gap-8 text-center">
@@ -212,9 +212,9 @@ export default function AboutPage() {
       </section>
 
 
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#f3f4f6]'}`}>
+      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#1e3a8a]'}`}>
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-10" style={{ color: '#1e3a8a' }}>Our Instructors</h2>
+          <h2 className="text-4xl font-bold text-center mb-10" style={{ color: '#fff' }}>Our Instructors</h2>
           <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Instructor 1 */}
             <div className="bg-white rounded-2xl shadow-lg flex flex-col items-center py-8 px-4">

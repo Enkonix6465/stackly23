@@ -71,12 +71,12 @@ export default function CertificationsCareerSupportPage() {
 				/>
 				<div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
 				<div className="relative z-10 px-6 flex flex-col items-center justify-center h-full">
-					   <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 leading-snug" style={{ color: '#1e3a8a' }}>
+					   <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 leading-snug" style={{ color: '#fff' }}>
 						Certifications & Career Support
 					</h1>
 					<p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto text-white">
 						Get certified, build your resume, prepare for interviews, and receive
-						placement support—all in one place. Our platform is dedicated to
+						placement support all in one place. Our platform is dedicated to
 						helping you become career-ready with recognized certificates and
 						expert guidance.
 					</p>
@@ -86,7 +86,7 @@ export default function CertificationsCareerSupportPage() {
 			{/* Certifications & Career Support Section */}
 			<section
 				className={`py-16 ${
-					theme === "dark" ? "bg-[#222]" : "bg-[#1e3a8a]"
+					theme === "dark" ? "bg-[#222]" : "bg-[#fff]"
 				}`}
 			>
 				<div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-4 md:px-6">
@@ -333,20 +333,20 @@ export default function CertificationsCareerSupportPage() {
 			</section>
 
 			{/* Call to Action Section */}
-			<section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#e6f7ff]'}`}>
+			<section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
         <div className="max-w-6xl mx-auto px-6 text-center">
-		  <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#1e3a8a' }}>
+		  <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#fff' }}>
             Ready to Take the Next Step?
           </h2>
-          <p className={`text-lg mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-            Join thousands of successful learners who have transformed their careers with our certifications. Sign up now and unlock your potential!
+          <p className={`text-lg mb-8 ${theme === 'dark' ? 'text-white' : 'text-white'}`}>
+			Join thousands of successful learners who have transformed their careers with our certifications.<br />Sign up now and unlock your potential!
           </p>
           <a
             href="#"
             className={`inline-block px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 ${
               theme === 'dark'
                 ? 'bg-[#fff] text-[#1e3a8a] hover:bg-[#e6f7ff]'
-                : 'bg-[#1e3a8a] text-white hover:bg-[#005bb5]'
+                : 'bg-[#fff] text-[#1e3a8a] hover:bg-[#005bb5]'
             }`}
           >
             Get Started Today

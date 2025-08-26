@@ -96,7 +96,7 @@ export default function WebDevServicePage() {
           <p className="text-center text-lg mb-10">
             Choose from a range of tracks designed for personal, academic, and professional growth.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {[
               {
                 title: "Personal Development Essentials",
@@ -244,7 +244,7 @@ export default function WebDevServicePage() {
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
               Start Your <span style={{ color: '#fff' }}>Learning Journey</span> Today
             </h2>
-            <p className={`text-lg ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}
+            <p className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-white'}`}
             >
               Join our live classes and mentorship programs to unlock your potential, gain new skills, and connect with inspiring mentors. Your growth starts here!
             </p>

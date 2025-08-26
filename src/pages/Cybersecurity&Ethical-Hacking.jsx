@@ -84,7 +84,7 @@ export default function LearningResourcesPage() {
       </section>
 
       {/* Service Includes Section */}
-      <section className={`py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
+      <section className={`py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#fff]'}`}>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-4 md:px-6">
           {/* Left Image */}
           <div className="flex justify-center">
@@ -92,7 +92,7 @@ export default function LearningResourcesPage() {
           </div>
           {/* Right Content */}
           <div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 break-words leading-tight" style={{ color: '#fff' }}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 break-words leading-tight" style={{ color: '#1e3a8a' }}>
               What Our Resources Include
             </h2>
             <ul className="space-y-4 text-base sm:text-lg">
@@ -198,7 +198,7 @@ export default function LearningResourcesPage() {
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
               Ready to <span style={{ color: '#fff' }}>Start Learning</span> with Our Tools?
             </h2>
-            <p className={`text-lg ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}
+            <p className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-white'}`}
             >
               Explore our library of e-books, lectures, quizzes, and assignments. Learn anywhere, anytime, with lifetime access and mobile-friendly tools.
             </p>

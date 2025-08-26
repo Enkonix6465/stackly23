@@ -86,13 +86,13 @@ export default function CommunityNetworkingPage() {
       </section>
 
       {/* Service Includes Section */}
-      <section className={`py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
+      <section className={`py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#fff]'}`}>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-4 md:px-6">
           <div className="flex justify-center">
             <img src={c1} alt="Community Networking" className="rounded-2xl shadow-lg w-full max-w-md md:max-w-full" />
           </div>
           <div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 break-words leading-tight" style={{ color: '#fff' }}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 break-words leading-tight" style={{ color: '#1e3a8a' }}>
               What Our Community Offers
             </h2>
             <ul className="space-y-4 text-base sm:text-lg">
@@ -197,7 +197,7 @@ export default function CommunityNetworkingPage() {
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
             Ready to <span style={{ color: '#fff' }}>Connect & Collaborate?</span>
           </h2>
-          <p className={`text-lg ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>
+          <p className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-white'}`}>
             Join our peer groups, alumni network, and discussion forums today. Build meaningful relationships, collaborate on ideas, and grow your career with the power of community.
           </p>
           <button className={

@@ -7,42 +7,42 @@ import { Link } from "react-router-dom";
 
 const categories = [
   {
-    name: "Personal Finance",
-    desc: "Master budgeting, saving, and money management tips.",
+    name: "Study Tips & Productivity",
+    desc: "Boost focus, manage time effectively, and build smart study habits.",
   },
   {
-    name: "Investments",
-    desc: "Stay updated on stocks, mutual funds, and wealth strategies.",
+    name: "Career Growth",
+    desc: "Learn strategies to prepare for interviews, networking, and professional success.",
   },
   {
-    name: "Business & Entrepreneurship",
-    desc: "Learn business finance, growth strategies, and success stories.",
+    name: "E-Learning Trends",
+    desc: "Stay updated with the latest innovations in digital learning and online education.",
   },
   {
-    name: "Financial Technology",
-    desc: "Discover the role of fintech in shaping the future of money.",
+    name: "Skill Development",
+    desc: "Explore resources to upskill in communication, finance, technology, and more.",
   },
 ];
 
 const features = [
   {
-    title: "Building Strong Financial Habits",
+    title: "Mastering Online Learning",
     description:
-      "Learn step-by-step how to save smarter, avoid debt traps, and plan your financial future effectively.",
+      "Practical tips on how to stay consistent, focused, and motivated while learning online.",
     image: blog1,
     link: "/blog/1",
   },
   {
-    title: "Beginner’s Guide to Investments",
+    title: "Future Skills You Need to Learn",
     description:
-      "From mutual funds to stock markets, understand how to start investing with confidence and low risk.",
+      "Discover the most in-demand skills for the next decade and how online courses can help you acquire them.",
     image: blog2,
     link: "/blog/2",
   },
   {
-    title: "Top Skills for the Future of Work",
+    title: "Balancing Studies and Career",
     description:
-      "Explore essential skills like digital literacy, financial knowledge, and entrepreneurship to stay career-ready.",
+      "Learn how to effectively balance work, study, and personal growth in today’s fast-paced environment.",
     image: blog3,
     link: "/blog/3",
   },
@@ -140,18 +140,18 @@ export default function BlogHero() {
           style={{ color: theme === "dark" ? "#fff" : "#fff" }}
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Explore Our <span style={{ color: "#1e3a8a" }}>Blogs</span>
+            Explore Our <span style={{ color: "#1e3a8a" }}>Learning Blogs</span>
           </h1>
           <p
             className={`text-lg md:text-xl max-w-2xl mx-auto ${
               theme === "dark" ? "text-white" : "text-white"
             }`}
           >
-            Stay updated with expert tips, insights, and stories in{" "}
+            Stay updated with{" "}
             <span className="font-semibold" style={{ color: "#1e3a8a" }}>
-              Finance, Learning, Career Growth
+              study tips, e-learning trends, career advice,
             </span>{" "}
-            and more. Learn, grow, and achieve your goals with us!
+            and strategies to help you succeed in education and beyond.
           </p>
         </div>
       </section>
@@ -294,20 +294,18 @@ export default function BlogHero() {
                 theme === "dark" ? "text-gray-200" : "text-gray-700"
               }`}
             >
-              Our blogs are organized to make learning easier — covering{" "}
+              Our blogs cover{" "}
               <span className="font-semibold" style={{ color: "#1e3a8a" }}>
-                Finance, Investments, Business,
+                study strategies, skill-building, online learning tools,
               </span>{" "}
-              and the future of learning through technology.
+              and career insights to support lifelong learners.
             </p>
             <p
-              className={
-                theme === "dark" ? "text-gray-400" : "text-gray-600"
-              }
+              className={theme === "dark" ? "text-gray-400" : "text-gray-600"}
             >
-              Dive into content curated for students, professionals, and
-              entrepreneurs. Gain insights, tips, and strategies that help you
-              stay ahead in finance and career development.
+              Whether you’re a student, professional, or educator, explore
+              content curated to help you grow in academics, career, and
+              personal development.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 gap-6">
@@ -418,56 +416,75 @@ export default function BlogHero() {
             <div className="space-y-4">
               <div className="flex gap-2">
                 <h3 className="text-red-600 font-bold">Myth:</h3>
-                <p>Online courses are not as valuable as traditional ones.</p>
+                <p>Online learning isn’t as effective as classroom learning.</p>
               </div>
               <div className="flex gap-2">
                 <h3 className="text-green-600 font-bold">Fact:</h3>
                 <p>
-                  Accredited online courses and certifications are highly
-                  recognized and career-relevant.
+                  Studies show that well-structured online courses can be just
+                  as effective, and often more flexible, than traditional
+                  learning.
                 </p>
               </div>
             </div>
             <div className="space-y-4">
               <div className="flex gap-2">
                 <h3 className="text-red-600 font-bold">Myth:</h3>
-                <p>You need a finance degree to manage money effectively.</p>
+                <p>You need advanced tech skills to learn online.</p>
               </div>
               <div className="flex gap-2">
                 <h3 className="text-green-600 font-bold">Fact:</h3>
                 <p>
-                  Anyone can learn personal finance and investing through guided
-                  online resources.
+                  Most platforms are user-friendly and designed for learners of
+                  all levels to navigate easily.
                 </p>
               </div>
             </div>
             <div className="space-y-4">
               <div className="flex gap-2">
                 <h3 className="text-red-600 font-bold">Myth:</h3>
-                <p>Certifications don’t help in career growth.</p>
+                <p>Online certifications don’t hold value in careers.</p>
               </div>
               <div className="flex gap-2">
                 <h3 className="text-green-600 font-bold">Fact:</h3>
                 <p>
-                  Industry-recognized certifications add credibility and boost
-                  your resume.
+                  Industry-recognized online certifications are valued by
+                  employers and enhance career opportunities.
                 </p>
               </div>
             </div>
             <div className="space-y-4">
               <div className="flex gap-2">
                 <h3 className="text-red-600 font-bold">Myth:</h3>
-                <p>Learning online is lonely and without support.</p>
+                <p>Learning online is isolating and without support.</p>
               </div>
               <div className="flex gap-2">
                 <h3 className="text-green-600 font-bold">Fact:</h3>
                 <p>
-                  Modern platforms provide mentorship, communities, and peer
-                  support for learners.
+                  Online learning includes discussion forums, peer groups, and
+                  mentorship to foster collaboration.
                 </p>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section (unchanged) */}
+      <section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#fff' }}>
+            Unlock Exclusive Insights & Community!
+          </h2>
+          <p className="text-lg mb-8 text-gray-100">
+            Discover the latest trends, connect with fellow readers, and get early access to special blog content. Be part of a vibrant learning community your next big idea starts here!
+          </p>
+          <a
+            href="#"
+            className="inline-block px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 bg-white text-[#1e3a8a] hover:bg-[#e6f7ff] hover:text-[#1e3a8a] border border-[#1e3a8a]"
+          >
+            Join the Blog Community
+          </a>
         </div>
       </section>
     </div>

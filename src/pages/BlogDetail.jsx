@@ -27,94 +27,95 @@ export default function BlogDetail() {
 
   // Example blog data (you can replace with Admin DB later)
   const blogs = [
-  {
-    id: "1",
-    title: "AI & Machine Learning",
-    image: blog1,
-    intro:
-      "AI and Machine Learning are revolutionizing industries with automation, predictive insights, and smarter systems. From automating repetitive tasks to enabling advanced innovations like self-driving cars and personalized medicine, AI is becoming the backbone of modern technology.",
-    sections: [
-      {
-        heading: "Introduction to AI",
-        content:
-          "Artificial Intelligence is the simulation of human intelligence in machines that are programmed to think like humans and mimic their actions. It covers multiple branches such as computer vision, natural language processing, robotics, and expert systems. AI systems rely on algorithms and models trained on large datasets, allowing them to adapt and improve over time. Unlike traditional programming, AI learns and evolves, creating systems that can make predictions, reason, and even exhibit creativity.",
-      },
-      {
-        heading: "Benefits of Machine Learning",
-        content:
-          "Machine Learning enables systems to learn from data, improving accuracy and efficiency over time without human intervention. Businesses benefit from predictive analytics, fraud detection, personalized recommendations, and smarter automation. For example, e-commerce platforms use ML to suggest products, streaming services recommend content, and healthcare providers detect diseases earlier. Over time, ML reduces costs, minimizes errors, and adapts to changing environments, ensuring systems remain effective as new challenges arise.",
-      },
-      {
-        heading: "Real-World Applications",
-        content:
-          "AI is used in healthcare (diagnostics, drug discovery, personalized medicine), finance (risk assessment, fraud detection, algorithmic trading), and education (personalized learning paths, grading automation). Self-driving cars use sensors and ML models to interpret surroundings in real-time, while voice assistants like Alexa and Siri understand natural language to interact with users. AI also plays a critical role in agriculture, cybersecurity, supply chain optimization, and even creative industries such as art and music generation.",
-      },
-      {
-        heading: "Automation Advantages",
-        content:
-          "Automation reduces costs, minimizes errors, and speeds up processes across various business sectors. In manufacturing, robots handle repetitive and dangerous tasks, reducing human risk. In offices, AI chatbots automate customer support, while Robotic Process Automation (RPA) takes care of invoice processing, HR onboarding, and compliance. The advantages extend to scalability, where businesses can process millions of operations simultaneously with minimal resources. This leads to faster delivery, better efficiency, and increased profits.",
-      },
-      {
-        heading: "Data-Driven Insights",
-        content:
-          "ML models analyze large datasets to provide predictive and prescriptive analytics that support decision-making. For example, retailers forecast demand and optimize inventory, while governments use AI-driven insights for urban planning and disaster management. Predictive analytics identifies upcoming trends, while prescriptive analytics suggests the best possible actions to achieve goals. As organizations collect massive amounts of structured and unstructured data, AI tools help uncover hidden patterns, customer behavior, and business opportunities that would otherwise remain invisible.",
-      },
-      {
-        heading: "Challenges & Solutions",
-        content:
-          "Challenges include bias, data privacy, and model transparency. AI systems can unintentionally perpetuate discrimination if trained on biased data. Privacy concerns arise when personal information is used without consent. Additionally, the 'black box' nature of AI makes it difficult to understand why models make certain decisions. Solutions lie in ethical AI frameworks, transparent algorithms, explainable AI models (XAI), and strict data governance policies. Organizations must also ensure regular audits, diverse datasets, and compliance with international regulations like GDPR to build trust.",
-      },
-      {
-        heading: "Future Scope",
-        content:
-          "AI will continue evolving, driving innovation in robotics, IoT, and smart cities for decades to come. The future of AI lies in Artificial General Intelligence (AGI), where machines could understand and perform tasks across any domain just like humans. Emerging fields like neuromorphic computing, quantum AI, and bio-AI are set to push the boundaries of what machines can do. In healthcare, AI will power advanced genetic engineering and predictive healthcare, while in education, personalized AI tutors will transform learning experiences globally.",
-      },
-    ],
-  },
-  {
-    id: "2",
-    title: "Web Development",
-    image: blog2,
-    intro:
-      "Web Development powers the digital world with responsive websites, scalable applications, and seamless online experiences. From simple static websites to complex enterprise platforms, web development brings businesses, services, and users together on a global scale.",
-    sections: [
-      {
-        heading: "Modern Web Frameworks",
-        content:
-          "React, Angular, and Vue have transformed frontend development with reusable components and fast rendering. These frameworks encourage modular code, making large applications more maintainable and scalable. Developers also benefit from powerful ecosystems with libraries, community support, and integrations. Progressive frameworks such as Svelte and Next.js are pushing the boundaries even further, enabling faster performance, server-side rendering, and SEO optimization out of the box.",
-      },
-      {
-        heading: "Responsive Design",
-        content:
-          "Responsive design ensures websites look great on all devices, from mobiles to desktops. With mobile-first development becoming a standard, responsive frameworks like Tailwind CSS and Bootstrap make it easier to adapt layouts for any screen size. Media queries, flexible grids, and adaptive typography ensure a seamless user experience. A well-executed responsive design not only enhances usability but also boosts SEO ranking, as Google prioritizes mobile-friendly websites.",
-      },
-      {
-        heading: "Frontend Technologies",
-        content:
-          "HTML, CSS, and JavaScript remain the backbone of frontend development. HTML structures content, CSS styles it, and JavaScript adds interactivity. With modern enhancements like CSS Grid, Flexbox, and ES6+ features, developers can now build cleaner, more efficient, and dynamic applications. Frameworks and preprocessors such as Sass, LESS, and TypeScript further enhance productivity, making frontend development faster, cleaner, and more error-resistant.",
-      },
-      {
-        heading: "Backend Systems",
-        content:
-          "Node.js, Django, and Laravel power backend operations, ensuring scalability and security. The backend is responsible for managing databases, authentication, APIs, and server-side logic. Node.js provides asynchronous processing, making it great for real-time apps like chat platforms, while Django offers security features out-of-the-box, and Laravel simplifies PHP development with elegant syntax. Cloud-native backends with serverless architecture (AWS Lambda, Firebase) are now emerging as the future, reducing server costs and scaling automatically.",
-      },
-      {
-        heading: "API Integrations",
-        content:
-          "APIs connect systems, enabling apps to share data seamlessly. RESTful APIs and GraphQL are widely used for smooth communication between frontend and backend. Businesses rely on APIs for payment processing, maps, social media integrations, and AI services. With microservices architecture, applications are broken into smaller services communicating via APIs, increasing flexibility and fault tolerance. APIs also open opportunities for third-party developers to build add-ons, boosting product reach and adoption.",
-      },
-      {
-        heading: "Security Practices",
-        content:
-          "Encryption, authentication, and secure coding keep applications safe from attacks. Developers must guard against threats like SQL injection, XSS, CSRF, and DDoS attacks. SSL certificates, strong password hashing, token-based authentication (JWT), and two-factor authentication are standard practices. Web Application Firewalls (WAF) and automated penetration testing are also becoming essential. As cybercrime increases, businesses must prioritize security at every stage of development instead of treating it as an afterthought.",
-      },
-      {
-        heading: "Scalability Solutions",
-        content:
-          "Cloud platforms like AWS, Azure, and GCP ensure that applications scale with user demand. Scalability involves both vertical (adding resources to a server) and horizontal (adding more servers) scaling. Load balancers, containerization with Docker, and orchestration with Kubernetes make it easier to handle millions of concurrent users. Serverless computing reduces infrastructure costs by scaling automatically. Companies like Netflix and Spotify rely on microservices and cloud scalability to serve millions of global users without interruptions.",
-      },
-    ],
-  },
+    {
+      id: "1",
+      title: "Mastering Online Learning",
+      image: blog1,
+      intro:
+        "Online learning has transformed education by making knowledge accessible anytime, anywhere. From virtual classrooms and self-paced courses to collaborative communities, mastering online learning helps students and professionals unlock their full potential while balancing flexibility with discipline.",
+      sections: [
+        {
+          heading: "Introduction to Online Learning",
+          content:
+            "Online learning refers to education delivered via digital platforms, enabling learners to study from any location at their own pace. It encompasses live classes, recorded lectures, interactive assignments, and peer-to-peer collaboration. With the right approach, online education empowers learners with flexibility and global access to quality knowledge without traditional barriers of time and place.",
+        },
+        {
+          heading: "Benefits of Online Learning",
+          content:
+            "The advantages of online learning include flexibility, affordability, and accessibility. Learners can balance education with work or personal commitments while reducing travel and material costs. Online platforms also offer a wide range of courses from universities, companies, and experts worldwide, making specialized knowledge available to everyone. Learners gain control over their pace and learning style, leading to improved outcomes.",
+        },
+        {
+          heading: "Effective Learning Strategies",
+          content:
+            "To succeed in online learning, students should set clear goals, maintain a study schedule, and engage actively in discussions. Note-taking, regular self-assessments, and participation in group projects enhance understanding. Using productivity tools, minimizing distractions, and seeking support from mentors or peers ensures steady progress. Developing self-discipline and time management are the keys to mastering online education.",
+        },
+        {
+          heading: "Building a Supportive Environment",
+          content:
+            "A dedicated study environment is essential for online learning success. Creating a distraction-free workspace, having reliable internet, and setting specific learning hours help students stay focused. Institutions can further support learners by providing discussion forums, peer groups, and mentorship programs that replicate the collaborative nature of physical classrooms.",
+        },
+        {
+          heading: "Leveraging Technology",
+          content:
+            "Modern online education platforms use advanced tools such as interactive quizzes, gamified learning modules, and AI-powered recommendations. Video conferencing software, cloud-based storage, and collaborative tools enhance engagement and teamwork. By leveraging technology effectively, students can enjoy personalized learning journeys and track their progress more efficiently.",
+        },
+        {
+          heading: "Overcoming Challenges",
+          content:
+            "Online learners often face challenges such as lack of motivation, digital fatigue, or limited interaction. Solutions include breaking study sessions into manageable chunks, practicing active learning techniques, and joining peer study groups for accountability. Institutions can support learners with mentorship, counseling, and engaging course design to reduce dropout rates and boost learner satisfaction.",
+        },
+        {
+          heading: "Future of Online Education",
+          content:
+            "The future of online learning lies in immersive technologies like virtual reality classrooms, AI tutors, and adaptive learning platforms that tailor content to individual needs. Lifelong learning will become the norm as industries evolve rapidly, and professionals will continually update their skills through micro-courses and certifications. Online education will not only complement traditional methods but may become the primary mode of learning in the digital era.",
+        },
+      ],
+    },
+    {
+      id: "2",
+      title: "Future Skills You Need to Learn",
+      image: blog2,
+      intro:
+        "The future of work is changing rapidly, and staying relevant means mastering the right skills. From digital literacy and critical thinking to advanced technologies like AI, data, and sustainability practices, future-ready skills empower learners to thrive in an evolving global economy.",
+      sections: [
+        {
+          heading: "Digital Literacy & Technology Skills",
+          content:
+            "In the digital-first world, basic computer skills are no longer enough. Learners must understand cloud computing, cybersecurity, and the fundamentals of coding. Familiarity with productivity tools, collaborative platforms, and emerging technologies ensures adaptability in modern workplaces where technology drives almost every process.",
+        },
+        {
+          heading: "Data & Analytical Thinking",
+          content:
+            "Data is now considered the new oil of the digital age. Skills in data analysis, visualization, and interpretation are essential for decision-making across industries. Learning tools like Excel, SQL, Python, and visualization platforms such as Tableau or Power BI helps learners uncover insights and support data-driven strategies. Critical thinking paired with data literacy makes professionals indispensable.",
+        },
+        {
+          heading: "Artificial Intelligence & Automation",
+          content:
+            "AI, automation, and machine learning are transforming industries. Understanding how AI works, its applications, and its limitations is critical. Learners should gain exposure to automation tools, chatbots, and robotics. While not everyone needs to be a developer, a working knowledge of AI concepts ensures competitiveness in tech-driven environments.",
+        },
+        {
+          heading: "Soft Skills & Emotional Intelligence",
+          content:
+            "Future skills go beyond technical expertise. Communication, collaboration, problem-solving, and adaptability are just as important. Emotional intelligence (EQ) helps in building relationships, managing stress, and leading teams effectively. In a world where remote and hybrid work is becoming the norm, empathy and leadership are vital skills for career growth.",
+        },
+        {
+          heading: "Global & Cross-Cultural Competence",
+          content:
+            "As businesses expand globally, professionals must learn to work with diverse teams and cultures. Skills in intercultural communication, global citizenship, and inclusivity prepare learners for international careers. Being adaptable to different perspectives and environments is key to thriving in multicultural workplaces.",
+        },
+        {
+          heading: "Sustainability & Green Skills",
+          content:
+            "The future workforce must prioritize sustainability. Green skills such as renewable energy knowledge, sustainable business practices, and climate awareness are increasingly valued. Governments and companies worldwide are aligning with sustainability goals, making it an important area for learners to master in order to stay future-ready.",
+        },
+        {
+          heading: "Lifelong Learning & Adaptability",
+          content:
+            "The most important skill of the future is the ability to continuously learn. With industries evolving rapidly, professionals must adapt by upskilling and reskilling regularly. Micro-courses, certifications, and online programs make it easier to stay updated. Building a growth mindset and embracing lifelong learning will ensure success in the unpredictable future of work.",
+        },
+      ],
+    },
+
   {
     id: "3",
     title: "Data Science",

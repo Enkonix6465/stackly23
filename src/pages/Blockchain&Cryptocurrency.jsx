@@ -90,7 +90,7 @@ export default function BlockchainPage() {
 
       {/* Service Includes Section */}
       <section className={
-        `py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`
+        `py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#fff]'}`
       }>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-4 md:px-6">
           {/* Left Image */}
@@ -99,7 +99,7 @@ export default function BlockchainPage() {
           </div>
           {/* Right Content */}
           <div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 break-words leading-tight" style={{ color: '#fff' }}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 break-words leading-tight" style={{ color: '#1e3a8a' }}>
               What Our Skill Development Workshops Include
             </h2>
             <ul className="space-y-4 text-base sm:text-lg">
@@ -209,7 +209,7 @@ export default function BlockchainPage() {
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
             Ready to <span style={{ color: '#fff' }}>Upskill</span> with Our Workshops?
           </h2>
-          <p className={`text-lg ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}
+          <p className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-white'}`}
           >
             Join our short-term, high-impact bootcamps and gain the skills employers are looking for in today’s market.
           </p>

@@ -141,10 +141,10 @@ export default function ServiceHero() {
         </div>
       </section>
       <section className={
-  `w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`
+  `w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#1e3a8a]'}`
 }>
   <div className="max-w-5xl mx-auto px-6">
-    <h2 className="text-4xl font-bold text-center mb-10" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>Our Values</h2>
+    <h2 className="text-4xl font-bold text-center mb-10" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>Our Values</h2>
     <div className="grid md:grid-cols-3 gap-8">
       <div className={`rounded-xl shadow-md p-8 text-center ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-[#1e3a8a]'}`}>
         <h3 className="text-xl font-semibold mb-3" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>Excellence</h3>
@@ -218,15 +218,15 @@ export default function ServiceHero() {
       </section>
 
       {/* Technology & Tools Section */}
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#000]' : 'bg-[#e6f7ff]'}`}>
+      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#000]' : 'bg-[#1e3a8a]'}`}>
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-12 text-center" style={{ color: '#1e3a8a' }}>Technology & Tools</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center" style={{ color: '#fff' }}>Technology & Tools</h2>
           <div className="flex  md:flex-row md:items-start gap-10">
             {/* Left: Paragraph */}
             <div className="md:w-1/2 w-full flex items-center justify-center md:justify-start mb-8 md:mb-0">
               <p
   className={`text-lg text-justify ${
-    theme === "dark" ? "text-gray-200" : "text-gray-700"
+    theme === "dark" ? "text-white" : "text-white"
   }`}
   style={{ maxWidth: "400px" }}
 >
@@ -330,14 +330,14 @@ export default function ServiceHero() {
         </div>
       </section>
       <section className={
-        `w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`
+        `w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#1e3a8a]'}`
       }>
       <div className="max-w-3xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold mb-6" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>Ready to Join Our Journey?</h2>
-        <p className={`text-lg mb-8 ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>Become part of our award-winning community and unlock new opportunities for growth, learning, and success. Connect with us today to start your journey!</p>
+        <h2 className="text-4xl font-bold mb-6" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>Ready to Join Our Journey?</h2>
+        <p className={`text-lg mb-8 ${theme === 'dark' ? 'text-white' : 'text-white'}`}>Become part of our award-winning community and unlock new opportunities for growth, learning, and success. Connect with us today to start your journey!</p>
         <a href="/contactus" className={
           `inline-block font-bold py-3 px-8 rounded-full shadow-lg transition ` +
-          (theme === 'dark' ? 'bg-[#1e3a8a] text-white hover:bg-blue-400' : 'bg-[#1e3a8a] text-white hover:bg-blue-400')
+          (theme === 'dark' ? 'bg-[#fff] text-[#1e3a8a] hover:bg-blue-400' : 'bg-[#fff] text-[#1e3a8a] hover:bg-blue-400')
         }>Contact Us</a>
       </div>
     </section>

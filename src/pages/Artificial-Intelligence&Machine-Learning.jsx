@@ -101,7 +101,7 @@ export default function AIServicePage() {
       </section>
 
       {/* Service Includes Section - Course Categories */}
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-[#f8fafc] text-black'}`}> 
+      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-[#fff] text-black'}`}> 
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-4" style={{ color: '#1e3a8a' }}>
             Course Categories
@@ -296,7 +296,7 @@ export default function AIServicePage() {
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
             Explore <span style={{ color: '#fff' }}>Courses & Programs</span> Built for Your Success
           </h2>
-          <p className={`text-lg ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}
+          <p className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-white'}`}
           >
             Unlock a wide range of curated courses designed to help you build real-world skills, 
             earn industry-recognized certifications, and achieve your career goals. 
