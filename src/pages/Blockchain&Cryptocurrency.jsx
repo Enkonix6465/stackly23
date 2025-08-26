@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+ import React, { useState } from "react";
 import cryptoHero from "../assets/crypto.mp4";
 import b1 from "../assets/b1.avif";
 import b2 from "../assets/b2.jpeg";
@@ -31,34 +31,34 @@ export default function BlockchainPage() {
 
   const faqs = [
     {
-      question: "What is Blockchain?",
+      question: "What are skill development workshops?",
       answer:
-        "Blockchain is a decentralized digital ledger that records transactions securely and transparently across a network of computers.",
+        "They are short-term bootcamps designed to help you quickly learn and apply trending skills like AI, Data Science, and Digital Marketing.",
     },
     {
-      question: "Do you build custom blockchain solutions?",
+      question: "How long are the workshops?",
       answer:
-        "Yes, we design and develop custom blockchain platforms, smart contracts, and decentralized applications tailored to your needs.",
+        "Most workshops last between 2 to 8 weeks, depending on the topic.",
     },
     {
-      question: "Can blockchain improve business security?",
+      question: "Do I need prior experience?",
       answer:
-        "Absolutely! Blockchain enhances data integrity, reduces fraud, and provides secure, tamper-proof records for your business.",
+        "No prior background is required for beginner workshops. Advanced tracks are available for experienced learners.",
     },
     {
-      question: "Do you offer crypto wallet and exchange development?",
+      question: "Will I get a certificate?",
       answer:
-        "Yes, we create secure crypto wallets, exchanges, and payment solutions for seamless digital asset management.",
+        "Yes, you’ll receive a recognized certificate after successful completion.",
     },
     {
-      question: "Is blockchain suitable for my industry?",
+      question: "Are the workshops online or offline?",
       answer:
-        "Blockchain benefits industries like finance, supply chain, healthcare, real estate, and more by improving transparency and efficiency.",
+        "Currently, all workshops are delivered online with interactive live sessions.",
     },
     {
-      question: "Do you provide ongoing support?",
+      question: "Do you offer placement support?",
       answer:
-        "We offer continuous support, upgrades, and maintenance to keep your blockchain solutions secure and up-to-date.",
+        "Yes, we provide career guidance, resume reviews, and connections with hiring partners.",
     },
   ];
 
@@ -75,15 +75,15 @@ export default function BlockchainPage() {
           loop
           muted
           playsInline
-          aria-label="Blockchain Hero Background Video"
+          aria-label="Workshops Hero Background Video"
         />
         <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
         <div className="relative z-10 px-6">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 leading-snug" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>
-            Empowering Innovation with <span style={{ color: '#00bfff' }}>Blockchain Technology</span>
+            Accelerate Your Career with <span style={{ color: '#00bfff' }}>Skill Development Workshops</span>
           </h1>
           <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto ${theme === 'dark' ? 'text-white' : 'text-white'}`}>
-            We deliver secure, scalable, and transparent blockchain solutions to help organizations transform operations and unlock new opportunities.
+            Join short-term, intensive bootcamps on AI, Data Science, Digital Marketing, and more to gain in-demand skills quickly.
           </p>
         </div>
       </section>
@@ -95,21 +95,21 @@ export default function BlockchainPage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-4 md:px-6">
           {/* Left Image */}
           <div className="flex justify-center">
-            <img src={b1} alt="Blockchain Services" className="rounded-2xl shadow-lg w-full max-w-md md:max-w-full" />
+            <img src={b1} alt="Workshops Services" className="rounded-2xl shadow-lg w-full max-w-md md:max-w-full" />
           </div>
           {/* Right Content */}
           <div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 break-words leading-tight" style={{ color: '#fff' }}>
-              What Our Blockchain Service Includes
+              What Our Skill Development Workshops Include
             </h2>
             <ul className="space-y-4 text-base sm:text-lg">
               {[
-                'Custom Blockchain Development',
-                'Smart Contracts & DApps',
-                'Crypto Wallet & Exchange Solutions',
-                'Supply Chain & Asset Tracking',
-                'Security & Compliance',
-                'Ongoing Support & Maintenance',
+                'Intensive Bootcamps on AI, Data Science & Digital Marketing',
+                'Expert-Led Live Sessions',
+                'Hands-on Industry Projects',
+                'Career Guidance & Mentorship',
+                'Certification of Completion',
+                'Ongoing Access to Resources',
               ].map((item, idx) => (
                 <li className="flex items-center" key={item}>
                   <span className={`w-3 h-3 rounded-full mr-3 ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></span>
@@ -121,58 +121,51 @@ export default function BlockchainPage() {
         </div>
       </section>
 
-      {/* Who It's For Section */}
-      <section className={
-        `py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`
-      }>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-6 items-center">
-          {/* Left Side Text */}
-          <div>
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 leading-snug" style={{ color: theme === 'dark' ? '#00bfff' : '#222' }}>
-              Who It's For?
-            </h2>
-            <p className={`text-lg mb-6 text-justify ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>
-              Our <span className="font-semibold" style={{ color: '#00bfff' }}>Blockchain solutions</span> empower organizations to innovate, secure transactions, and streamline operations. From finance to healthcare, supply chain to real estate, we help you harness the power of blockchain.
-            </p>
-          </div>
-          {/* Right Side Cards */}
-          <div className="grid lg:grid-cols-2 gap-6">
+      {/* Key Features / What You’ll Get */}
+      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818] text-white' : 'bg-[#e6f7ff] text-black'}`}> 
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#00BFFF' }}>Key Features / What You’ll Get</h2>
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-10">
             {[
-              { title: 'Finance', desc: 'Secure transactions and digital assets.' },
-              { title: 'Healthcare', desc: 'Protect patient data and streamline records.' },
-              { title: 'Supply Chain', desc: 'Track assets and improve transparency.' },
-              { title: 'Real Estate', desc: 'Simplify property transactions and records.' },
-            ].map((card, idx) => (
-              <div key={card.title} className={`p-6 rounded-2xl shadow-md hover:shadow-lg transition ` + (theme === 'dark' ? 'bg-[#222]' : 'bg-[#fdfcf9]')}>
-                <h3 className="text-xl font-semibold mb-2" style={{ color: '#00bfff' }}>{card.title}</h3>
-                <p className={theme === 'dark' ? 'text-gray-200' : 'text-gray-600'}>{card.desc}</p>
+              { num: '01', heading: 'Expert Mentors', desc: 'Learn directly from industry professionals and domain experts.' },
+              { num: '02', heading: 'Real-Time Q&A', desc: 'Interactive sessions with live feedback and answers.' },
+              { num: '03', heading: 'Flexible Learning', desc: 'Weekend & weekday batches to suit your schedule.' },
+              { num: '04', heading: 'Certification', desc: 'Earn certificates that boost your professional profile.' },
+              { num: '05', heading: 'Career Networking', desc: 'Connect with peers, mentors, and recruiters.' },
+              { num: '06', heading: 'Practical Projects', desc: 'Work on real-world challenges to sharpen your skills.' },
+            ].map((item, idx) => (
+              <div key={item.num} className="flex items-start mb-6">
+                <div className="relative flex-shrink-0 mr-4">
+                  <span className="text-5xl font-extrabold text-black" style={{
+                    background: 'linear-gradient(90deg, #00BFFF 60%, transparent 60%)',
+                    padding: '0.1em 0.5em',
+                    borderRadius: '0.2em',
+                    color: '#111',
+                    display: 'inline-block',
+                  }}>{item.num}</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-1 text-black">{item.heading}</h3>
+                  <p className="text-gray-600 text-base max-w-md">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="relative w-full bg-cover bg-center py-20" style={{ backgroundImage: `url(${b2})` }}>
-        <div className="absolute inset-0" style={{ background: theme === 'dark' ? 'rgba(0,191,255,0.7)' : 'rgba(0,191,255,0.7)' }}></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center" style={{ color: '#fff' }}>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-12 drop-shadow-lg">
-            Benefits of Our Blockchain Services
-          </h2>
-          <div className="grid lg:grid-cols-3 gap-8">
-            {[
-              "Decentralization & Transparency",
-              "Enhanced Security",
-              "Fraud Prevention",
-              "Efficient Transactions",
-              "Cost Reduction",
-              "Future-Ready Solutions",
-            ].map((benefit, index) => (
-              <div key={index} className={`backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-105 transition ` + (theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black')}>
-                <h3 className="text-xl font-semibold mb-3">{benefit}</h3>
-              </div>
-            ))}
-          </div>
+      {/* Benefits / Outcomes */}
+      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`}> 
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ color: '#00BFFF' }}>Benefits / Outcomes</h2>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Gain Job-Ready Skills <span className="text-gray-500">→ Specialize in trending domains like AI, Data Science, and Digital Marketing.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Fast-Track Learning <span className="text-gray-500">→ Short-term workshops designed for rapid upskilling.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Hands-on Experience <span className="text-gray-500">→ Work on projects, assignments, and case studies.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Recognized Certificates <span className="text-gray-500">→ Boost your resume with industry-accepted credentials.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Career Readiness <span className="text-gray-500">→ Portfolio building, interview prep, and placement guidance.</span></li>
+            <li className="flex items-start gap-3"><span className="text-2xl text-[#00BFFF]">✔</span>Lifelong Access <span className="text-gray-500">→ Stay updated with recorded sessions and resources.</span></li>
+          </ul>
         </div>
       </section>
 
@@ -214,17 +207,17 @@ export default function BlockchainPage() {
           {/* Left Content */}
           <div className="space-y-6 flex flex-col justify-center h-full">
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-            Ready to <span style={{ color: '#fff' }}>Innovate</span> with Blockchain?
+            Ready to <span style={{ color: '#fff' }}>Upskill</span> with Our Workshops?
           </h2>
           <p className={`text-lg ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}
           >
-            Partner with us to build secure, scalable, and future-ready blockchain solutions. Let’s transform your business, together.
+            Join our short-term, high-impact bootcamps and gain the skills employers are looking for in today’s market.
           </p>
           <button className={
             `px-8 py-4 font-semibold rounded-xl shadow-md transition self-start lg:self-auto ` +
             (theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-[#fff] text-black hover:bg-[#0099cc]')
           }>
-            Get Started Today
+            Enroll Now
           </button>
           </div>
 
@@ -232,7 +225,7 @@ export default function BlockchainPage() {
           <div className="flex justify-center items-center h-full">
             <img
               src={b3}
-              alt="Blockchain CTA"
+              alt="Workshops CTA"
               className="rounded-2xl shadow-lg w-full max-w-xl object-cover"
             />
           </div>

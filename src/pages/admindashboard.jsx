@@ -192,7 +192,7 @@ export default function UserDetailsSection() {
       )}>
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
-          "text-[#00bfff]"
+          "text-[#1e3a8a]"
         )}>User Signup Details</h2>
         {signupDetails.length > 0 ? (
           <div className="overflow-x-auto">
@@ -202,7 +202,7 @@ export default function UserDetailsSection() {
             )}>
               <thead className={clsx(
                 "text-white",
-                theme === "dark" ? "bg-[#005f8f]" : "bg-[#00bfff]"
+                theme === "dark" ? "bg-[#1e3a8a]" : "bg-[#1e3a8a]"
               )}>
                 <tr>
                   <th className="px-4 py-2 text-center">S.No</th>
@@ -216,7 +216,7 @@ export default function UserDetailsSection() {
               </thead>
               <tbody>
                 {signupDetails.map((user, idx) => (
-                  <tr key={user.email || idx} className={clsx("border-b", theme === "dark" ? "border-[#005f8f]" : "border-[#00bfff]") }>
+                  <tr key={user.email || idx} className={clsx("border-b", theme === "dark" ? "border-[#1e3a8a]" : "border-[#1e3a8a]") }>
                     <td className="px-4 py-2 text-center">{idx + 1}</td>
                     <td className="px-4 py-2 text-center">{user.firstName}</td>
                     <td className="px-4 py-2 text-center">{user.lastName}</td>
@@ -241,7 +241,7 @@ export default function UserDetailsSection() {
       )}>
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
-          "text-[#00bfff]"
+          "text-[#1e3a8a]"
         )}>Instructor Details</h2>
         {instructorDetails.length > 0 ? (
           <div className="overflow-x-auto">
@@ -251,7 +251,7 @@ export default function UserDetailsSection() {
             )}>
               <thead className={clsx(
                 "text-white",
-                theme === "dark" ? "bg-[#005f8f]" : "bg-[#00bfff]"
+                theme === "dark" ? "bg-[#1e3a8a]" : "bg-[#1e3a8a]"
               )}>
                 <tr>
                   <th className="px-4 py-2 text-center">S.No</th>
@@ -262,7 +262,7 @@ export default function UserDetailsSection() {
               </thead>
               <tbody>
                 {instructorDetails.map((inst, idx) => (
-                  <tr key={inst.email || idx} className={clsx("border-b", theme === "dark" ? "border-[#005f8f]" : "border-[#00bfff]") }>
+                  <tr key={inst.email || idx} className={clsx("border-b", theme === "dark" ? "border-[#1e3a8a]" : "border-[#1e3a8a]") }>
                     <td className="px-4 py-2 text-center">{idx + 1}</td>
                     <td className="px-4 py-2 text-center">{inst.name}</td>
                     <td className="px-4 py-2 text-center">{inst.email}</td>
@@ -284,13 +284,13 @@ export default function UserDetailsSection() {
       )}>
         <h2 className={clsx(
           "text-2xl font-bold mb-8 text-center",
-          "text-[#00bfff]"
+          "text-[#1e3a8a]"
         )}>Dashboard Graphs</h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <h3 className={clsx(
               "text-lg font-semibold mb-4 text-center",
-              "text-[#00bfff]"
+              "text-[#1e3a8a]"
             )}>Signups Per Day</h3>
             {signupGraphData.length > 0 ? (
               <ResponsiveContainer width="100%" height={250}>
@@ -299,7 +299,7 @@ export default function UserDetailsSection() {
                   <XAxis dataKey="date" stroke={theme === "dark" ? "#fff" : "#22223b"} />
                   <YAxis allowDecimals={false} stroke={theme === "dark" ? "#fff" : "#22223b"} />
                   <Tooltip contentStyle={{ background: theme === "dark" ? "#181f2a" : "#fff", color: theme === "dark" ? "#fff" : "#22223b" }} />
-                  <Bar dataKey="count" fill="#00bfff" />
+                  <Bar dataKey="count" fill="#1e3a8a" />
                 </BarChart>
               </ResponsiveContainer>
             ) : (
@@ -309,7 +309,7 @@ export default function UserDetailsSection() {
           <div>
             <h3 className={clsx(
               "text-lg font-semibold mb-4 text-center",
-              "text-[#00bfff]"
+              "text-[#1e3a8a]"
             )}>Instructors Per Expertise</h3>
             {instructorGraphData.length > 0 ? (
               <ResponsiveContainer width="100%" height={250}>
@@ -318,7 +318,7 @@ export default function UserDetailsSection() {
                   <XAxis dataKey="expertise" stroke={theme === "dark" ? "#fff" : "#22223b"} />
                   <YAxis allowDecimals={false} stroke={theme === "dark" ? "#fff" : "#22223b"} />
                   <Tooltip contentStyle={{ background: theme === "dark" ? "#181f2a" : "#fff", color: theme === "dark" ? "#fff" : "#22223b" }} />
-                  <Bar dataKey="count" fill="#00bfff" />
+                  <Bar dataKey="count" fill="#1e3a8a" />
                 </BarChart>
               </ResponsiveContainer>
             ) : (
@@ -335,7 +335,7 @@ export default function UserDetailsSection() {
       )}>
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
-          "text-[#00bfff]"
+          "text-[#1e3a8a]"
         )}>Upcoming Webinar</h2>
         <form className="mb-6 w-full" onSubmit={handleWebinarSubmit}>
           <div className="flex flex-row gap-4 mb-4 w-full">
@@ -391,7 +391,7 @@ export default function UserDetailsSection() {
           <div className="flex justify-center">
             <button type="submit" className={clsx(
               "rounded px-5 py-2 text-base font-semibold transition",
-              "bg-[#00bfff] text-white hover:bg-[#0099cc]"
+              "bg-[#1e3a8a] text-white hover:bg-[#1e40af]"
             )}>Add Webinar</button>
           </div>
         </form>
@@ -451,7 +451,7 @@ export default function UserDetailsSection() {
                       />
                       <button type="submit" className={clsx(
                         "rounded px-3 py-1 font-semibold transition",
-                        "bg-[#00bfff] text-white hover:bg-[#0099cc]"
+                        "bg-[#1e3a8a] text-white hover:bg-[#1e40af]"
                       )}>Save</button>
                       <button type="button" className={clsx(
                         "rounded px-3 py-1 font-semibold transition",
@@ -492,7 +492,7 @@ export default function UserDetailsSection() {
       )}>
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
-          "text-[#00bfff]"
+          "text-[#1e3a8a]"
         )}>Webinar Registrations</h2>
         {webinarRegistrations.length > 0 ? (
           <div className="overflow-x-auto">
@@ -500,7 +500,7 @@ export default function UserDetailsSection() {
               "min-w-full border rounded-lg",
               theme === "dark" ? "border-gray-700" : "border-gray-200"
             )}>
-              <thead className="bg-[#00bfff] text-white">
+              <thead className="bg-[#1e3a8a] text-white">
                 <tr>
                   <th className="px-4 py-2 text-center">S.No</th>
                   <th className="px-4 py-2 text-center">Webinar Title</th>
@@ -536,7 +536,7 @@ export default function UserDetailsSection() {
       )}>
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
-          "text-[#00bfff]"
+          "text-[#1e3a8a]"
         )}>Add New Blog</h2>
         <form className="mb-6 w-full" onSubmit={handleBlogSubmit}>
           <div className="flex flex-col md:flex-row gap-4 mb-4">
@@ -595,7 +595,7 @@ export default function UserDetailsSection() {
           <div className="flex justify-center">
             <button type="submit" className={clsx(
               "rounded px-5 py-2 text-base font-semibold transition",
-              "bg-[#00bfff] text-white hover:bg-[#0099cc]"
+              "bg-[#1e3a8a] text-white hover:bg-[#1e40af]"
             )}>Add Blog</button>
           </div>
         </form>
@@ -657,7 +657,7 @@ export default function UserDetailsSection() {
                         <div className="flex gap-2 mt-2">
                           <button type="submit" className={clsx(
                             "rounded px-3 py-1 font-semibold transition",
-                            "bg-[#00bfff] text-white hover:bg-[#0099cc]"
+                            "bg-[#1e3a8a] text-white hover:bg-[#1e40af]"
                           )}>Save</button>
                           <button type="button" className={clsx(
                             "rounded px-3 py-1 font-semibold transition",
@@ -669,7 +669,7 @@ export default function UserDetailsSection() {
                       <>
                         <div className={clsx(
                           "font-bold text-lg",
-                          "text-[#00bfff]"
+                          "text-[#1e3a8a]"
                         )}>{blog.title}</div>
                         <div className={clsx(
                           "text-sm mb-1",

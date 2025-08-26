@@ -93,7 +93,7 @@ const Header = () => {
             >
               <button
                 onClick={() => navigate('/home1')}
-                className={`flex items-center ${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#00BFFF] transition-colors duration-200`}
+                className={`flex items-center ${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
                 aria-haspopup="true"
                 aria-expanded={isHomeDropdownOpen}
               >
@@ -113,7 +113,7 @@ const Header = () => {
 
             <Link
               to="/aboutus"
-              className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#00BFFF] transition-colors duration-200`}
+              className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
             >
               About Us
             </Link>
@@ -134,7 +134,7 @@ const Header = () => {
             >
               <button
                 onClick={() => navigate('/services')}
-                className={`flex items-center ${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#00BFFF] transition-colors duration-200`}
+                className={`flex items-center ${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
                 aria-haspopup="true"
                 aria-expanded={isServicesDropdownOpen}
               >
@@ -159,7 +159,7 @@ const Header = () => {
           
             <Link
               to="/blog"
-              className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#00BFFF] transition-colors duration-200`}
+              className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
             >
               Blog
             </Link>
@@ -173,16 +173,16 @@ const Header = () => {
 
             {/* Dark Mode Toggle */}
             <button
-              className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 ${theme === 'dark' ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-blue-100 border-blue-300 hover:bg-blue-200'}`}
+              className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 ${theme === 'dark' ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-[#e0e7ff] border-[#1e3a8a] hover:bg-[#c7d2fe]'}`}
               onClick={toggleTheme}
               aria-label="Toggle dark mode"
             >
               {theme === 'dark' ? (
-                <svg className="w-5 h-5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#1e3a8a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12H3m15.07 4.93l-.71-.71M6.34 6.34l-.71-.71m12.02 12.02l-.71-.71M6.34 17.66l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               ) : (
-                <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#1e3a8a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
               )}
@@ -209,7 +209,7 @@ const Header = () => {
     <>
       <ScrollToTop />
                     <button
-                      className="w-10 h-10 rounded-full bg-[#00bfff] flex items-center justify-center text-white font-semibold focus:outline-none"
+                      className="w-10 h-10 rounded-full bg-[#1e3a8a] flex items-center justify-center text-white font-semibold focus:outline-none"
                       onClick={() => setIsAvatarDropdownOpen((v) => !v)}
                     >
                       {initials}
@@ -218,7 +218,7 @@ const Header = () => {
                       <div className={`absolute right-0 mt-2 w-40 rounded-md shadow-lg border py-2 z-50 ${theme === 'dark' ? 'bg-[#1E2A38] border-[#141B25]' : 'bg-white border-gray-200'}`}> 
                         {email === 'admin@enkonix.in' && (
                           <button
-                            className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#00bfff]' : 'text-gray-800 hover:bg-blue-100'}`}
+                            className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#1e3a8a]' : 'text-gray-800 hover:bg-[#e0e7ff]'}`}
                             onClick={() => { setIsAvatarDropdownOpen(false); navigate('/admindashboard'); }}
                           >
                             Back to Admin Dashboard
@@ -227,14 +227,14 @@ const Header = () => {
                         {/* User Dashboard link for non-admin users */}
                         {email && email !== 'admin@enkonix.in' && (
                           <button
-                            className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#00bfff]' : 'text-gray-800 hover:bg-blue-100'}`}
+                            className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#1e3a8a]' : 'text-gray-800 hover:bg-[#e0e7ff]'}`}
                             onClick={() => { setIsAvatarDropdownOpen(false); navigate('/userdashboard'); }}
                           >
                             User Dashboard
                           </button>
                         )}
                         <button
-                          className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#00bfff]' : 'text-gray-800 hover:bg-blue-100'}`}
+                          className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#1e3a8a]' : 'text-gray-800 hover:bg-[#e0e7ff]'}`}
                           onClick={() => { setIsAvatarDropdownOpen(false); navigate('/welcome'); }}
                         >
                           Logout
@@ -251,7 +251,7 @@ const Header = () => {
           <div className="flex items-center space-x-4 min-[480px]:hidden">
             {/* Dark Mode Toggle (Mobile) */}
             <button
-              className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 ${theme === 'dark' ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-blue-100 border-blue-300 hover:bg-blue-200'}`}
+              className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 ${theme === 'dark' ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-[#e0e7ff] border-[#1e3a8a] hover:bg-[#c7d2fe]'}`}
               onClick={toggleTheme}
               aria-label="Toggle dark mode"
             >
@@ -286,7 +286,7 @@ const Header = () => {
                 return (
                   <>
                     <button
-                      className="w-10 h-10 rounded-full bg-[#00BFFF] flex items-center justify-center text-white font-semibold focus:outline-none"
+                      className="w-10 h-10 rounded-full bg-[#1e3a8a] flex items-center justify-center text-white font-semibold focus:outline-none"
                       onClick={() => setIsAvatarDropdownOpen((v) => !v)}
                     >
                       {initials}

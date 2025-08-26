@@ -1,8 +1,5 @@
-
 import { Link } from "react-router-dom";
-import React from "react";
-
-
+import React, { useRef, useEffect, useState } from "react";
 import home2Video from "../assets/home2hero.mp4";
 import logo1 from "../assets/1.png";
 import logo2 from "../assets/2.png";
@@ -14,6 +11,70 @@ import logo7 from "../assets/7.png";
 import logo8 from "../assets/8.png";
 import logo9 from "../assets/9.png";
 import logo10 from "../assets/10.png";
+
+// Animated Counter Hook with scroll trigger
+function useCountUp(target, duration = 1500) {
+  const [count, setCount] = useState(0);
+  const ref = useRef();
+  const elRef = useRef();
+
+  useEffect(() => {
+    const node = elRef.current;
+    if (!node) return;
+    let observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Reset and animate every time it enters view
+          setCount(0);
+          let start = 0;
+          let end = typeof target === 'number' ? target : parseInt(target);
+          if (isNaN(end)) return;
+          let startTime = null;
+          function animateCount(ts) {
+            if (!startTime) startTime = ts;
+            const progress = Math.min((ts - startTime) / duration, 1);
+            setCount(Math.floor(progress * (end - start) + start));
+            if (progress < 1) {
+              ref.current = requestAnimationFrame(animateCount);
+            } else {
+              setCount(end);
+            }
+          }
+          ref.current = requestAnimationFrame(animateCount);
+        } else {
+          // Optionally reset to 0 when out of view
+          setCount(0);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      if (ref.current) cancelAnimationFrame(ref.current);
+    };
+  }, [target, duration]);
+
+  return [count, elRef];
+}
+
+
+// Animated stat component for impact section
+function ImpactStat({ end, suffix, label }) {
+  const [count, elRef] = useCountUp(end);
+  let display = count;
+  if (end >= 1000) {
+    display = count >= 1000 ? (count / 1000).toFixed(1).replace(/\.0$/, '') + 'K' : count;
+  }
+  return (
+    <div ref={elRef}>
+      <div className="text-3xl md:text-4xl font-extrabold mb-1" style={{ color: '#1e3a8a' }}>
+        {display}{suffix}
+      </div>
+      <div className="uppercase text-xs font-semibold text-[#222] tracking-wide">{label}</div>
+    </div>
+  );
+}
 
 export default function Home2() {
   // Theme state synced with Header
@@ -76,18 +137,18 @@ export default function Home2() {
   }, []);
   const offers = [
     {
-      title: "50% Off Beginner Courses",
-      description: "Kickstart your learning journey with our top beginner courses at half the price.",
+      title: "Merit-Based Scholarships",
+      description: "Apply for scholarships awarded to top-performing students to help cover your tuition.",
       bg: "bg-[#00BFFF]",
     },
     {
-      title: "Free Trial for 7 Days",
-      description: "Experience our platform for free and explore all features before committing.",
+      title: "Financial Aid & Discounts",
+      description: "Need-based financial support and special discounts make learning accessible for everyone.",
       bg: "bg-[#00BFFF]",
     },
     {
-      title: "Certificate Programs",
-      description: "Earn recognized certificates for your achievements and boost your resume.",
+      title: "Free Trial & Affordable Plans",
+      description: "Start with a free trial and choose from flexible, budget-friendly subscription options.",
       bg: "bg-[#00BFFF]",
     },
   ];
@@ -133,18 +194,17 @@ export default function Home2() {
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>
-            Transform Your Future with <span style={{ color: '#00BFFF' }}>Next-Level Learning</span>
+            Learn Without Limits,<span style={{ color: '#1e3a8a' }}>Grow Without Boundaries</span>
           </h1>
           <p className={`mt-4 max-w-4xl text-lg md:text-xl ${theme === 'dark' ? 'text-fff' : 'text-fff'}`}>
-            Unlock your potential with our expertly designed courses and interactive learning experiences. 
-            Join thousands of learners who are advancing their careers, mastering new skills, and achieving their goals. 
-            Our platform combines expert instructors, hands-on projects, flexible schedules, and a supportive community to help you succeed faster. 
-            Whether you're looking to start a new career, upskill in your current role, or explore new passions, your learning journey begins here.
+            Learn from industry experts with engaging, practical lessons.
+Turn knowledge into skills and skills into opportunities.
+Your success story starts with just one course.
           </p>
           <button
             className={
               `mt-6 px-6 py-3 rounded-lg shadow transition font-semibold ` +
-              (theme === 'dark' ? 'bg-[#00BFFF] text-white hover:bg-[#00BFFF]' : 'bg-[#00BFFF] text-white hover:bg-[#00BFFF]')
+              (theme === 'dark' ? 'bg-[#1e3a8a] text-white hover:bg-[#00BFFF]' : 'bg-[#1e3a8a] text-white hover:bg-[#00BFFF]')
             }
             onClick={() => {
               const el = document.getElementById('upcoming');
@@ -157,11 +217,11 @@ export default function Home2() {
       </section>
       <section
         className={
-          `w-full py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#00BFFF]'}`
+          `w-full py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#fff]'}`
         }
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8 text-center" id="upcoming" style={{ color: '#FFF' }}>Upcoming Webinars</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center" id="upcoming" style={{ color: '#1e3a8a' }}>Upcoming Webinars</h2>
           {webinars.length > 0 ? (
             <div className="grid  lg:grid-cols-3 gap-8">
               {webinars.map((webinar, idx) => (
@@ -226,60 +286,90 @@ export default function Home2() {
         </div>
       </section>
 
-      {/* Special Offers Section */}
-      <section
-        className={
-          `w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`
-        }
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4" style={{ color: '#00BFFF' }}>Special Offers</h2>
-          <p className={theme === 'dark' ? 'text-gray-200 mb-12' : 'text-gray-700 mb-12'}>
-            Grab these limited-time offers to accelerate your learning and make the most of your education journey.
-          </p>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {offers.map((offer, index) => (
-              <div
-                key={index}
-                className={`rounded-2xl p-8 shadow-lg hover:scale-105 transform transition text-white ` +
-                  (theme === 'dark' ? 'bg-[#00BFFF]' : offer.bg)}
-              >
-                <h3 className="text-2xl font-semibold mb-4">{offer.title}</h3>
-                <p className="text-md">{offer.description}</p>
-              </div>
-            ))}
+      {/* Scholarships & Financial Support Section */}
+      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#1e3a8a]' : 'bg-[#1e3a8a]'}`}>
+        <div className="w-full mx-auto px-6 lg:px-8 grid text-justify lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side Info */}
+          <div className="flex-1 flex flex-col justify-center md:pr-8 mb-8 md:mb-0">
+            <span className="uppercase text-[#FFF] font-semibold tracking-wide mb-2">Affordability & Access</span>
+            <h2 className="text-4xl font-extrabold mb-2 text-[#b3d8f7]" style={{lineHeight:'1.1'}}>
+              <span className="text-[#FFF] font-bold" style={{opacity:0.7}}>Scholarships & </span>
+              <span className="text-[#FFF] font-bold">Financial Support</span>
+            </h2>
+            <p className="mb-6 text-[#FFF] text-base font-medium" style={{maxWidth:'500px'}}>
+              We believe education should be accessible to everyone. Explore our scholarships, financial aid, and affordable plans designed to help you achieve your goals—no matter your background. Enjoy discounts, free trials, and more to make learning within reach for all.
+            </p>
+            <a
+              href="/contactus"
+              className="inline-block font-semibold px-8 py-3 rounded-full shadow transition-colors text-lg bg-[#FFF] text-[#1e3a8a] hover:from-[#0099cc] hover:to-[#00BFFF]"
+              style={{minWidth:'180px', textAlign:'center'}}>
+              Know More
+            </a>
+          </div>
+          {/* Right Side Cards - 2x2 grid, visually aligned */}
+          <div className="grid lg:grid-cols-2 gap-6">
+            <div className="rounded-xl p-6 shadow-lg bg-white text-[#1e3a8a] min-h-[120px] flex flex-col justify-center">
+              <h3 className="font-bold text-lg mb-2">Merit-Based Scholarships</h3>
+              <p className="text-sm font-medium">Apply for scholarships awarded to top-performing students to help cover your tuition.</p>
+            </div>
+            <div className="rounded-xl p-6 shadow-lg bg-white text-[#1e3a8a] min-h-[120px] flex flex-col justify-center">
+              <h3 className="font-bold text-lg mb-2">Financial Aid & Discounts</h3>
+              <p className="text-sm font-medium">Need-based financial support and special discounts make learning accessible for everyone.</p>
+            </div>
+            <div className="rounded-xl p-6 shadow-lg bg-white text-[#1e3a8a] min-h-[120px] flex flex-col justify-center">
+              <h3 className="font-bold text-lg mb-2">Community Driven</h3>
+              <p className="text-sm font-medium">We foster a collaborative environment where users can share, review, and discover the best opportunities together.</p>
+            </div>
+            <div className="rounded-xl p-6 shadow-lg bg-white text-[#1e3a8a] min-h-[120px] flex flex-col justify-center">
+              <h3 className="font-bold text-lg mb-2">Innovation & Integrity</h3>
+              <p className="text-sm font-medium">We value creativity, transparency, and ethical support in everything we do.</p>
+            </div>
           </div>
         </div>
       </section>
-      <section
-        className={
-          `w-full py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#00bfff]'}`
-        }
-      >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 grid text-justify lg:grid-cols-2 gap-12 items-center">
-        {/* Left Side Content */}
-        <div>
-          <h2
-            className="text-3xl font-bold mb-4"
-            style={{ color: theme === 'dark' ? '#00BFFF' : '#fff' }}
-          >
-            Our Impactful Insights
-          </h2>
-          <p className={theme === 'dark' ? 'text-gray-200 mb-6' : 'text-gray-700 mb-6'} >
-            We are proud of the results we deliver for learners worldwide. Our platform is designed to empower students and professionals to achieve their learning goals efficiently.
-          </p>
-          <p className={theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}>
-            From expert instructors to a wide range of courses, interactive learning, and consistent student satisfaction, our metrics reflect our commitment to quality education.
-          </p>
+      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#FFF]'}`}> 
+        <div className="max-w-6xl mx-auto px-4 md:px-8 py-10 bg-white/90 rounded-2xl shadow-lg border border-[#e0f2fe]">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-8 mb-10 items-center">
+            {/* Left: Large Heading */}
+            <div className="flex-1">
+              <h2 className="text-3xl md:text-4xl font-extrabold leading-tight mb-4 text-[#222]" style={{letterSpacing:'-1px'}}>
+                We Empower Learners<br/>To Achieve More
+              </h2>
+            </div>
+            {/* Right: Description and Button */}
+            <div className="flex-1 flex flex-col items-start md:items-end">
+              <p className="mb-4 text-[#222] text-base max-w-md font-medium">
+                Whether you're upskilling for a new career, exploring the latest in tech, or seeking expert guidance, our platform delivers quality education, real-world skills, and a supportive community to help you succeed.
+              </p>
+              <a href="/aboutus" className="px-6 py-2 rounded-md font-semibold bg-[#1e3a8a] text-white shadow hover:from-[#0099cc] hover:to-[#00BFFF] transition-colors">Know More About Us</a>
+            </div>
+          </div>
+          {/* Metrics Row */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-[#1e3a8a] text-center mt-6">
+            <ImpactStat end={10000} suffix="+" label="Students Enrolled" />
+            <ImpactStat end={500} suffix="+" label="Expert Instructors" />
+            <ImpactStat end={120} suffix="+" label="Courses Available" />
+            <ImpactStat end={95} suffix="%" label="Student Satisfaction" />
+          </div>
         </div>
+      </section>
 
-        {/* Right Side Cards */}
-        <div className="grid lg:grid-cols-2 gap-6">
-          {insights.map((insight, index) => (
-            <div key={index} className={`p-6 rounded-2xl shadow hover:shadow-lg transition text-center ` + (theme === 'dark' ? 'bg-[#181818]' : 'bg-white')}>
-              <h3 className="text-4xl font-bold" style={{ color: '#00BFFF' }}>{insight.title}</h3>
-              <p className={theme === 'dark' ? 'text-gray-200 mt-2' : 'text-gray-700 mt-2'}>{insight.subtitle}</p>
+
+
+
+    <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#1e3a8a]'}`}>
+      <div className="max-w-6xl mx-auto px-4 md:px-8 text-center">
+        <div className="mb-2 text-xl font-semibold tracking-widest uppercase" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>
+          Our Partners
+        </div>
+         
+        <p className={theme === 'dark' ? 'text-white mb-10' : 'text-white mb-10'}>
+          We collaborate with industry-leading organizations to deliver the best learning experience.
+        </p>
+        <div className="grid grid-cols-5 sm:grid-cols-4 gap-6 md:gap-8 justify-center items-center">
+          {logos.map((logo, idx) => (
+            <div key={idx} className="bg-white rounded-xl shadow p-4 flex items-center justify-center h-24 transition-transform hover:scale-105" style={{ minWidth: '120px', minHeight: '80px' }}>
+              <img src={logo} alt={`Partner ${idx + 1}`} className="h-12 object-contain max-w-[100px]" />
             </div>
           ))}
         </div>
@@ -287,68 +377,17 @@ export default function Home2() {
     </section>
 
 
-
-
-    <section
-      className={
-        `w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`
-      }
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-        <h2
-          className={`text-3xl font-bold text-center mb-4 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
-        >
-          Partnered with <span style={{ color: '#00BFFF' }}>Top Institutions</span> to produce
-          <span style={{ color: '#00BFFF' }}> Best Quality Education</span> content for Free
-        </h2>
-        <p className={theme === 'dark' ? 'text-gray-200 mb-12' : 'text-gray-700 mb-12'}>
-          We collaborate with industry-leading organizations to deliver the best learning experience.
-        </p>
-
-        <div className="overflow-hidden relative">
-          <div
-            className="flex animate-logo-scroll"
-            style={{ width: `${logos.length * 2 * 120}px` }}
-          >
-            {/* Duplicate logos for seamless infinite scroll */}
-            {logos.concat(logos).map((logo, index) => (
-              <div key={index} className="flex-shrink-0 px-6" style={{ width: '120px' }}>
-                <img
-                  src={logo}
-                  alt={`Partner ${index + 1}`}
-                  className="h-20 object-contain transition-transform duration-300 hover:scale-110"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <style>{`
-          @keyframes logo-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-logo-scroll {
-            animation: logo-scroll 30s linear infinite;
-          }
-        `}</style>
-      </div>
-
-      {/* No animation */}
-    </section>
-
-
-      {/* Upcoming Webinars Section */}
-      
+       
 
       <section
-        className={`w-full py-16 flex items-center justify-center ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#00BFFF]'}`}
+        className={`w-full py-16 flex items-center justify-center ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#fff]'}`}
       >
         <div className="max-w-2xl mx-auto text-center px-6">
-          <h2 className="text-4xl font-bold mb-4" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>Ready to Transform Your Career?</h2>
-          <p className={`text-lg mb-8 ${theme === 'dark' ? 'text-white' : 'text-white'}`}>Join thousands of learners who have upskilled and advanced their careers with our expert-led online courses. Start your journey today!</p>
+          <h2 className="text-4xl font-bold mb-4" style={{ color: theme === 'dark' ? '#fff' : '#1e3a8a' }}>Ready to Transform Your Career?</h2>
+          <p className={`text-lg mb-8 ${theme === 'dark' ? 'text-white' : 'text-[#1e3a8a]'}`}>Join thousands of learners who have upskilled and advanced their careers with our expert-led online courses. Start your journey today!</p>
           <Link
             to="/contactus"
-            className={`inline-block font-semibold px-8 py-4 rounded-lg shadow transition-colors text-xl ${theme === 'dark' ? 'bg-white text-[#00BFFF] hover:bg-gray-200' : 'bg-white text-[#00BFFF] hover:bg-blue-100'}`}
+            className={`inline-block font-semibold px-8 py-4 rounded-lg shadow transition-colors text-xl ${theme === 'dark' ? 'bg-[#1e3a8a] text-[#00BFFF] hover:bg-gray-200' : 'bg-[#1e3a8a] text-[#fff] hover:bg-blue-100'}`}
           >
             Get Started
           </Link>
