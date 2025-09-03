@@ -6,12 +6,12 @@ import Home2Hero from './pages/Home2';
 import AboutHero from './pages/aboutus';
 import ServiceHero from './pages/services';
 import WelcomePage from './pages/welcome';
-import AIHero from './pages/Artificial-Intelligence&Machine-Learning';
-import WebDevServicePage from './pages/web-development';  
-import DataSciencePage from './pages/DataScience&Analytics';
-import CybersecurityPage from './pages/Cybersecurity&Ethical-Hacking';
-import BlockchainPage from './pages/Blockchain&Cryptocurrency';
-import CloudComputingPage from './pages/CloudComputing&DevOps';
+import AIServicePage from './pages/Courses & Programs.jsx';
+import WebDevServicePage from './pages/Live Classes & Mentorship.jsx';
+import CertificationsCareerSupportPage from './pages/Certifications & Career Support.jsx';
+import BlockchainPage from './pages/Skill Development Workshops.jsx';
+import LearningResourcesPage from './pages/Learning Resources & Tools.jsx';
+import CommunityNetworkingPage from './pages/Community & Networking.jsx';
 import BlogHero from './pages/blog';
 import BlogDetail from './pages/BlogDetail';
 import ContactHero from './pages/contactus';
@@ -39,12 +39,12 @@ function App() {
                   <Route path="home2" element={<Home2Hero />} />
                   <Route path="aboutus" element={<AboutHero />} />
                   <Route path="services" element={<ServiceHero />} />
-                  <Route path="Artificial-Intelligence&Machine-Learning" element={<AIHero />} />
-                  <Route path="web-development" element={<WebDevServicePage />} />
-                  <Route path="DataScience&Analytics" element={<DataSciencePage />} />
-                  <Route path="blockchaincryptocurrency" element={<BlockchainPage />} />
-                  <Route path="Cybersecurity&Ethical-Hacking" element={<CybersecurityPage />} />
-                  <Route path="CloudComputing&DevOps" element={<CloudComputingPage />} />
+                  <Route path="Courses & Programs" element={<AIServicePage />} />
+                  <Route path="Live Classes & Mentorship" element={<WebDevServicePage />} />
+                  <Route path="Certifications & Career Support" element={<CertificationsCareerSupportPage />} />
+                  <Route path="Skill Development Workshops" element={<BlockchainPage />} />
+                  <Route path="Learning Resources & Tools" element={<LearningResourcesPage />} />
+                  <Route path="Community & Networking" element={<CommunityNetworkingPage />} />
                   <Route path="blog" element={<BlogHero />} />
                   <Route path="/blog/:id" element={<BlogDetail />} />
                   <Route path="contactus" element={<ContactHero />} />

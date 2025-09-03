@@ -138,33 +138,32 @@ const Footer = () => {
             <ul className="space-y-2">
   
               <li>
-                <Link to="/Artificial-Intelligence&Machine-Learning" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                  Artificial Intelligence and Machine Learning
+                <Link to="/Courses & Programs" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
+Courses & Programs                </Link>
+              </li>
+              <li>
+                <Link to="/Live Classes & Mentorship" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
+Live Classes & Mentorship
                 </Link>
               </li>
               <li>
-                <Link to="/web-development" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                  Web Development
+                <Link to="/Certifications & Career Support" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
+Certifications & Career Support
                 </Link>
               </li>
               <li>
-                <Link to="/DataScience&Analytics" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                  Data Science and Analytics
+                <Link to="/Skill Development Workshops" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
+Skill Development Workshops
                 </Link>
               </li>
               <li>
-                <Link to="/blockchaincryptocurrency" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                  Blockchain and Cryptocurrency
+                <Link to="/Learning Resources & Tools" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
+Learning Resources & Tools
                 </Link>
               </li>
               <li>
-                <Link to="/Cybersecurity&Ethical-Hacking" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                  Cybersecurity and Ethical Hacking
-                </Link>
-              </li>
-              <li>
-                <Link to="/CloudComputing&DevOps" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                  Cloud Computing and DevOps
+                <Link to="/Community & Networking" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
+Community & Networking
                 </Link>
               </li>
             </ul>
@@ -243,4 +242,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;
