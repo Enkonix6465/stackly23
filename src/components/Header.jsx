@@ -229,10 +229,7 @@ const Header = () => {
               className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
             >
               {t.aboutUs}
-            </Link>
-
-            {/* User Dashboard link for non-admin users */}
-            
+            </Link>            
 
             {/* Services Dropdown */}
             <div

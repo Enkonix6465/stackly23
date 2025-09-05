@@ -93,10 +93,114 @@ export default function BlogDetail() {
             Hebrew: "למידה מקוונת מתייחסת לחינוך הניתן באמצעות פלטפורמות דיגיטליות, המאפשרות ללומדים ללמוד מכל מקום ובקצב שלהם. היא כוללת שיעורים חיים, הרצאות מוקלטות, משימות אינטראקטיביות ושיתופי פעולה בין עמיתים. עם הגישה הנכונה, החינוך המקוון מעניק ללומדים גמישות וגישה עולמית לידע איכותי ללא מחסומי זמן ומקום מסורתיים."
           }
         },
-        // ...repeat for all sections, providing translations for each
+        {
+          heading: {
+            English: "Benefits of Online Learning",
+            Arabic: "فوائد التعلم عبر الإنترنت",
+            Hebrew: "יתרונות הלמידה המקוונת"
+          },
+          content: {
+            English: "Online learning offers flexibility, accessibility, and a wide range of resources. Learners can balance studies with work and personal life, access global experts, and choose from diverse courses. It also fosters self-discipline and time management skills.",
+            Arabic: "يوفر التعلم عبر الإنترنت المرونة، سهولة الوصول، وتنوع الموارد. يمكن للمتعلمين تحقيق التوازن بين الدراسة والعمل والحياة الشخصية، الوصول إلى خبراء عالميين، واختيار دورات متنوعة. كما يعزز مهارات الانضباط الذاتي وإدارة الوقت.",
+            Hebrew: "למידה מקוונת מציעה גמישות, נגישות ומגוון רחב של משאבים. הלומדים יכולים לאזן בין לימודים, עבודה וחיים אישיים, לגשת למומחים גלובליים ולבחור מתוך קורסים מגוונים. היא גם מטפחת משמעת עצמית וכישורי ניהול זמן."
+          }
+        },
+        {
+          heading: {
+            English: "Challenges & Solutions",
+            Arabic: "التحديات والحلول",
+            Hebrew: "אתגרים ופתרונות"
+          },
+          content: {
+            English: "Common challenges include lack of motivation, distractions, and limited social interaction. Solutions involve setting clear goals, creating a dedicated study space, and participating in online communities for support.",
+            Arabic: "تشمل التحديات الشائعة نقص الدافع، المشتتات، وقلة التفاعل الاجتماعي. الحلول تتضمن وضع أهداف واضحة، إنشاء مساحة دراسة مخصصة، والمشاركة في المجتمعات الإلكترونية للحصول على الدعم.",
+            Hebrew: "אתגרים נפוצים כוללים חוסר מוטיבציה, הסחות דעת ומעט אינטראקציה חברתית. הפתרונות כוללים קביעת מטרות ברורות, יצירת מרחב לימוד ייעודי והשתתפות בקהילות מקוונות לתמיכה."
+          }
+        },
+        {
+          heading: {
+            English: "Tips for Success",
+            Arabic: "نصائح للنجاح",
+            Hebrew: "טיפים להצלחה"
+          },
+          content: {
+            English: "Stay organized, communicate with instructors, and take advantage of interactive tools. Regularly review progress and adjust strategies as needed to maximize learning outcomes.",
+            Arabic: "كن منظمًا، تواصل مع المدربين، واستفد من الأدوات التفاعلية. راجع تقدمك بانتظام وعدل استراتيجياتك حسب الحاجة لتحقيق أفضل النتائج.",
+            Hebrew: "הישאר מאורגן, תקשר עם מדריכים ונצל כלים אינטראקטיביים. בדוק את ההתקדמות שלך באופן קבוע והתאם את האסטרטגיות שלך לפי הצורך כדי למקסם את תוצאות הלמידה."
+          }
+        },
+        {
+          heading: {
+            English: "Community & Collaboration",
+            Arabic: "المجتمع والتعاون",
+            Hebrew: "קהילה ושיתוף פעולה"
+          },
+          content: {
+            English: "Online learning includes discussion forums, peer groups, and mentorship to enhance collaboration. Engaging with others builds a sense of community and helps overcome isolation.",
+            Arabic: "يشمل التعلم عبر الإنترنت منتديات النقاش، مجموعات الأقران، والإرشاد لتعزيز التعاون. التفاعل مع الآخرين يبني شعورًا بالمجتمع ويساعد في التغلب على العزلة.",
+            Hebrew: "למידה מקוונת כוללת פורומים, קבוצות עמיתים והנחיה לשיפור שיתוף הפעולה. מעורבות עם אחרים יוצרת תחושת קהילה ועוזרת להתגבר על בדידות."
+          }
+        },
       ],
     },
-    // ...repeat for other blogs
+    {
+      id: "2",
+      title: {
+        English: "Future Skills You Need to Learn",
+        Arabic: "مهارات المستقبل التي تحتاج لتعلمها",
+        Hebrew: "הכישורים העתידיים שעליך ללמוד"
+      },
+      image: blog2,
+      intro: {
+        English: "The future of work is changing rapidly, and staying relevant means mastering the right skills. From digital literacy and critical thinking to advanced technologies like AI, data, and sustainability practices, future-ready skills empower learners to thrive in an evolving global economy.",
+        Arabic: "يتغير مستقبل العمل بسرعة، والبقاء في الصدارة يتطلب إتقان المهارات الصحيحة. من الثقافة الرقمية والتفكير النقدي إلى التقنيات المتقدمة مثل الذكاء الاصطناعي والبيانات وممارسات الاستدامة، تمنحك مهارات المستقبل القدرة على النجاح في اقتصاد عالمي متغير.",
+        Hebrew: "העתיד של עולם העבודה משתנה במהירות, ולהישאר רלוונטי פירושו לשלוט בכישורים הנכונים. מכישורים דיגיטליים וחשיבה ביקורתית ועד טכנולוגיות מתקדמות כמו בינה מלאכותית, נתונים ופרקטיקות קיימות, כישורים עתידיים מאפשרים ללומדים להצליח בכלכלה הגלובלית המתפתחת."
+      },
+      sections: [
+        {
+          heading: {
+            English: "Digital Literacy & Technology Skills",
+            Arabic: "المهارات الرقمية والتقنية",
+            Hebrew: "אוריינות דיגיטלית וכישורי טכנולוגיה"
+          },
+          content: {
+            English: "In the digital-first world, basic computer skills are no longer enough. Learners must understand cloud computing, cybersecurity, and the fundamentals of coding. Familiarity with productivity tools, collaborative platforms, and emerging technologies ensures adaptability in modern workplaces where technology drives almost every process.",
+            Arabic: "في عالم رقمي أولاً، لم تعد المهارات الأساسية في الحاسوب كافية. يجب على المتعلمين فهم الحوسبة السحابية، الأمن السيبراني، وأساسيات البرمجة. المعرفة بأدوات الإنتاجية والمنصات التعاونية والتقنيات الناشئة تضمن القدرة على التكيف في أماكن العمل الحديثة حيث تقود التكنولوجيا كل عملية تقريبًا.",
+            Hebrew: "בעולם דיגיטלי, כישורי מחשב בסיסיים כבר אינם מספיקים. הלומדים צריכים להבין מחשוב ענן, אבטחת סייבר ויסודות התכנות. היכרות עם כלי פרודוקטיביות, פלטפורמות שיתופיות וטכנולוגיות מתקדמות מבטיחה הסתגלות בסביבות עבודה מודרניות בהן הטכנולוגיה מניעה כמעט כל תהליך."
+          }
+        },
+        // ...add all other sections for blog 2 with translations
+      ],
+    },
+    {
+      id: "3",
+      title: {
+        English: "Data Science",
+        Arabic: "علم البيانات",
+        Hebrew: "מדעי הנתונים"
+      },
+      image: blog3,
+      intro: {
+        English: "Data Science empowers organizations to extract insights, predict trends, and drive decision-making with data. It combines mathematics, statistics, computer science, and business knowledge to solve real-world problems and generate value from information.",
+        Arabic: "علم البيانات يمكّن المؤسسات من استخراج الرؤى، توقع الاتجاهات، واتخاذ القرارات باستخدام البيانات. يجمع بين الرياضيات، الإحصاء، علوم الحاسوب، ومعرفة الأعمال لحل المشكلات الواقعية وتوليد القيمة من المعلومات.",
+        Hebrew: "מדעי הנתונים מאפשרים לארגונים להפיק תובנות, לחזות מגמות ולקבל החלטות באמצעות נתונים. הוא משלב מתמטיקה, סטטיסטיקה, מדעי המחשב וידע עסקי כדי לפתור בעיות אמיתיות וליצור ערך מהמידע."
+      },
+      sections: [
+        {
+          heading: {
+            English: "Introduction to Data Science",
+            Arabic: "مقدمة في علم البيانات",
+            Hebrew: "מבוא למדעי הנתונים"
+          },
+          content: {
+            English: "Data Science combines statistics, computer science, and domain expertise to analyze and interpret data. It covers the full pipeline from data collection, cleaning, and preprocessing to advanced modeling and visualization. Unlike traditional analytics, Data Science uses machine learning to uncover hidden patterns and correlations. Its multidisciplinary nature makes it applicable across diverse sectors like healthcare, retail, sports, finance, and government.",
+            Arabic: "يجمع علم البيانات بين الإحصاء، علوم الحاسوب، والخبرة الميدانية لتحليل وتفسير البيانات. يغطي كامل سلسلة العمليات من جمع البيانات وتنظيفها ومعالجتها إلى النمذجة المتقدمة والتصور. على عكس التحليلات التقليدية، يستخدم علم البيانات التعلم الآلي لاكتشاف الأنماط والارتباطات المخفية. طبيعته متعددة التخصصات تجعله قابلاً للتطبيق في قطاعات متنوعة مثل الصحة، التجزئة، الرياضة، المالية، والحكومة.",
+            Hebrew: "מדעי הנתונים משלבים סטטיסטיקה, מדעי המחשב ומומחיות תחום כדי לנתח ולפרש נתונים. הוא מכסה את כל התהליך מאיסוף נתונים, ניקוי ועיבוד ועד מודלים מתקדמים והדמיה. בניגוד לאנליטיקה מסורתית, מדעי הנתונים משתמשים בלמידת מכונה כדי לחשוף דפוסים והקשרים נסתרים. אופיו הרב-תחומי הופך אותו לרלוונטי במגוון תחומים כמו בריאות, קמעונאות, ספורט, פיננסים וממשל."
+          }
+        },
+        // ...add all other sections for blog 3 with translations
+      ],
+    },
   ];
 
   
