@@ -1,19 +1,164 @@
 import { useState, useEffect } from "react";
 import clsx from "clsx";
 import Header from "../components/Header";
+// Dashboard translations
+const dashboardTranslations = {
+  English: {
+    dataScience: 'Data Science',
+    webDevelopment: 'Web Development',
+    aiMl: 'AI & ML',
+    business: 'Business',
+    design: 'Design',
+    userSignupDetails: 'User Signup Details',
+    sNo: 'S.No',
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    email: 'Email',
+    phone: 'Phone',
+    signupTime: 'Signup Time',
+    signupDate: 'Signup Date',
+    noSignupDetails: 'No user signup details found.',
+    instructorDetails: 'Instructor Details',
+    name: 'Name',
+    expertise: 'Expertise',
+    noInstructorDetails: 'No instructor details found.',
+    dashboardGraphs: 'Dashboard Graphs',
+    signupsPerDay: 'Signups Per Day',
+    noSignupGraph: 'No signup data for graph.',
+    instructorsPerExpertise: 'Instructors Per Expertise',
+    noInstructorGraph: 'No instructor data for graph.',
+    courseEnrollments: 'Course Enrollments Per Category',
+    webinarRegistrations: 'Webinar Registrations',
+    webinarTitle: 'Webinar Title',
+    date: 'Date',
+    registeredAt: 'Registered At',
+    noWebinarRegistrations: 'No webinar registrations found.',
+    addNewBlog: 'Add New Blog',
+    blogTitle: 'Blog Title',
+    imageUrl: 'Image URL',
+    authorName: 'Author Name',
+    description: 'Description',
+    addBlog: 'Add Blog',
+    noBlogs: 'No blogs added yet.',
+    edit: 'Edit',
+    remove: 'Remove',
+    save: 'Save',
+    cancel: 'Cancel',
+    by: 'By',
+  },
+  Arabic: {
+    dataScience: 'علم البيانات',
+    webDevelopment: 'تطوير الويب',
+    aiMl: 'الذكاء الاصطناعي وتعلم الآلة',
+    business: 'الأعمال',
+    design: 'التصميم',
+    userSignupDetails: 'تفاصيل تسجيل المستخدمين',
+    sNo: 'رقم',
+    firstName: 'الاسم الأول',
+    lastName: 'اسم العائلة',
+    email: 'البريد الإلكتروني',
+    phone: 'الهاتف',
+    signupTime: 'وقت التسجيل',
+    signupDate: 'تاريخ التسجيل',
+    noSignupDetails: 'لا توجد تفاصيل تسجيل مستخدمين.',
+    instructorDetails: 'تفاصيل المدربين',
+    name: 'الاسم',
+    expertise: 'الخبرة',
+    noInstructorDetails: 'لا توجد تفاصيل مدربين.',
+    dashboardGraphs: 'رسوم بيانية للوحة التحكم',
+    signupsPerDay: 'التسجيلات لكل يوم',
+    noSignupGraph: 'لا توجد بيانات تسجيل للرسم البياني.',
+    instructorsPerExpertise: 'المدربين حسب الخبرة',
+    noInstructorGraph: 'لا توجد بيانات مدربين للرسم البياني.',
+    courseEnrollments: 'الالتحاق بالدورات حسب الفئة',
+    webinarRegistrations: 'تسجيلات الويبينار',
+    webinarTitle: 'عنوان الويبينار',
+    date: 'التاريخ',
+    registeredAt: 'وقت التسجيل',
+    noWebinarRegistrations: 'لا توجد تسجيلات ويبينار.',
+    addNewBlog: 'إضافة مدونة جديدة',
+    blogTitle: 'عنوان المدونة',
+    imageUrl: 'رابط الصورة',
+    authorName: 'اسم المؤلف',
+    description: 'الوصف',
+    addBlog: 'إضافة مدونة',
+    noBlogs: 'لا توجد مدونات مضافة بعد.',
+    edit: 'تعديل',
+    remove: 'حذف',
+    save: 'حفظ',
+    cancel: 'إلغاء',
+    by: 'بواسطة',
+  },
+  Hebrew: {
+    dataScience: 'מדעי הנתונים',
+    webDevelopment: 'פיתוח אתרים',
+    aiMl: 'בינה מלאכותית ולמידת מכונה',
+    business: 'עסקים',
+    design: 'עיצוב',
+    userSignupDetails: 'פרטי הרשמת משתמשים',
+    sNo: 'מס.',
+    firstName: 'שם פרטי',
+    lastName: 'שם משפחה',
+    email: 'אימייל',
+    phone: 'טלפון',
+    signupTime: 'שעת הרשמה',
+    signupDate: 'תאריך הרשמה',
+    noSignupDetails: 'לא נמצאו פרטי הרשמת משתמשים.',
+    instructorDetails: 'פרטי מדריכים',
+    name: 'שם',
+    expertise: 'תחום התמחות',
+    noInstructorDetails: 'לא נמצאו פרטי מדריכים.',
+    dashboardGraphs: 'גרפים בלוח מנהל',
+    signupsPerDay: 'הרשמות ליום',
+    noSignupGraph: 'אין נתוני הרשמה לגרף.',
+    instructorsPerExpertise: 'מדריכים לפי התמחות',
+    noInstructorGraph: 'אין נתוני מדריכים לגרף.',
+    courseEnrollments: 'הרשמות לקורסים לפי קטגוריה',
+    webinarRegistrations: 'הרשמות לוובינר',
+    webinarTitle: 'כותרת וובינר',
+    date: 'תאריך',
+    registeredAt: 'נרשם ב-',
+    noWebinarRegistrations: 'לא נמצאו הרשמות לוובינר.',
+    addNewBlog: 'הוסף בלוג חדש',
+    blogTitle: 'כותרת בלוג',
+    imageUrl: 'כתובת תמונה',
+    authorName: 'שם מחבר',
+    description: 'תיאור',
+    addBlog: 'הוסף בלוג',
+    noBlogs: 'לא נוספו בלוגים.',
+    edit: 'ערוך',
+    remove: 'הסר',
+    save: 'שמור',
+    cancel: 'ביטול',
+    by: 'מאת',
+  },
+};
+import BlogPostsPerMonthGraph from "./BlogPostsPerMonthGraph";
+import UserGrowthGraph from "./UserGrowthGraph";
+import { useNavigate } from "react-router-dom";
 import { ResponsiveContainer, BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from "recharts";
 
 export default function UserDetailsSection() {
-  // Theme state
+  // Theme and language state
   const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
+  const [language, setLanguage] = useState(() => localStorage.getItem('language') || 'English');
+  const t = dashboardTranslations[language] || dashboardTranslations['English'];
+  const navigate = useNavigate();
   useEffect(() => {
-    const syncTheme = () => setTheme(localStorage.getItem("theme") || "light");
-    window.addEventListener("storage", syncTheme);
-    window.addEventListener("theme-changed", syncTheme);
-    return () => {
-      window.removeEventListener("storage", syncTheme);
-      window.removeEventListener("theme-changed", syncTheme);
-    };
+    if (typeof window !== 'undefined') {
+      const syncTheme = () => setTheme(localStorage.getItem("theme") || "light");
+      const syncLanguage = () => setLanguage(localStorage.getItem('language') || 'English');
+      window.addEventListener("storage", syncTheme);
+      window.addEventListener("theme-changed", syncTheme);
+      window.addEventListener('language-changed', syncLanguage);
+      window.addEventListener('storage', syncLanguage);
+      return () => {
+        window.removeEventListener("storage", syncTheme);
+        window.removeEventListener("theme-changed", syncTheme);
+        window.removeEventListener('language-changed', syncLanguage);
+        window.removeEventListener('storage', syncLanguage);
+      };
+    }
   }, []);
 
   // NOTE: In your theme toggle logic (e.g., in Header), after updating localStorage, add:
@@ -178,11 +323,41 @@ export default function UserDetailsSection() {
     setEditIdx(null);
   };
 
+  // RTL support for Arabic/Hebrew
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (language === 'Arabic' || language === 'Hebrew') {
+        document.documentElement.setAttribute('dir', 'rtl');
+      } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+      }
+    }
+  }, [language]);
+
+  // Language dropdown logic
+  const handleLanguageChange = (lang) => {
+    setLanguage(lang);
+    localStorage.setItem('language', lang);
+    window.dispatchEvent(new Event('language-changed'));
+  };
+
   return (
     <div className={clsx(
       "min-h-screen w-full",
-      theme === "dark" ? "bg-[#10141c] text-white" : "bg-[#f6fafd] text-[#22223b]"
+      theme === "dark" ? "bg-[#10141c] text-white" : "bg-[#f6fafd] text-[#22223b]",
+      (language === 'Arabic' || language === 'Hebrew') ? 'rtl' : 'ltr'
     )}>
+      <div className="flex justify-end p-4">
+        <select
+          value={language}
+          onChange={e => handleLanguageChange(e.target.value)}
+          className={clsx("border rounded px-3 py-1", theme === "dark" ? "bg-[#232b3b] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300")}
+        >
+          <option value="English">English</option>
+          <option value="Arabic">العربية</option>
+          <option value="Hebrew">עברית</option>
+        </select>
+      </div>
       <Header />
 
       {/* User Signup Table Section */}
@@ -193,7 +368,7 @@ export default function UserDetailsSection() {
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
           "text-[#1e3a8a]"
-        )}>User Signup Details</h2>
+        )}>{t.userSignupDetails}</h2>
         {signupDetails.length > 0 ? (
           <div className="overflow-x-auto">
             <table className={clsx(
@@ -205,13 +380,13 @@ export default function UserDetailsSection() {
                 theme === "dark" ? "bg-[#1e3a8a]" : "bg-[#1e3a8a]"
               )}>
                 <tr>
-                  <th className="px-4 py-2 text-center">S.No</th>
-                  <th className="px-4 py-2 text-center">First Name</th>
-                  <th className="px-4 py-2 text-center">Last Name</th>
-                  <th className="px-4 py-2 text-center">Email</th>
-                  <th className="px-4 py-2 text-center">Phone</th>
-                  <th className="px-4 py-2 text-center">Signup Time</th>
-                  <th className="px-4 py-2 text-center">Signup Date</th>
+                  <th className="px-4 py-2 text-center">{t.sNo}</th>
+                  <th className="px-4 py-2 text-center">{t.firstName}</th>
+                  <th className="px-4 py-2 text-center">{t.lastName}</th>
+                  <th className="px-4 py-2 text-center">{t.email}</th>
+                  <th className="px-4 py-2 text-center">{t.phone}</th>
+                  <th className="px-4 py-2 text-center">{t.signupTime}</th>
+                  <th className="px-4 py-2 text-center">{t.signupDate}</th>
                 </tr>
               </thead>
               <tbody>
@@ -230,7 +405,7 @@ export default function UserDetailsSection() {
             </table>
           </div>
         ) : (
-          <p className={clsx(theme === "dark" ? "text-gray-400" : "text-gray-500")}>No user signup details found.</p>
+          <p className={clsx(theme === "dark" ? "text-gray-400" : "text-gray-500")}>{t.noSignupDetails}</p>
         )}
       </div>
 
@@ -242,7 +417,7 @@ export default function UserDetailsSection() {
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
           "text-[#1e3a8a]"
-        )}>Instructor Details</h2>
+        )}>{t.instructorDetails}</h2>
         {instructorDetails.length > 0 ? (
           <div className="overflow-x-auto">
             <table className={clsx(
@@ -254,10 +429,10 @@ export default function UserDetailsSection() {
                 theme === "dark" ? "bg-[#1e3a8a]" : "bg-[#1e3a8a]"
               )}>
                 <tr>
-                  <th className="px-4 py-2 text-center">S.No</th>
-                  <th className="px-4 py-2 text-center">Name</th>
-                  <th className="px-4 py-2 text-center">Email</th>
-                  <th className="px-4 py-2 text-center">Expertise</th>
+                  <th className="px-4 py-2 text-center">{t.sNo}</th>
+                  <th className="px-4 py-2 text-center">{t.name}</th>
+                  <th className="px-4 py-2 text-center">{t.email}</th>
+                  <th className="px-4 py-2 text-center">{t.expertise}</th>
                 </tr>
               </thead>
               <tbody>
@@ -273,7 +448,7 @@ export default function UserDetailsSection() {
             </table>
           </div>
         ) : (
-          <p className={clsx(theme === "dark" ? "text-gray-400" : "text-gray-500")}>No instructor details found.</p>
+          <p className={clsx(theme === "dark" ? "text-gray-400" : "text-gray-500")}>{t.noInstructorDetails}</p>
         )}
       </div>
 
@@ -285,13 +460,13 @@ export default function UserDetailsSection() {
         <h2 className={clsx(
           "text-2xl font-bold mb-8 text-center",
           "text-[#1e3a8a]"
-        )}>Dashboard Graphs</h2>
+        )}>{t.dashboardGraphs}</h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <h3 className={clsx(
               "text-lg font-semibold mb-4 text-center",
               "text-[#1e3a8a]"
-            )}>Signups Per Day</h3>
+            )}>{t.signupsPerDay}</h3>
             {signupGraphData.length > 0 ? (
               <ResponsiveContainer width="100%" height={250}>
                 <BarChart data={signupGraphData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
@@ -303,186 +478,60 @@ export default function UserDetailsSection() {
                 </BarChart>
               </ResponsiveContainer>
             ) : (
-              <p className={clsx(theme === "dark" ? "text-gray-400" : "text-gray-500")}>No signup data for graph.</p>
+              <p className={clsx(theme === "dark" ? "text-gray-400" : "text-gray-500")}>{t.noSignupGraph}</p>
             )}
           </div>
           <div>
             <h3 className={clsx(
               "text-lg font-semibold mb-4 text-center",
               "text-[#1e3a8a]"
-            )}>Instructors Per Expertise</h3>
-            {instructorGraphData.length > 0 ? (
-              <ResponsiveContainer width="100%" height={250}>
-                <BarChart data={instructorGraphData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke={theme === "dark" ? "#374151" : "#e5e7eb"} />
-                  <XAxis dataKey="expertise" stroke={theme === "dark" ? "#fff" : "#22223b"} />
-                  <YAxis allowDecimals={false} stroke={theme === "dark" ? "#fff" : "#22223b"} />
-                  <Tooltip contentStyle={{ background: theme === "dark" ? "#181f2a" : "#fff", color: theme === "dark" ? "#fff" : "#22223b" }} />
-                  <Bar dataKey="count" fill="#1e3a8a" />
-                </BarChart>
-              </ResponsiveContainer>
-            ) : (
-              <p className={clsx(theme === "dark" ? "text-gray-400" : "text-gray-500")}>No instructor data for graph.</p>
-            )}
+            )}>{t.instructorsPerExpertise}</h3>
+            <ResponsiveContainer width="100%" height={250}>
+              <BarChart data={[
+                { expertise: t.dataScience, count: 5 },
+                { expertise: t.webDevelopment, count: 8 },
+                { expertise: t.aiMl, count: 3 },
+                { expertise: t.business, count: 4 },
+                { expertise: t.design, count: 2 }
+              ]} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke={theme === "dark" ? "#374151" : "#e5e7eb"} />
+                <XAxis dataKey="expertise" stroke={theme === "dark" ? "#fff" : "#22223b"} />
+                <YAxis allowDecimals={false} stroke={theme === "dark" ? "#fff" : "#22223b"} />
+                <Tooltip contentStyle={{ background: theme === "dark" ? "#181f2a" : "#fff", color: theme === "dark" ? "#fff" : "#22223b" }} />
+                <Bar dataKey="count" fill="#1e3a8a" />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </div>
       </div>
 
-      {/* Upcoming Webinar Section */}
+
+
+
+      {/* Course Enrollments Per Category (Static Graph) */}
       <div className={clsx(
         "rounded-xl shadow p-6 mt-8",
         theme === "dark" ? "bg-[#181f2a]" : "bg-white"
       )}>
         <h2 className={clsx(
-          "text-2xl font-bold mb-4",
+          "text-2xl font-bold mb-4 text-center",
           "text-[#1e3a8a]"
-        )}>Upcoming Webinar</h2>
-        <form className="mb-6 w-full" onSubmit={handleWebinarSubmit}>
-          <div className="flex flex-row gap-4 mb-4 w-full">
-            <input
-              type="text"
-              name="title"
-              value={webinarForm.title}
-              onChange={handleWebinarInput}
-              placeholder="Webinar Title"
-              className={clsx(
-                "border rounded px-4 py-3 text-lg w-2/4 min-w-0",
-                theme === "dark" ? "bg-[#232b3b] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300"
-              )}
-              required
-            />
-            <input
-              type="date"
-              name="date"
-              value={webinarForm.date}
-              onChange={handleWebinarInput}
-              className={clsx(
-                "border rounded px-4 py-3 text-lg w-1/4 min-w-0",
-                theme === "dark" ? "bg-[#232b3b] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300"
-              )}
-              required
-            />
-            <input
-              type="time"
-              name="time"
-              value={webinarForm.time}
-              onChange={handleWebinarInput}
-              className={clsx(
-                "border rounded px-4 py-3 text-lg w-1/4 min-w-0",
-                theme === "dark" ? "bg-[#232b3b] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300"
-              )}
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <input
-              type="text"
-              name="description"
-              value={webinarForm.description}
-              onChange={handleWebinarInput}
-              placeholder="Description"
-              className={clsx(
-                "border rounded px-4 py-3 text-lg w-full",
-                theme === "dark" ? "bg-[#232b3b] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300"
-              )}
-              required
-            />
-          </div>
-          <div className="flex justify-center">
-            <button type="submit" className={clsx(
-              "rounded px-5 py-2 text-base font-semibold transition",
-              "bg-[#1e3a8a] text-white hover:bg-[#1e40af]"
-            )}>Add Webinar</button>
-          </div>
-        </form>
-        <div>
-          {webinars.length > 0 ? (
-            <ul className="space-y-2">
-              {webinars.map((webinar, idx) => (
-                <li key={idx} className={clsx(
-                  "border rounded p-3 flex flex-col md:flex-row md:items-center md:justify-between gap-2",
-                  theme === "dark" ? "border-gray-700 bg-[#232b3b]" : "border-gray-200 bg-white"
-                )}>
-                  {editIdx === idx ? (
-                    <form className="flex flex-col md:flex-row md:items-center gap-2 w-full" onSubmit={e => { e.preventDefault(); handleEditSave(idx); }}>
-                      <input
-                        type="text"
-                        name="title"
-                        value={editForm.title}
-                        onChange={handleEditInput}
-                        className={clsx(
-                          "border rounded px-2 py-1 md:w-32 w-full",
-                          theme === "dark" ? "bg-[#181f2a] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300"
-                        )}
-                        required
-                      />
-                      <input
-                        type="date"
-                        name="date"
-                        value={editForm.date}
-                        onChange={handleEditInput}
-                        className={clsx(
-                          "border rounded px-2 py-1 md:w-32 w-full",
-                          theme === "dark" ? "bg-[#181f2a] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300"
-                        )}
-                        required
-                      />
-                      <input
-                        type="time"
-                        name="time"
-                        value={editForm.time}
-                        onChange={handleEditInput}
-                        className={clsx(
-                          "border rounded px-2 py-1 md:w-24 w-full",
-                          theme === "dark" ? "bg-[#181f2a] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300"
-                        )}
-                        required
-                      />
-                      <input
-                        type="text"
-                        name="description"
-                        value={editForm.description}
-                        onChange={handleEditInput}
-                        className={clsx(
-                          "border rounded px-2 py-1 md:flex-1 w-full",
-                          theme === "dark" ? "bg-[#181f2a] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300"
-                        )}
-                        required
-                      />
-                      <button type="submit" className={clsx(
-                        "rounded px-3 py-1 font-semibold transition",
-                        "bg-[#1e3a8a] text-white hover:bg-[#1e40af]"
-                      )}>Save</button>
-                      <button type="button" className={clsx(
-                        "rounded px-3 py-1 font-semibold transition",
-                        theme === "dark" ? "bg-gray-700 text-white hover:bg-gray-600" : "bg-gray-300 text-black hover:bg-gray-400"
-                      )} onClick={handleEditCancel}>Cancel</button>
-                    </form>
-                  ) : (
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-2">
-                      <div>
-                        <span className="font-semibold">{webinar.title}</span> <span className={clsx(theme === "dark" ? "text-gray-400" : "text-gray-500")}>({webinar.date} {webinar.time})</span>
-                        <div className={clsx(theme === "dark" ? "text-gray-300" : "text-gray-700", "text-sm mt-1")}>{webinar.description}</div>
-                      </div>
-                      <div className="flex gap-2 mt-2 md:mt-0">
-                        <button className={clsx(
-                          "rounded px-3 py-1 font-semibold transition",
-                          theme === "dark" ? "bg-yellow-500 text-white hover:bg-yellow-400" : "bg-yellow-400 text-white hover:bg-yellow-500"
-                        )} onClick={() => handleEditWebinar(idx)}>Edit</button>
-                        <button className={clsx(
-                          "rounded px-3 py-1 font-semibold transition",
-                          theme === "dark" ? "bg-red-600 text-white hover:bg-red-500" : "bg-red-500 text-white hover:bg-red-600"
-                        )} onClick={() => handleRemoveWebinar(idx)}>Remove</button>
-                      </div>
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className={clsx(theme === "dark" ? "text-gray-400" : "text-gray-500")}>No upcoming webinars added.</p>
-          )}
-        </div>
+        )}>{t.courseEnrollments}</h2>
+        <ResponsiveContainer width="100%" height={250}>
+          <BarChart data={[
+            { category: t.dataScience, enrollments: 120 },
+            { category: t.webDevelopment, enrollments: 200 },
+            { category: t.aiMl, enrollments: 80 },
+            { category: t.business, enrollments: 150 },
+            { category: t.design, enrollments: 60 }
+          ]} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke={theme === "dark" ? "#374151" : "#e5e7eb"} />
+            <XAxis dataKey="category" stroke={theme === "dark" ? "#fff" : "#22223b"} />
+            <YAxis allowDecimals={false} stroke={theme === "dark" ? "#fff" : "#22223b"} />
+            <Tooltip contentStyle={{ background: theme === "dark" ? "#181f2a" : "#fff", color: theme === "dark" ? "#fff" : "#22223b" }} formatter={(value, name, props) => [`${t.courseEnrollments} : ${value}`, '']} />
+            <Bar dataKey="enrollments" fill="#1e3a8a" />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
 
       {/* Webinar Registrations Section */}
@@ -493,7 +542,7 @@ export default function UserDetailsSection() {
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
           "text-[#1e3a8a]"
-        )}>Webinar Registrations</h2>
+        )}>{t.webinarRegistrations}</h2>
         {webinarRegistrations.length > 0 ? (
           <div className="overflow-x-auto">
             <table className={clsx(
@@ -502,12 +551,12 @@ export default function UserDetailsSection() {
             )}>
               <thead className="bg-[#1e3a8a] text-white">
                 <tr>
-                  <th className="px-4 py-2 text-center">S.No</th>
-                  <th className="px-4 py-2 text-center">Webinar Title</th>
-                  <th className="px-4 py-2 text-center">Date</th>
-                  <th className="px-4 py-2 text-center">Name</th>
-                  <th className="px-4 py-2 text-center">Email</th>
-                  <th className="px-4 py-2 text-center">Registered At</th>
+                  <th className="px-4 py-2 text-center">{t.sNo}</th>
+                  <th className="px-4 py-2 text-center">{t.webinarTitle}</th>
+                  <th className="px-4 py-2 text-center">{t.date}</th>
+                  <th className="px-4 py-2 text-center">{t.name}</th>
+                  <th className="px-4 py-2 text-center">{t.email}</th>
+                  <th className="px-4 py-2 text-center">{t.registeredAt}</th>
                 </tr>
               </thead>
               <tbody>
@@ -525,7 +574,7 @@ export default function UserDetailsSection() {
             </table>
           </div>
         ) : (
-          <p className={clsx(theme === "dark" ? "text-gray-400" : "text-gray-500")}>No webinar registrations found.</p>
+          <p className={clsx(theme === "dark" ? "text-gray-400" : "text-gray-500")}>{t.noWebinarRegistrations}</p>
         )}
       </div>
 
@@ -537,7 +586,7 @@ export default function UserDetailsSection() {
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
           "text-[#1e3a8a]"
-        )}>Add New Blog</h2>
+        )}>{t.addNewBlog}</h2>
         <form className="mb-6 w-full" onSubmit={handleBlogSubmit}>
           <div className="flex flex-col md:flex-row gap-4 mb-4">
             <input
@@ -545,7 +594,7 @@ export default function UserDetailsSection() {
               name="title"
               value={blogForm.title}
               onChange={handleBlogInput}
-              placeholder="Blog Title"
+              placeholder={t.blogTitle}
               className={clsx(
                 "border rounded px-4 py-3 text-lg flex-1 min-w-0",
                 theme === "dark" ? "bg-[#232b3b] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300"
@@ -557,7 +606,7 @@ export default function UserDetailsSection() {
               name="image"
               value={blogForm.image}
               onChange={handleBlogInput}
-              placeholder="Image URL"
+              placeholder={t.imageUrl}
               className={clsx(
                 "border rounded px-4 py-3 text-lg flex-1 min-w-0",
                 theme === "dark" ? "bg-[#232b3b] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300"
@@ -571,7 +620,7 @@ export default function UserDetailsSection() {
               name="author"
               value={blogForm.author}
               onChange={handleBlogInput}
-              placeholder="Author Name"
+              placeholder={t.authorName}
               className={clsx(
                 "border rounded px-4 py-3 text-lg flex-1 min-w-0",
                 theme === "dark" ? "bg-[#232b3b] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300"
@@ -584,7 +633,7 @@ export default function UserDetailsSection() {
               name="description"
               value={blogForm.description}
               onChange={handleBlogInput}
-              placeholder="Description"
+              placeholder={t.description}
               className={clsx(
                 "border rounded px-4 py-3 text-lg w-full min-h-[80px]",
                 theme === "dark" ? "bg-[#232b3b] text-white border-gray-700" : "bg-white text-[#22223b] border-gray-300"
@@ -596,7 +645,7 @@ export default function UserDetailsSection() {
             <button type="submit" className={clsx(
               "rounded px-5 py-2 text-base font-semibold transition",
               "bg-[#1e3a8a] text-white hover:bg-[#1e40af]"
-            )}>Add Blog</button>
+            )}>{t.addBlog}</button>
           </div>
         </form>
         <div>
@@ -658,11 +707,11 @@ export default function UserDetailsSection() {
                           <button type="submit" className={clsx(
                             "rounded px-3 py-1 font-semibold transition",
                             "bg-[#1e3a8a] text-white hover:bg-[#1e40af]"
-                          )}>Save</button>
+                          )}>{t.save}</button>
                           <button type="button" className={clsx(
                             "rounded px-3 py-1 font-semibold transition",
                             theme === "dark" ? "bg-gray-700 text-white hover:bg-gray-600" : "bg-gray-300 text-black hover:bg-gray-400"
-                          )} onClick={handleEditCancel}>Cancel</button>
+                          )} onClick={handleEditCancel}>{t.cancel}</button>
                         </div>
                       </form>
                     ) : (
@@ -674,7 +723,7 @@ export default function UserDetailsSection() {
                         <div className={clsx(
                           "text-sm mb-1",
                           theme === "dark" ? "text-gray-300" : "text-gray-600"
-                        )}>By {blog.author}</div>
+                        )}>{t.by} {blog.author}</div>
                         <div className={clsx(
                           "text-sm mb-1",
                           theme === "dark" ? "text-gray-200" : "text-gray-700"
@@ -687,11 +736,11 @@ export default function UserDetailsSection() {
                           <button className={clsx(
                             "rounded px-3 py-1 font-semibold transition",
                             theme === "dark" ? "bg-yellow-500 text-white hover:bg-yellow-400" : "bg-yellow-400 text-white hover:bg-yellow-500"
-                          )} onClick={() => handleEditBlog(idx)}>Edit</button>
+                          )} onClick={() => handleEditBlog(idx)}>{t.edit}</button>
                           <button className={clsx(
                             "rounded px-3 py-1 font-semibold transition",
                             theme === "dark" ? "bg-red-600 text-white hover:bg-red-500" : "bg-red-500 text-white hover:bg-red-600"
-                          )} onClick={() => handleRemoveBlog(idx)}>Remove</button>
+                          )} onClick={() => handleRemoveBlog(idx)}>{t.remove}</button>
                         </div>
                       </>
                     )}
@@ -700,7 +749,7 @@ export default function UserDetailsSection() {
               ))}
             </ul>
           ) : (
-            <p className={clsx("text-center", theme === "dark" ? "text-gray-400" : "text-gray-500")}>No blogs added yet.</p>
+            <p className={clsx("text-center", theme === "dark" ? "text-gray-400" : "text-gray-500")}>{t.noBlogs}</p>
           )}
         </div>
       </div>

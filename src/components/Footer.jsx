@@ -3,8 +3,110 @@ import ScrollToTop from '../pages/scroll-top';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
+const translations = {
+  English: {
+    companyName: 'Online Training Platform',
+    description: 'Equipping learners across the globe with engaging online courses, guidance from experienced instructors, and practical skills to thrive at every stage of their career journey.',
+    quickLinks: 'Quick Links',
+    home: 'Home',
+    aboutUs: 'About Us',
+    services: 'Services',
+    blog: 'Blog',
+    contactUs: 'Contact Us',
+    ourServices: 'Our Services',
+    coursesPrograms: 'Courses & Programs',
+    liveClasses: 'Live Classes & Mentorship',
+    certifications: 'Certifications & Career Support',
+    skillWorkshops: 'Skill Development Workshops',
+    learningResources: 'Learning Resources & Tools',
+    community: 'Community & Networking',
+    getInTouch: 'Get In Touch',
+    phone: '+919390594407',
+    email: 'training@stackly.in',
+    country: 'India',
+    hours: 'Mon - Fri: 9am - 6pm',
+    startJourney: 'Start Your Journey',
+    copyright: '© 2025 Finance & Accounting Company. All rights reserved.',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
+    cookie: 'Cookie Policy',
+  },
+  Arabic: {
+    companyName: 'منصة التدريب عبر الإنترنت',
+    description: 'تزويد المتعلمين حول العالم بدورات تفاعلية عبر الإنترنت، وإرشاد من مدربين ذوي خبرة، ومهارات عملية للنجاح في كل مرحلة من مراحل حياتهم المهنية.',
+    quickLinks: 'روابط سريعة',
+    home: 'الرئيسية',
+    aboutUs: 'معلومات عنا',
+    services: 'الخدمات',
+    blog: 'مدونة',
+    contactUs: 'اتصل بنا',
+    ourServices: 'خدماتنا',
+    coursesPrograms: 'الدورات والبرامج',
+    liveClasses: 'دروس مباشرة وإرشاد',
+    certifications: 'الشهادات والدعم المهني',
+    skillWorkshops: 'ورش تطوير المهارات',
+    learningResources: 'موارد وأدوات التعلم',
+    community: 'المجتمع والشبكات',
+    getInTouch: 'تواصل معنا',
+    phone: '+919390594407',
+    email: 'training@stackly.in',
+    country: 'الهند',
+    hours: 'الاثنين - الجمعة: 9 صباحًا - 6 مساءً',
+    startJourney: 'ابدأ رحلتك',
+    copyright: '© 2025 شركة المالية والمحاسبة. جميع الحقوق محفوظة.',
+    privacy: 'سياسة الخصوصية',
+    terms: 'شروط الخدمة',
+    cookie: 'سياسة الكوكيز',
+  },
+  Hebrew: {
+    companyName: 'פלטפורמת הדרכה מקוונת',
+    description: 'העצמת לומדים ברחבי העולם עם קורסים מקוונים מרתקים, הדרכה ממדריכים מנוסים, ומיומנויות מעשיות להצלחה בכל שלב בקריירה.',
+    quickLinks: 'קישורים מהירים',
+    home: 'בית',
+    aboutUs: 'אודות',
+    services: 'שירותים',
+    blog: 'בלוג',
+    contactUs: 'צור קשר',
+    ourServices: 'השירותים שלנו',
+    coursesPrograms: 'קורסים ותוכניות',
+    liveClasses: 'שיעורים חיים וחונכות',
+    certifications: 'הסמכות ותמיכה בקריירה',
+    skillWorkshops: 'סדנאות פיתוח מיומנויות',
+    learningResources: 'משאבים וכלים ללמידה',
+    community: 'קהילה ורישות',
+    getInTouch: 'צור קשר',
+    phone: '+919390594407',
+    email: 'training@stackly.in',
+    country: 'הודו',
+    hours: 'ב׳ - ו׳: 9:00 - 18:00',
+    startJourney: 'התחל את המסע שלך',
+    copyright: '© 2025 חברת פיננסים וחשבונאות. כל הזכויות שמורות.',
+    privacy: 'מדיניות פרטיות',
+    terms: 'תנאי שירות',
+    cookie: 'מדיניות עוגיות',
+  },
+};
+
 const Footer = () => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+  const [language, setLanguage] = useState(() => localStorage.getItem('language') || 'English');
+  useEffect(() => {
+    const handleThemeChange = () => setTheme(localStorage.getItem('theme') || 'light');
+    const handleLanguageChange = () => setLanguage(localStorage.getItem('language') || 'English');
+    window.addEventListener('theme-changed', handleThemeChange);
+    window.addEventListener('storage', handleThemeChange);
+    window.addEventListener('language-changed', handleLanguageChange);
+    window.addEventListener('storage', handleLanguageChange);
+    return () => {
+      window.removeEventListener('theme-changed', handleThemeChange);
+      window.removeEventListener('storage', handleThemeChange);
+      window.removeEventListener('language-changed', handleLanguageChange);
+      window.removeEventListener('storage', handleLanguageChange);
+    };
+  }, []);
+  const t = translations[language] || translations['English'];
+  const isRTL = language === 'Arabic' || language === 'Hebrew';
+  // Removed duplicate theme declaration
   useEffect(() => {
     const handleThemeChange = () => setTheme(localStorage.getItem('theme') || 'light');
     window.addEventListener('theme-changed', handleThemeChange);
@@ -21,7 +123,7 @@ const Footer = () => {
   return (
     <>
       <ScrollToTop />
-      <footer className={`${bg} ${textMain}`}>
+      <footer className={`${bg} ${textMain}${isRTL ? ' rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 min-[768px]:grid-cols-4 gap-16 justify-between">
@@ -35,12 +137,13 @@ const Footer = () => {
             
             {/* Company Name */}
             <h3 className="text-[#1e3a8a] font-semibold text-lg">
-              Online Training Platform
+              {t.companyName}
             </h3>
             
             {/* Description */}
             <p className={`${textSub} text-sm leading-relaxed`}>
-Equipping learners across the globe with engaging online courses, guidance from experienced instructors, and practical skills to thrive at every stage of their career journey.            </p>
+              {t.description}
+            </p>
             
             {/* Social Media Icons */}
            <div className="flex space-x-3 pt-2">
@@ -98,32 +201,32 @@ Equipping learners across the globe with engaging online courses, guidance from 
           {/* Column 2 - Quick Links */}
           <div className="space-y-4">
             <h3 className="text-[#1e3a8a] font-semibold text-lg">
-              Quick Links
+              {t.quickLinks}
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/home1" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                  Home
+                  {t.home}
                 </Link>
               </li>
               <li>
                 <Link to="/aboutus" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                  About Us
+                  {t.aboutUs}
                 </Link>
               </li>
               <li>
                 <Link to="/services" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                  Services
+                  {t.services}
                 </Link>
               </li>
               <li>
                 <Link to="/blog" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                  Blog
+                  {t.blog}
                 </Link>
               </li>
               <li>
                 <Link to="/contactus" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                  Contact us
+                  {t.contactUs}
                 </Link>
               </li>
             </ul>
@@ -132,37 +235,37 @@ Equipping learners across the globe with engaging online courses, guidance from 
           {/* Column 3 - Our Services */}
           <div className="space-y-4">
             <h3 className="text-[#1e3a8a] font-semibold text-lg">
-              Our Services
+              {t.ourServices}
             </h3>
             <ul className="space-y-2">
   
               <li>
                 <Link to="/Courses & Programs" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-Courses & Programs                </Link>
+                {t.coursesPrograms}</Link>
               </li>
               <li>
                 <Link to="/Live Classes & Mentorship" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-Live Classes & Mentorship
+                {t.liveClasses}
                 </Link>
               </li>
               <li>
                 <Link to="/Certifications & Career Support" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-Certifications & Career Support
+                {t.certifications}
                 </Link>
               </li>
               <li>
                 <Link to="/Skill Development Workshops" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-Skill Development Workshops
+                {t.skillWorkshops}
                 </Link>
               </li>
               <li>
                 <Link to="/Learning Resources & Tools" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-Learning Resources & Tools
+                {t.learningResources}
                 </Link>
               </li>
               <li>
                 <Link to="/Community & Networking" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-Community & Networking
+                {t.community}
                 </Link>
               </li>
             </ul>
@@ -171,33 +274,33 @@ Community & Networking
           {/* Column 4 - Get In Touch */}
           <div className="space-y-4">
             <h3 className="text-[#1e3a8a] font-semibold text-lg">
-              Get In Touch
+              {t.getInTouch}
             </h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <span className={`${textSub}`}>+919390594407</span>
+                <span className={`${textSub}`}>{t.phone}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span className={`${textSub}`}>training@stackly.in</span>
+                <span className={`${textSub}`}>{t.email}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span className={`${textSub}`}>India</span>
+                <span className={`${textSub}`}>{t.country}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className={`${textSub}`}>Mon - Fri: 9am - 6pm</span>
+                <span className={`${textSub}`}>{t.hours}</span>
               </div>
             </div>
             
@@ -206,7 +309,7 @@ Community & Networking
   to="/contactus" 
                   className="w-full bg-[#1e3a8a] hover:bg-[#1e40af] bg-opacity-80 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 mt-4 whitespace-nowrap text-center block"
 >
-  Start Your  Journey
+  {t.startJourney}
 </Link>
           </div>
         </div>
@@ -218,19 +321,19 @@ Community & Networking
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className={`${textSub} text-sm`}>
-              © 2025 Finance & Accounting Company. All rights reserved.
+              {t.copyright}
             </div>
             
             {/* Legal Links */}
-            <div className="flex space-x-6 text-sm">
+            <div className={`flex ${isRTL ? 'space-x-reverse space-x-6' : 'space-x-6'} text-sm`}>
               <a href="#" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                Privacy Policy
+                {t.privacy}
               </a>
               <a href="#" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                Terms of Service
+                {t.terms}
               </a>
               <a href="#" className={`${textSub} hover:text-[#1e3a8a] transition-colors duration-200`}>
-                Cookie Policy
+                {t.cookie}
               </a>
             </div>
           </div>

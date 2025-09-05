@@ -4,6 +4,69 @@ import ScrollToTop from '../pages/scroll-top';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
+const translations = {
+  English: {
+    languages: 'Languages',
+    home: 'Home',
+    home1: 'Home 1',
+    home2: 'Home 2',
+    aboutUs: 'About Us',
+    services: 'Services',
+    allServices: 'All Services',
+    coursesPrograms: 'Courses & Programs',
+    liveClasses: 'Live Classes & Mentorship',
+    certifications: 'Certifications & Career Support',
+    skillWorkshops: 'Skill Development Workshops',
+    learningResources: 'Learning Resources & Tools',
+    community: 'Community & Networking',
+    blog: 'Blog',
+    contactUs: 'Contact Us',
+    backToAdmin: 'Back to Admin Dashboard',
+    userDashboard: 'User Dashboard',
+    logout: 'Logout',
+  },
+  Arabic: {
+    languages: 'اللغات',
+    home: 'الرئيسية',
+    home1: 'الرئيسية 1',
+    home2: 'الرئيسية 2',
+    aboutUs: 'معلومات عنا',
+    services: 'الخدمات',
+    allServices: 'كل الخدمات',
+    coursesPrograms: 'الدورات والبرامج',
+    liveClasses: 'دروس مباشرة وإرشاد',
+    certifications: 'الشهادات والدعم المهني',
+    skillWorkshops: 'ورش تطوير المهارات',
+    learningResources: 'موارد وأدوات التعلم',
+    community: 'المجتمع والشبكات',
+    blog: 'مدونة',
+    contactUs: 'اتصل بنا',
+    backToAdmin: 'العودة إلى لوحة الإدارة',
+    userDashboard: 'لوحة المستخدم',
+    logout: 'تسجيل الخروج',
+  },
+  Hebrew: {
+    languages: 'שפות',
+    home: 'בית',
+    home1: 'בית 1',
+    home2: 'בית 2',
+    aboutUs: 'אודות',
+    services: 'שירותים',
+    allServices: 'כל השירותים',
+    coursesPrograms: 'קורסים ותוכניות',
+    liveClasses: 'שיעורים חיים וחונכות',
+    certifications: 'הסמכות ותמיכה בקריירה',
+    skillWorkshops: 'סדנאות פיתוח מיומנויות',
+    learningResources: 'משאבים וכלים ללמידה',
+    community: 'קהילה ורישות',
+    blog: 'בלוג',
+    contactUs: 'צור קשר',
+    backToAdmin: 'חזרה ללוח מנהל',
+    userDashboard: 'לוח משתמש',
+    logout: 'התנתקות',
+  },
+};
+
 const Header = () => {
   const navigate = useNavigate();
   const [isAvatarDropdownOpen, setIsAvatarDropdownOpen] = useState(false);
@@ -77,10 +140,12 @@ const Header = () => {
     setIsServicesDropdownOpen(!isServicesDropdownOpen);
   };
 
+  const t = translations[selectedLanguage] || translations['English'];
+  const isRTL = selectedLanguage === 'Arabic' || selectedLanguage === 'Hebrew';
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 w-full !fixed !top-0 !left-0 !right-0 !z-50 transition-colors duration-300
-        ${theme === 'dark' ? 'bg-[#000] border-b border-[#141B25]' : 'bg-white border-b border-gray-200'}`}
+      className={`fixed top-0 left-0 right-0 z-50 w-full !fixed !top-0 !left-0 !right-0 !z-50 transition-colors duration-300${isRTL ? ' rtl' : ''} ${theme === 'dark' ? 'bg-[#000] border-b border-[#141B25]' : 'bg-white border-b border-gray-200'}`}
+      dir={isRTL ? 'rtl' : 'ltr'}
     >
       <div className="w-full px-4  sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
@@ -109,7 +174,7 @@ const Header = () => {
                 aria-expanded={isLanguageDropdownOpen}
                 onClick={() => setIsLanguageDropdownOpen((v) => !v)}
               >
-                Languages
+                {t.languages}
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -144,15 +209,15 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded={isHomeDropdownOpen}
                 >
-                  Home
+                  {t.home}
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 {isHomeDropdownOpen && (
                   <div className={`absolute top-full left-0 mt-2 w-48 rounded-md shadow-lg border py-2 ${theme === 'dark' ? 'bg-[#1E2A38] border-[#141B25]' : 'bg-white border-gray-200'}`}>
-                    <Link to="/home1" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsHomeDropdownOpen(false)}>Home 1</Link>
-                    <Link to="/home2" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsHomeDropdownOpen(false)}>Home 2</Link>
+                    <Link to="/home1" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsHomeDropdownOpen(false)}>{t.home1}</Link>
+                    <Link to="/home2" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsHomeDropdownOpen(false)}>{t.home2}</Link>
                   </div>
                 )}
               </div>
@@ -163,7 +228,7 @@ const Header = () => {
               to="/aboutus"
               className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
             >
-              About Us
+              {t.aboutUs}
             </Link>
 
             {/* User Dashboard link for non-admin users */}
@@ -186,20 +251,20 @@ const Header = () => {
                 aria-haspopup="true"
                 aria-expanded={isServicesDropdownOpen}
               >
-                Services
+                {t.services}
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
               {isServicesDropdownOpen && (
                 <div className={`absolute top-full left-0 mt-2 w-48 rounded-md shadow-lg border py-2 ${theme === 'dark' ? 'bg-[#1E2A38] border-[#141B25]' : 'bg-white border-gray-200'}`}>
-                  <Link to="/services" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>All Services</Link>
-                  <Link to="/Courses%20&%20Programs" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>Courses & Programs</Link>
-                  <Link to="/Live%20Classes%20&%20Mentorship" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>Live Classes & Mentorship</Link>
-                  <Link to="/Certifications%20&%20Career%20Support" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>Certifications & Career Support</Link>
-                  <Link to="/Skill%20Development%20Workshops" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>Skill Development Workshops</Link>
-                  <Link to="/Learning%20Resources%20&%20Tools" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>Learning Resources & Tools</Link>
-                  <Link to="/Community%20&%20Networking" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>Community & Networking</Link>
+                  <Link to="/services" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>{t.allServices}</Link>
+                  <Link to="/Courses%20&%20Programs" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>{t.coursesPrograms}</Link>
+                  <Link to="/Live%20Classes%20&%20Mentorship" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>{t.liveClasses}</Link>
+                  <Link to="/Certifications%20&%20Career%20Support" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>{t.certifications}</Link>
+                  <Link to="/Skill%20Development%20Workshops" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>{t.skillWorkshops}</Link>
+                  <Link to="/Learning%20Resources%20&%20Tools" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>{t.learningResources}</Link>
+                  <Link to="/Community%20&%20Networking" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsServicesDropdownOpen(false)}>{t.community}</Link>
                 </div>
               )}
             </div>
@@ -209,14 +274,14 @@ const Header = () => {
               to="/blog"
               className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
             >
-              Blog
+              {t.blog}
             </Link>
 
             <Link
               to="/contactus"
               className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#00BFFF] transition-colors duration-200`}
             >
-              Contact Us
+              {t.contactUs}
             </Link>
 
             {/* Dark Mode Toggle */}
@@ -269,7 +334,7 @@ const Header = () => {
                             className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#1e3a8a]' : 'text-gray-800 hover:bg-[#e0e7ff]'}`}
                             onClick={() => { setIsAvatarDropdownOpen(false); navigate('/admindashboard'); }}
                           >
-                            Back to Admin Dashboard
+                            {t.backToAdmin}
                           </button>
                         )}
                         {/* User Dashboard link for non-admin users */}
@@ -278,14 +343,14 @@ const Header = () => {
                             className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#1e3a8a]' : 'text-gray-800 hover:bg-[#e0e7ff]'}`}
                             onClick={() => { setIsAvatarDropdownOpen(false); navigate('/userdashboard'); }}
                           >
-                            User Dashboard
+                            {t.userDashboard}
                           </button>
                         )}
                         <button
                           className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#1e3a8a]' : 'text-gray-800 hover:bg-[#e0e7ff]'}`}
                           onClick={() => { setIsAvatarDropdownOpen(false); navigate('/welcome'); }}
                         >
-                          Logout
+                          {t.logout}
                         </button>
                       </div>
                     )}
@@ -400,21 +465,21 @@ const Header = () => {
                   onClick={toggleHomeDropdown}
                   className="flex items-center justify-between w-full px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                 >
-                  <span>Home</span>
+                  <span>{t.home}</span>
                   <svg className={`w-4 h-4 transition-transform duration-200 ${isHomeDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 {isHomeDropdownOpen && (
                   <div className="pl-4 space-y-1">
-                    <a href="/home1" className="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-md" onClick={() => { setIsHomeDropdownOpen(false); setIsMobileMenuOpen(false); }}>Home 1</a>
-                    <a href="/home2" className="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-md" onClick={() => { setIsHomeDropdownOpen(false); setIsMobileMenuOpen(false); }}>Home 2</a>
+                    <a href="/home1" className="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-md" onClick={() => { setIsHomeDropdownOpen(false); setIsMobileMenuOpen(false); }}>{t.home1}</a>
+                    <a href="/home2" className="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-md" onClick={() => { setIsHomeDropdownOpen(false); setIsMobileMenuOpen(false); }}>{t.home2}</a>
                   </div>
                 )}
               </div>
 
               <Link to="/aboutus" className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>
-                About Us
+                {t.aboutUs}
               </Link>
 
               {/* Mobile Services Dropdown */}
@@ -423,31 +488,31 @@ const Header = () => {
                   onClick={toggleServicesDropdown}
                   className="flex items-center justify-between w-full px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                 >
-                  <span>Services</span>
+                  <span>{t.services}</span>
                   <svg className={`w-4 h-4 transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 {isServicesDropdownOpen && (
                   <div className="pl-4 space-y-1">
-                    <Link to="/services" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>All Services</Link>
-                    <Link to="/Courses%20&%20Programs" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>Courses & Programs</Link>
-                    <Link to="/Live%20Classes%20&%20Mentorship" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>Live Classes & Mentorship</Link>
-                    <Link to="/Certifications%20&%20Career%20Support" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>Certifications & Career Support</Link>
-                    <Link to="/Skill%20Development%20Workshops" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>Skill Development Workshops</Link>
-                    <Link to="/Learning%20Resources%20&%20Tools" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>Learning Resources & Tools</Link>
-                    <Link to="/Community%20&%20Networking" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>Community & Networking</Link>
+                    <Link to="/services" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>{t.allServices}</Link>
+                    <Link to="/Courses%20&%20Programs" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>{t.coursesPrograms}</Link>
+                    <Link to="/Live%20Classes%20&%20Mentorship" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>{t.liveClasses}</Link>
+                    <Link to="/Certifications%20&%20Career%20Support" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>{t.certifications}</Link>
+                    <Link to="/Skill%20Development%20Workshops" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>{t.skillWorkshops}</Link>
+                    <Link to="/Learning%20Resources%20&%20Tools" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>{t.learningResources}</Link>
+                    <Link to="/Community%20&%20Networking" className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); }}>{t.community}</Link>
                   </div>
                 )}
               </div>
 
 
               <Link to="/blog" className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>
-                Blog
+                {t.blog}
               </Link>
 
               <Link to="/contactus" className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>
-                Contact Us
+                {t.contactUs}
               </Link>
             </div>
           </div>
