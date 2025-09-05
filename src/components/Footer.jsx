@@ -40,8 +40,7 @@ const Footer = () => {
             
             {/* Description */}
             <p className={`${textSub} text-sm leading-relaxed`}>
-              Empowering learners worldwide with interactive online courses, expert instructors, and real-world skill development for every career stage.
-            </p>
+Equipping learners across the globe with engaging online courses, guidance from experienced instructors, and practical skills to thrive at every stage of their career journey.            </p>
             
             {/* Social Media Icons */}
            <div className="flex space-x-3 pt-2">

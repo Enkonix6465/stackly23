@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import serviceHeroVideo from "../assets/servicehero.mp4";
-import s1 from "../assets/s1.jpeg";
-import s2 from "../assets/s2.png";
-import s3 from "../assets/s3.jpeg";
+import s1 from "../assets/s1.jpg";
+import s2 from "../assets/s2.jpg";
+import s3 from "../assets/s3.jpg";
 import s4 from "../assets/s4.png";
 import s5 from "../assets/s5.jpg";
 import s6 from "../assets/s6.jpg";

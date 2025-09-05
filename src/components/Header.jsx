@@ -13,36 +13,50 @@ const Header = () => {
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const servicesDropdownTimeout = React.useRef();
   const [theme, setTheme] = useState('light');
-  // Ensure theme is set only after mount (SSR-safe)
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const languageDropdownTimeout = React.useRef();
+  const [selectedLanguage, setSelectedLanguage] = useState(() => localStorage.getItem('language') || 'English');
+  // Ensure theme and language are set only after mount (SSR-safe)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme') || 'light';
       setTheme(storedTheme);
+      const storedLang = localStorage.getItem('language') || 'English';
+      setSelectedLanguage(storedLang);
     }
   }, []);
 
-  // Sync theme with localStorage and document root
+  // Sync theme and language with localStorage and document root
   useEffect(() => {
     if (typeof window !== 'undefined') {
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('theme', theme);
-      // Notify other tabs/pages
       window.dispatchEvent(new Event('theme-changed'));
+      localStorage.setItem('language', selectedLanguage);
+      window.dispatchEvent(new Event('language-changed'));
     }
-  }, [theme]);
+  }, [theme, selectedLanguage]);
 
-  // Listen for theme changes from other tabs/pages
+  // Listen for theme and language changes from other tabs/pages
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const handleThemeChange = () => {
         const newTheme = localStorage.getItem('theme') || 'light';
         setTheme(newTheme);
       };
+      const handleLanguageChange = () => {
+        const newLang = localStorage.getItem('language') || 'English';
+        setSelectedLanguage(newLang);
+      };
       window.addEventListener('theme-changed', handleThemeChange);
       window.addEventListener('storage', handleThemeChange);
+      window.addEventListener('language-changed', handleLanguageChange);
+      window.addEventListener('storage', handleLanguageChange);
       return () => {
         window.removeEventListener('theme-changed', handleThemeChange);
         window.removeEventListener('storage', handleThemeChange);
+        window.removeEventListener('language-changed', handleLanguageChange);
+        window.removeEventListener('storage', handleLanguageChange);
       };
     }
   }, []);
@@ -76,38 +90,72 @@ const Header = () => {
               <img src={logo} alt="STACKLY" className="h-6 sm:h-8 w-auto" />
             </button>
           </div>
-
           {/* Right side - Navigation and Icons */}
-          <div className="hidden min-[480px]:flex items-center space-x-8">
-            {/* Home Dropdown */}
-
+          <div className="hidden min-[480px]:flex items-right space-x-16">
+            {/* Languages Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => {
-                if (homeDropdownTimeout.current) clearTimeout(homeDropdownTimeout.current);
-                setIsHomeDropdownOpen(true);
+                if (languageDropdownTimeout.current) clearTimeout(languageDropdownTimeout.current);
+                setIsLanguageDropdownOpen(true);
               }}
               onMouseLeave={() => {
-                homeDropdownTimeout.current = setTimeout(() => setIsHomeDropdownOpen(false), 200);
+                languageDropdownTimeout.current = setTimeout(() => setIsLanguageDropdownOpen(false), 200);
               }}
             >
               <button
-                onClick={() => navigate('/home1')}
                 className={`flex items-center ${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
                 aria-haspopup="true"
-                aria-expanded={isHomeDropdownOpen}
+                aria-expanded={isLanguageDropdownOpen}
+                onClick={() => setIsLanguageDropdownOpen((v) => !v)}
               >
-                Home
+                Languages
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {isHomeDropdownOpen && (
-                <div className={`absolute top-full left-0 mt-2 w-48 rounded-md shadow-lg border py-2 ${theme === 'dark' ? 'bg-[#1E2A38] border-[#141B25]' : 'bg-white border-gray-200'}`}>
-                  <Link to="/home1" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsHomeDropdownOpen(false)}>Home 1</Link>
-                  <Link to="/home2" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsHomeDropdownOpen(false)}>Home 2</Link>
+              {isLanguageDropdownOpen && (
+                <div className={`absolute top-full left-0 mt-2 w-40 rounded-md shadow-lg border py-2 z-50 ${theme === 'dark' ? 'bg-[#1E2A38] border-[#141B25]' : 'bg-white border-gray-200'}`}>
+                  <button
+                    className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'English' ? 'font-bold' : ''} ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`}
+                    onClick={() => { setSelectedLanguage('English'); localStorage.setItem('language', 'English'); window.dispatchEvent(new Event('language-changed')); setIsLanguageDropdownOpen(false); }}
+                  >
+                    English
+                  </button>
+                  <button
+                    className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'Arabic' ? 'font-bold' : ''} ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`}
+                    onClick={() => { setSelectedLanguage('Arabic'); localStorage.setItem('language', 'Arabic'); window.dispatchEvent(new Event('language-changed')); setIsLanguageDropdownOpen(false); }}
+                  >
+                    Arabic
+                  </button>
+                  <button
+                    className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'Hebrew' ? 'font-bold' : ''} ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`}
+                    onClick={() => { setSelectedLanguage('Hebrew'); localStorage.setItem('language', 'Hebrew'); window.dispatchEvent(new Event('language-changed')); setIsLanguageDropdownOpen(false); }}
+                  >
+                    Hebrew
+                  </button>
                 </div>
               )}
+            </div>
+              <div className="relative">
+                <button
+                  onClick={toggleHomeDropdown}
+                  className={`flex items-center ${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
+                  aria-haspopup="true"
+                  aria-expanded={isHomeDropdownOpen}
+                >
+                  Home
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {isHomeDropdownOpen && (
+                  <div className={`absolute top-full left-0 mt-2 w-48 rounded-md shadow-lg border py-2 ${theme === 'dark' ? 'bg-[#1E2A38] border-[#141B25]' : 'bg-white border-gray-200'}`}>
+                    <Link to="/home1" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsHomeDropdownOpen(false)}>Home 1</Link>
+                    <Link to="/home2" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsHomeDropdownOpen(false)}>Home 2</Link>
+                  </div>
+                )}
+              </div>
             </div>
 
 
@@ -249,7 +297,23 @@ const Header = () => {
 
           {/* Mobile icons - Only visible on very small screens */}
           <div className="flex items-center space-x-4 min-[480px]:hidden">
-            {/* Dark Mode Toggle (Mobile) */}
+            {/* Languages Dropdown (Mobile) */}
+            <div className="relative">
+              <button
+                className="w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 bg-[#e0e7ff] border-[#1e3a8a] hover:bg-[#c7d2fe]"
+                onClick={() => setIsLanguageDropdownOpen((v) => !v)}
+                aria-label="Select language"
+              >
+                <span className="text-[#1e3a8a] font-semibold">🌐</span>
+              </button>
+              {isLanguageDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg border border-gray-200 py-2 z-50">
+                  <button className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'English' ? 'font-bold' : ''} text-gray-800 hover:bg-blue-100`} onClick={() => { setSelectedLanguage('English'); setIsLanguageDropdownOpen(false); }}>English</button>
+                  <button className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'Arabic' ? 'font-bold' : ''} text-gray-800 hover:bg-blue-100`} onClick={() => { setSelectedLanguage('Arabic'); setIsLanguageDropdownOpen(false); }}>Arabic</button>
+                  <button className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'Hebrew' ? 'font-bold' : ''} text-gray-800 hover:bg-blue-100`} onClick={() => { setSelectedLanguage('Hebrew'); setIsLanguageDropdownOpen(false); }}>Hebrew</button>
+                </div>
+              )}
+            </div>
             <button
               className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 ${theme === 'dark' ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-[#e0e7ff] border-[#1e3a8a] hover:bg-[#c7d2fe]'}`}
               onClick={toggleTheme}
@@ -324,7 +388,7 @@ const Header = () => {
               </svg>
             </button>
           </div>
-        </div>
+              
 
         {/* Mobile Navigation Menu - Only visible on very small screens */}
         {isMobileMenuOpen && (
