@@ -410,7 +410,7 @@ export default function Home1({ theme = "light" }) {
           <div className="flex items-center justify-center">
             <button
               onClick={prevCourse}
-              className="w-10 h-10 flex items-center justify-center rounded-full shadow bg-[#00BFFF] text-white hover:bg-blue-400 mr-4"
+              className="w-10 h-10 flex items-center justify-center rounded-full shadow bg-[#1e3a8a] text-white hover:bg-blue-400 mr-4"
             >
               &#8592;
             </button>
@@ -427,7 +427,7 @@ export default function Home1({ theme = "light" }) {
                       alt={t[course.titleKey]}
                       className="w-full h-40 object-cover rounded-t-xl"
                     />
-                    <span className="absolute top-2 left-2 bg-[#00BFFF] text-white text-sm font-semibold px-3 py-1 rounded">
+                    <span className="absolute top-2 left-2 bg-[#1e3a8a] text-white text-sm font-semibold px-3 py-1 rounded">
                       {t[course.priceKey]}
                     </span>
                   </div>
@@ -445,7 +445,7 @@ export default function Home1({ theme = "light" }) {
                         </svg>
                       ))}
                     </div>
-                    <h3 className="text-xl font-bold text-[#00BFFF] text-center">{t[course.titleKey]}</h3>
+                    <h3 className="text-xl font-bold text-[#1e3a8a] text-center">{t[course.titleKey]}</h3>
                     <p className="text-sm text-[#1e3a8a] text-center">
                       {t.lecturer} <span className="text-[#1e3a8a]">{t[course.lecturerKey]}</span> {t.inCategory} {t[course.categoryKey]}
                     </p>
@@ -460,7 +460,7 @@ export default function Home1({ theme = "light" }) {
             </div>
             <button
               onClick={nextCourse}
-              className="w-10 h-10 flex items-center justify-center rounded-full shadow bg-[#00BFFF] text-white hover:bg-blue-400 ml-4"
+              className="w-10 h-10 flex items-center justify-center rounded-full shadow bg-[#1e3a8a] text-white hover:bg-blue-400 ml-4"
             >
               &#8594;
             </button>
