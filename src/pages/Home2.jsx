@@ -77,6 +77,26 @@ function ImpactStat({ end, suffix, label }) {
 }
 
 export default function Home2() {
+  // Theme state and toggle handler
+  const [theme, setTheme] = React.useState(() => localStorage.getItem('theme') || 'light');
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    window.dispatchEvent(new Event('theme-changed'));
+  };
+  React.useEffect(() => {
+    const handleThemeChange = () => {
+      const newTheme = localStorage.getItem('theme') || 'light';
+      setTheme(newTheme);
+    };
+    window.addEventListener('theme-changed', handleThemeChange);
+    window.addEventListener('storage', handleThemeChange);
+    return () => {
+      window.removeEventListener('theme-changed', handleThemeChange);
+      window.removeEventListener('storage', handleThemeChange);
+    };
+  }, []);
   // Language and RTL support
   const [language, setLanguage] = React.useState(() => localStorage.getItem('language') || 'English');
   React.useEffect(() => {
@@ -267,7 +287,6 @@ export default function Home2() {
   // Show register modal state
   const [showRegister, setShowRegister] = React.useState(null);
   // Theme state synced with Header
-  const [theme, setTheme] = React.useState('light');
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme') || 'light';
@@ -371,8 +390,15 @@ export default function Home2() {
   const scrollRef = React.useRef(null);
   return (
     <div className={
-      `${theme === 'dark' ? 'min-h-screen text-white' : 'min-h-screen text-white'}${isRTL ? ' rtl' : ''}`
+      `${theme === 'dark' ? 'min-h-screen text-white' : 'min-h-screen text-black'}${isRTL ? ' rtl' : ''}`
     } dir={isRTL ? 'rtl' : 'ltr'}>
+      {/* Theme Toggle Button */}
+      <button
+        className={`my-4 px-4 py-2 rounded font-semibold border transition-colors ${theme === 'dark' ? 'bg-white text-[#1e3a8a] border-[#1e3a8a] hover:bg-[#1e3a8a] hover:text-white' : 'bg-[#1e3a8a] text-white border-[#1e3a8a] hover:bg-white hover:text-[#1e3a8a]'}`}
+        onClick={toggleTheme}
+      >
+        {theme === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
+      </button>
 
       {/* Hero Section */}
       <section
@@ -415,7 +441,7 @@ export default function Home2() {
         }
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8 text-center" id="upcoming" style={{ color: '#1e3a8a' }}>{t.upcomingTitle}</h2>
+          <h2 className={`text-3xl font-bold mb-8 text-center ${theme === 'dark' ? 'text-white' : ''}`} id="upcoming" style={theme === 'dark' ? {} : { color: '#1e3a8a' }}>{t.upcomingTitle}</h2>
           {t.webinars && t.webinars.length > 0 ? (
             <div className="grid  lg:grid-cols-3 gap-8">
               {t.webinars.map((webinar, idx) => (
@@ -423,7 +449,7 @@ export default function Home2() {
                   `rounded-xl shadow p-6 flex flex-col items-center ` +
                   (theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]')
                 }>
-                  <h3 className="text-xl font-semibold mb-2" style={{ color: '#1e3a8a' }}>{webinar.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2" style={{ color: theme === 'dark' ? '#fff' : '#1e3a8a' }}>{webinar.title}</h3>
                   <div className={theme === 'dark' ? 'text-gray-400 mb-2' : 'text-gray-600 mb-2'}>{webinar.date}</div>
                   <div className={theme === 'dark' ? 'text-gray-400 mb-2' : 'text-gray-600 mb-2'}>{webinar.time}</div>
                   <div className={theme === 'dark' ? 'text-gray-200 mb-4' : 'text-gray-800 mb-4'}>{webinar.description}</div>
@@ -540,12 +566,12 @@ export default function Home2() {
 
 
 
-    <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#1e3a8a]'}`}>
+  <section className={`w-full py-16 bg-[#1e3a8a]`}>
       <div className="max-w-6xl mx-auto px-4 md:px-8 text-center">
-        <div className="mb-2 text-xl font-semibold tracking-widest uppercase" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>
+  <div className="mb-2 text-xl font-semibold tracking-widest uppercase" style={{ color: '#fff' }}>
           {t.partnersTitle}
         </div>
-        <p className={theme === 'dark' ? 'text-white mb-10' : 'text-white mb-10'}>
+  <p className={'text-white mb-10'}>
           {t.partnersDesc}
         </p>
         <div className="grid grid-cols-5 sm:grid-cols-4 gap-6 md:gap-8 justify-center items-center">
