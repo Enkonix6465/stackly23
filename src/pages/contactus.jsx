@@ -200,16 +200,16 @@ export default function ContactHero() {
       </section>
 
       {/* Contact Cards Section */}
-      <section className={`py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}> 
+  <section className="py-16 bg-[#1e3a8a]"> 
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${theme === 'dark' ? 'text-[#1e3a8a]' : 'text-white'}`}> 
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white"> 
             {t.supportTitle}
           </h2>
           <div className="grid gap-10 md:grid-cols-3">
             {cards.map((card, index) => (
               <div
                 key={index}
-                className={`${theme === 'dark' ? 'bg-[#181818] text-white' : 'bg-white text-black'} rounded-2xl shadow-md hover:shadow-xl transition text-center p-6`}
+        className="bg-white text-black rounded-2xl shadow-md hover:shadow-xl transition text-center p-6"
               >
                 <img
                   src={card.img}
@@ -219,7 +219,7 @@ export default function ContactHero() {
                 <h3 className="text-xl font-bold mb-2" style={{ color: '#1e3a8a' }}>
                   {card.title}
                 </h3>
-                <p className={theme === 'dark' ? 'text-gray-200' : 'text-gray-600'}>{card.text}</p>
+        <p className="text-gray-600">{card.text}</p>
               </div>
             ))}
           </div>
@@ -308,13 +308,13 @@ export default function ContactHero() {
       </section>
 
       {/* FAQ Section */}
-      <section className={`py-20 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`}>
+  <section className="py-20 bg-[#e6f7ff]">
         <div className="max-w-7xl mx-auto px-6 grid  md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-[#1e3a8a] font-semibold uppercase mb-2">
               {t.faqSmall}
             </p>
-            <h2 className={`text-4xl md:text-5xl font-extrabold mb-8 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+    <h2 className="text-4xl md:text-5xl font-extrabold mb-8 text-gray-900">
               {t.faqTitle}
             </h2>
             <img 
@@ -327,13 +327,13 @@ export default function ContactHero() {
             {faqs.map((faq, index) => (
               <div 
                 key={index} 
-                className={`${theme === 'dark' ? 'bg-[#222] border-gray-700' : 'bg-gray-50 border-gray-100'} rounded-xl shadow-sm border`}
+        className="bg-gray-50 border-gray-100 rounded-xl shadow-sm border"
               >
                 <button 
                   onClick={() => toggleFAQ(index)}
-                  className={`w-full flex justify-between items-center p-6 text-left ${theme === 'dark' ? 'text-white' : ''}`}
+      className="w-full flex justify-between items-center p-6 text-left"
                 >
-                  <span className={`font-semibold text-lg ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+      <span className="font-semibold text-lg text-gray-900">
                     {faq.question}
                   </span>
                   <span className="text-[#1e3a8a] text-2xl">
@@ -341,7 +341,7 @@ export default function ContactHero() {
                   </span>
                 </button>
                 {openIndex === index && (
-                  <div className={`px-6 pb-6 ${theme === 'dark' ? 'text-gray-200' : 'text-gray-600'}`}>
+      <div className="px-6 pb-6 text-gray-600">
                     {faq.answer}
                   </div>
                 )}
