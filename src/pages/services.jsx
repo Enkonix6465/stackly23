@@ -400,6 +400,16 @@ export default function ServiceHero() {
       {(Array.isArray(t.values) ? t.values : []).map((value, idx) => (
         <div className="rounded-xl shadow-md p-8 text-center bg-white text-[#1e3a8a]" key={value.title}>
           <h3 className="text-xl font-semibold mb-3" style={{ color: '#1e3a8a' }}>{value.title}</h3>
+
+      <section className={
+  `w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#1e3a8a]'}`
+}>
+  <div className="max-w-5xl mx-auto px-6">
+    <h2 className="text-4xl font-bold text-center mb-10" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>{t.valuesTitle}</h2>
+    <div className="grid md:grid-cols-3 gap-8">
+      {(Array.isArray(t.values) ? t.values : []).map((value, idx) => (
+        <div className={`rounded-xl shadow-md p-8 text-center ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-[#1e3a8a]'}`} key={value.title}>
+          <h3 className="text-xl font-semibold mb-3" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>{value.title}</h3>
           <p className="text-base">{value.desc}</p>
         </div>
       ))}
@@ -449,6 +459,8 @@ export default function ServiceHero() {
               {(Array.isArray(t.techBoxes) ? t.techBoxes : []).map((box, idx) => (
                 <div className="p-6 rounded-xl shadow-md bg-white text-[#1e3a8a]" key={box.title}>
                   <h3 className="text-xl font-semibold mb-2" style={{ color: '#1e3a8a' }}>{box.title}</h3>
+                <div className={`p-6 rounded-xl shadow-md ${theme === 'dark' ? 'bg-[#181818] text-white' : 'bg-white text-[#1e3a8a]'}`} key={box.title}>
+                  <h3 className="text-xl font-semibold mb-2" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>{box.title}</h3>
                   <ul className="list-disc ml-5">
                     {box.items.map((item, i) => (
                       <li key={item}>{item}</li>
@@ -488,6 +500,16 @@ export default function ServiceHero() {
         <h2 className="text-4xl font-bold mb-6" style={{ color: '#fff' }}>{t.readyTitle}</h2>
         <p className="text-lg mb-8 text-white">{t.readyDesc}</p>
         <a href="/contactus" className="inline-block font-bold py-3 px-8 rounded-full shadow-lg transition bg-[#fff] text-[#1e3a8a] hover:bg-blue-400">{t.contactUs}</a>
+      <section className={
+        `w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#1e3a8a]'}`
+      }>
+      <div className="max-w-3xl mx-auto px-6 text-center">
+        <h2 className="text-4xl font-bold mb-6" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>{t.readyTitle}</h2>
+        <p className={`text-lg mb-8 ${theme === 'dark' ? 'text-white' : 'text-white'}`}>{t.readyDesc}</p>
+        <a href="/contactus" className={
+          `inline-block font-bold py-3 px-8 rounded-full shadow-lg transition ` +
+          (theme === 'dark' ? 'bg-[#fff] text-[#1e3a8a] hover:bg-blue-400' : 'bg-[#fff] text-[#1e3a8a] hover:bg-blue-400')
+        }>{t.contactUs}</a>
       </div>
     </section>
      
