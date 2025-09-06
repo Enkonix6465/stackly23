@@ -227,35 +227,28 @@ export default function CertificationsCareerSupportPage() {
 			</section>
 
 			{/* Key Features / What You’ll Get */}
-			<section className={`w-full py-16 ${theme === "dark" ? "bg-[#181818] text-white" : "bg-[#e6f7ff] text-black"}`}>
+				<section className="w-full py-16 bg-[#e6f7ff] text-black">
 				<div className="max-w-6xl mx-auto px-6">
-					<h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>
+									<h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>
 						{t.featuresTitle}
 					</h2>
 					<div className="grid grid-cols-2 md:grid-cols-2 gap-10">
 						{t.features.map((item, idx) => (
-							<div key={item.num} className="flex items-start mb-6">
+												<div key={item.num} className="flex items-start mb-6 rounded-2xl shadow-md p-6 bg-white text-black"> 
 								<div className="relative flex-shrink-0 mr-4">
-									<span
-										className="text-5xl font-extrabold text-black"
-										style={{
-											background: "linear-gradient(90deg, #1e3a8a 60%, transparent 60%)",
-											padding: "0.1em 0.5em",
-											borderRadius: "0.2em",
-											color: "#111",
-											display: "inline-block",
-										}}
-									>
+															<span className="text-5xl font-extrabold text-black" style={{
+																background: "linear-gradient(90deg, #1e3a8a 60%, transparent 60%)",
+																padding: "0.1em 0.5em",
+																borderRadius: "0.2em",
+																color: '#111',
+																display: "inline-block",
+															}}>
 										{item.num}
 									</span>
 								</div>
 								<div>
-									<h3 className="text-xl font-bold mb-1" style={{ color: '#1e3a8a' }}>
-										{item.heading}
-									</h3>
-									<p className="text-gray-600 text-base max-w-md">
-										{item.desc}
-									</p>
+															<h3 className="text-xl font-bold mb-1 text-black">{item.heading}</h3>
+															<p className="text-base max-w-md text-gray-600">{item.desc}</p>
 								</div>
 							</div>
 						))}
@@ -281,29 +274,27 @@ export default function CertificationsCareerSupportPage() {
 			</section>
 
 			{/* Frequently Asked Questions */}
-			<section className={`py-16 ${theme === "dark" ? "bg-[#181818]" : "bg-gray-50"}`}>
+				<section className="py-16 bg-white text-black">
 				<div className="max-w-6xl mx-auto px-6">
-					<h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>
+									<h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>
 						{t.faqTitle}
 					</h2>
 					<div className="grid lg:grid-cols-2 gap-6">
 						{t.faqs.map((faq, index) => (
-							<div
-								key={index}
-								className={`rounded-2xl shadow-md p-6 cursor-pointer transition hover:shadow-lg ${theme === "dark" ? "bg-[#222] text-white" : "bg-white text-black"}`}
-								onClick={() => toggleFAQ(index)}
-							>
+																		<div
+																			key={index}
+																			className={`rounded-2xl shadow-md p-6 cursor-pointer transition hover:shadow-lg bg-white ${theme === 'dark' ? 'text-[#1e3a8a]' : 'text-black'}`}
+																			onClick={() => toggleFAQ(index)}
+																		>
 								<div className="flex justify-between items-center">
-									<h3 className="text-lg font-semibold" style={{ color: '#1e3a8a' }}>{faq.question}</h3>
-									<span className="font-bold text-xl" style={{ color: "#1e3a8a" }}>
+															<h3 className="text-lg font-semibold">{faq.question}</h3>
+									<span className="font-bold text-xl" style={{ color: '#1e3a8a' }}>
 										{openIndex === index ? "-" : "+"}
 									</span>
 								</div>
-								{openIndex === index && (
-									<p className={theme === "dark" ? "mt-4 text-gray-200" : "mt-4 text-gray-600"}>
-										{faq.answer}
-									</p>
-								)}
+																					{openIndex === index && (
+																						<p className={theme === 'dark' ? 'mt-4 text-[#1e3a8a]' : 'mt-4 text-gray-600'}>{faq.answer}</p>
+																					)}
 							</div>
 						))}
 					</div>

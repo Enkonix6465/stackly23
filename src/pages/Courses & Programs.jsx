@@ -259,7 +259,7 @@ export default function CoursesProgramsPage() {
       </section>
 
       {/* Key Features / What You’ll Get */}
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818] text-white' : 'bg-[#e6f7ff] text-black'}`}> 
+  <section className="w-full py-16 bg-[#e6f7ff] text-black"> 
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>{t.featuresTitle}</h2>
           <div className="grid grid-cols-2 md:grid-cols-2 gap-10">
@@ -297,14 +297,14 @@ export default function CoursesProgramsPage() {
     </section>
 
     {/* Frequently Asked Questions */}
-    <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`}> 
+  <section className="w-full py-16 bg-white text-black"> 
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>{t.faqTitle}</h2>
         <div className="grid  lg:grid-cols-2 gap-6">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className={`rounded-2xl shadow-md p-6 cursor-pointer transition hover:shadow-lg ` + (theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black')}
+              className={`rounded-2xl shadow-md p-6 cursor-pointer transition hover:shadow-lg ${theme === 'dark' ? 'bg-white text-[#1e3a8a]' : 'bg-white text-black'}`}
               onClick={() => toggleFAQ(index)}
             >
               {/* Question */}
@@ -316,7 +316,7 @@ export default function CoursesProgramsPage() {
               </div>
               {/* Answer */}
               {openIndex === index && (
-                <p className={theme === 'dark' ? 'mt-4 text-gray-200' : 'mt-4 text-gray-600'}>{faq.answer}</p>
+                <p className={theme === 'dark' ? 'mt-4 text-[#1e3a8a]' : 'mt-4 text-gray-600'}>{faq.answer}</p>
               )}
             </div>
           ))}

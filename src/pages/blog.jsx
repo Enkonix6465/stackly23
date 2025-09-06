@@ -263,32 +263,17 @@ export default function BlogHero() {
       </section>
 
       {/* Featured Articles */}
-      <section className={`py-16 ${theme === "dark" ? "bg-[#222]" : "bg-[#1e3a8a]"}`}>
+      <section className="py-16 bg-[#1e3a8a]">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-            {t.featuredTitle}
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">{t.featuredTitle}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {t.featured.map((feature, index) => (
-              <article
-                key={index}
-                className={`rounded-2xl shadow hover:shadow-lg transition duration-300 overflow-hidden ${theme === "dark" ? "bg-[#222] text-white" : "bg-gray-50 text-black"}`}
-              >
-                <img
-                  src={feature.image}
-                  alt={feature.title}
-                  className="w-full h-48 object-cover"
-                />
+              <article key={index} className="rounded-2xl shadow hover:shadow-lg transition duration-300 overflow-hidden bg-white text-black">
+                <img src={feature.image} alt={feature.title} className="w-full h-48 object-cover" />
                 <div className="p-6">
-                  <h3 className={`text-xl font-semibold mb-3 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-                    {feature.title}
-                  </h3>
-                  <p className={`text-sm leading-relaxed mb-4 ${theme === "dark" ? "text-gray-200" : "text-gray-600"}`}>
-                    {feature.description}
-                  </p>
-                  <Link to={feature.link} className="text-[#1e3a8a] font-semibold hover:underline">
-                    {t.readMore}
-                  </Link>
+                  <h3 className="text-xl font-semibold mb-3 text-[#1e3a8a]">{feature.title}</h3>
+                  <p className="text-sm leading-relaxed mb-4 text-[#1e3a8a]">{feature.description}</p>
+                  <Link to={feature.link} className="text-[#1e3a8a] font-semibold hover:underline">{t.readMore}</Link>
                 </div>
               </article>
             ))}
@@ -297,20 +282,20 @@ export default function BlogHero() {
       </section>
 
       {/* Categories */}
-      <section className={`py-16 ${theme === "dark" ? "bg-[#181818]" : "bg-[#e6f7ff]"}`}>
+  <section className="py-16 bg-[#e6f7ff]">
         <div className="max-w-7xl mx-auto px-6 grid  md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               {t.categoriesTitle}
             </h2>
-            <p className={`text-lg mb-6 ${theme === "dark" ? "text-gray-200" : "text-gray-700"}`}>{t.categoriesDesc}</p>
-            <p className={theme === "dark" ? "text-gray-400" : "text-gray-600"}>{t.categoriesSubDesc}</p>
+            <p className="text-lg mb-6 text-gray-700">{t.categoriesDesc}</p>
+            <p className="text-gray-600">{t.categoriesSubDesc}</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-6">
             {t.categories.map((cat, index) => (
-              <div key={index} className={`p-6 rounded-2xl shadow-md hover:shadow-lg transition ${theme === "dark" ? "bg-[#222] text-white" : "bg-white text-black"}`}>
-                <h3 className="text-xl font-semibold mb-2" style={{ color: "#1e3a8a" }}>{cat.name}</h3>
-                <p className={theme === "dark" ? "text-gray-200" : "text-gray-600"}>{cat.desc}</p>
+              <div key={index} className="p-6 rounded-2xl shadow-md hover:shadow-lg transition bg-white text-black">
+                <h3 className="text-xl font-semibold mb-2 text-[#1e3a8a]">{cat.name}</h3>
+                <p className="text-[#1e3a8a]">{cat.desc}</p>
               </div>
             ))}
           </div>
@@ -349,48 +334,48 @@ export default function BlogHero() {
       </section>
 
       {/* Myths & Facts */}
-      <section className={`py-16 ${theme === "dark" ? "bg-[#181818]" : "bg-[#e6f7ff]"}`}>
+      <section className="py-16 bg-[#e6f7ff]">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: "#1e3a8a" }}>{t.mythsTitle}</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>{t.mythsTitle}</h2>
           <div className="grid md:grid-cols-2 gap-10">
             <div className="space-y-4">
               <div className="flex gap-2">
                 <h3 className="text-red-600 font-bold">{language === 'Arabic' ? 'خرافة:' : language === 'Hebrew' ? 'מיתוס:' : 'Myth:'}</h3>
-                <p>{t.myth1}</p>
+                <p className="text-[#1e3a8a]">{t.myth1}</p>
               </div>
               <div className="flex gap-2">
                 <h3 className="text-green-600 font-bold">{language === 'Arabic' ? 'حقيقة:' : language === 'Hebrew' ? 'עובדה:' : 'Fact:'}</h3>
-                <p>{t.fact1}</p>
+                <p className="text-[#1e3a8a]">{t.fact1}</p>
               </div>
             </div>
             <div className="space-y-4">
               <div className="flex gap-2">
                 <h3 className="text-red-600 font-bold">{language === 'Arabic' ? 'خرافة:' : language === 'Hebrew' ? 'מיתוס:' : 'Myth:'}</h3>
-                <p>{t.myth2}</p>
+                <p className="text-[#1e3a8a]">{t.myth2}</p>
               </div>
               <div className="flex gap-2">
                 <h3 className="text-green-600 font-bold">{language === 'Arabic' ? 'حقيقة:' : language === 'Hebrew' ? 'עובדה:' : 'Fact:'}</h3>
-                <p>{t.fact2}</p>
+                <p className="text-[#1e3a8a]">{t.fact2}</p>
               </div>
             </div>
             <div className="space-y-4">
               <div className="flex gap-2">
                 <h3 className="text-red-600 font-bold">{language === 'Arabic' ? 'خرافة:' : language === 'Hebrew' ? 'מיתוס:' : 'Myth:'}</h3>
-                <p>{t.myth3}</p>
+                <p className="text-[#1e3a8a]">{t.myth3}</p>
               </div>
               <div className="flex gap-2">
                 <h3 className="text-green-600 font-bold">{language === 'Arabic' ? 'حقيقة:' : language === 'Hebrew' ? 'עובדה:' : 'Fact:'}</h3>
-                <p>{t.fact3}</p>
+                <p className="text-[#1e3a8a]">{t.fact3}</p>
               </div>
             </div>
             <div className="space-y-4">
               <div className="flex gap-2">
                 <h3 className="text-red-600 font-bold">{language === 'Arabic' ? 'خرافة:' : language === 'Hebrew' ? 'מיתוס:' : 'Myth:'}</h3>
-                <p>{t.myth4}</p>
+                <p className="text-[#1e3a8a]">{t.myth4}</p>
               </div>
               <div className="flex gap-2">
                 <h3 className="text-green-600 font-bold">{language === 'Arabic' ? 'حقيقة:' : language === 'Hebrew' ? 'עובדה:' : 'Fact:'}</h3>
-                <p>{t.fact4}</p>
+                <p className="text-[#1e3a8a]">{t.fact4}</p>
               </div>
             </div>
           </div>

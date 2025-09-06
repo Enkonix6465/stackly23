@@ -39,8 +39,17 @@ function useCountUp(target, duration = 1200) {
 // Main Home1 component
 export default function Home1({ theme = "light" }) {
   // Theme and language state synced with Header
-  const [themeState, setThemeState] = useState('light');
+  const [themeState, setThemeState] = useState(() => localStorage.getItem('theme') || 'light');
   const [language, setLanguage] = useState(() => localStorage.getItem('language') || 'English');
+
+  // Theme toggle handler
+  const toggleTheme = () => {
+    const newTheme = themeState === 'dark' ? 'light' : 'dark';
+    setThemeState(newTheme);
+    localStorage.setItem('theme', newTheme);
+    // Dispatch custom event for other components
+    window.dispatchEvent(new Event('theme-changed'));
+  };
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme') || 'light';
@@ -367,12 +376,19 @@ export default function Home1({ theme = "light" }) {
     <div className={
       `${themeState === 'dark' ? 'min-h-screen bg-black text-white' : 'min-h-screen bg-white text-black'}${isRTL ? ' rtl' : ''}`
     } dir={isRTL ? 'rtl' : 'ltr'}>
+      {/* Theme Toggle Button */}
+      <button
+        className={`my-4 px-4 py-2 rounded font-semibold border transition-colors ${themeState === 'dark' ? 'bg-white text-[#1e3a8a] border-[#1e3a8a] hover:bg-[#1e3a8a] hover:text-white' : 'bg-[#1e3a8a] text-white border-[#1e3a8a] hover:bg-white hover:text-[#1e3a8a]'}`}
+        onClick={toggleTheme}
+      >
+        {themeState === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
+      </button>
       {/* Hero Section Toggle */}
       <button className="my-4 px-4 py-2 rounded bg-[#1e3a8a] text-white font-semibold" onClick={() => setShowHero((v) => !v)}>
         {showHero ? t.hideHero : t.showHero}
       </button>
       {showHero && (
-        <section className="relative w-full h-screen overflow-hidden bg-white">
+        <section className={`relative w-full h-screen overflow-hidden ${themeState === 'dark' ? 'bg-black' : 'bg-white'}` }>
           <video
             className="absolute top-0 left-0 w-full h-full object-cover"
             src={heroVideo}
@@ -385,7 +401,7 @@ export default function Home1({ theme = "light" }) {
             <h1 className="text-4xl md:text-6xl font-bold" style={{ color: "#1e3a8a" }}>
               {t.heroTitle}
             </h1>
-            <p className="mt-4 max-w-3xl text-lg md:text-xl text-white">
+            <p className={`mt-4 max-w-3xl text-lg md:text-xl ${themeState === 'dark' ? 'text-white' : 'text-white'}` }>
               {t.heroDesc}
             </p>
             <button className="bg-white text-[#1e3a8a] px-6 py-3 mt-5 rounded-lg transition-colors font-semibold border border-[#1e3a8a] hover:bg-[#f0f4fa]">
@@ -396,21 +412,21 @@ export default function Home1({ theme = "light" }) {
       )}
 
       {/* Courses Section */}
-      <section className="w-full py-16 bg-[#e6f7ff] text-black">
+      <section className={`w-full py-16 ${themeState === 'dark' ? 'bg-[#232b3b] text-white' : 'bg-[#e6f7ff] text-black'}`}>
         <div className="max-w-7xl mx-auto px-6">
           <h2
-            className="text-4xl font-bold text-center mb-4"
-            style={{ color: "#1e3a8a" }}
+            className={`text-4xl font-bold text-center mb-4 ${themeState === 'dark' ? 'text-white' : ''}`}
+            style={themeState === 'dark' ? {} : { color: "#1e3a8a" }}
           >
             {t.coursesTitle}
           </h2>
-          <p className="text-center text-lg mb-10 text-black">
+          <p className={`text-center text-lg mb-10 ${themeState === 'dark' ? 'text-white' : 'text-black'}`}>
             {t.coursesDesc}
           </p>
           <div className="flex items-center justify-center">
             <button
               onClick={prevCourse}
-              className="w-10 h-10 flex items-center justify-center rounded-full shadow bg-[#1e3a8a] text-white hover:bg-blue-400 mr-4"
+              className={`w-10 h-10 flex items-center justify-center rounded-full shadow ${themeState === 'dark' ? 'bg-[#1e3a8a] text-white hover:bg-[#232b3b]' : 'bg-[#1e3a8a] text-white hover:bg-blue-400'} mr-4`}
             >
               &#8592;
             </button>
@@ -418,7 +434,7 @@ export default function Home1({ theme = "light" }) {
               {visibleCourses.map((course, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#dff4ff] rounded-xl shadow hover:shadow-lg overflow-hidden relative border border-[#b3e6ff] flex flex-col items-center"
+                  className={`rounded-xl shadow hover:shadow-lg overflow-hidden relative border flex flex-col items-center ${themeState === 'dark' ? 'bg-[#232b3b] border-gray-700' : 'bg-[#dff4ff] border-[#b3e6ff]'}`}
                 >
                   {/* Image */}
                   <div className="relative w-full flex justify-center">
@@ -437,7 +453,7 @@ export default function Home1({ theme = "light" }) {
                       {Array.from({ length: 5 }).map((_, i) => (
                         <svg
                           key={i}
-                          className={`w-5 h-5 ${i < course.rating ? "text-yellow-400" : "text-gray-300"}`}
+                          className={`w-5 h-5 ${i < course.rating ? "text-yellow-400" : themeState === 'dark' ? 'text-gray-600' : 'text-gray-300'}`}
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -445,11 +461,11 @@ export default function Home1({ theme = "light" }) {
                         </svg>
                       ))}
                     </div>
-                    <h3 className="text-xl font-bold text-[#1e3a8a] text-center">{t[course.titleKey]}</h3>
-                    <p className="text-sm text-[#1e3a8a] text-center">
-                      {t.lecturer} <span className="text-[#1e3a8a]">{t[course.lecturerKey]}</span> {t.inCategory} {t[course.categoryKey]}
+                    <h3 className={`text-xl font-bold text-center ${themeState === 'dark' ? 'text-white' : 'text-[#1e3a8a]'}`}>{t[course.titleKey]}</h3>
+                    <p className={`text-sm text-center ${themeState === 'dark' ? 'text-white' : 'text-[#1e3a8a]'}`}>
+                      {t.lecturer} <span className={themeState === 'dark' ? 'text-white' : 'text-[#1e3a8a]'}>{t[course.lecturerKey]}</span> {t.inCategory} {t[course.categoryKey]}
                     </p>
-                    <div className="flex justify-between items-center mt-3 text-sm text-[#1e3a8a] w-full">
+                    <div className={`flex justify-between items-center mt-3 text-sm w-full ${themeState === 'dark' ? 'text-white' : 'text-[#1e3a8a]'}`}>
                       <span> {t[course.studentsKey]}</span>
                       <span> {t[course.durationKey]}</span>
                       <span> {t[course.lessonsKey]}</span>
@@ -460,7 +476,7 @@ export default function Home1({ theme = "light" }) {
             </div>
             <button
               onClick={nextCourse}
-              className="w-10 h-10 flex items-center justify-center rounded-full shadow bg-[#1e3a8a] text-white hover:bg-blue-400 ml-4"
+              className={`w-10 h-10 flex items-center justify-center rounded-full shadow ${themeState === 'dark' ? 'bg-[#1e3a8a] text-white hover:bg-[#232b3b]' : 'bg-[#1e3a8a] text-white hover:bg-blue-400'} ml-4`}
             >
               &#8594;
             </button>
@@ -495,12 +511,12 @@ export default function Home1({ theme = "light" }) {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 bg-white">
+  <section className={`py-16 ${themeState === 'dark' ? 'bg-[#232b3b]' : 'bg-white'}`}> 
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-12 tracking-wide" style={{ color: "#1e3a8a" }}>{t.whyTitle}</h2>
+          <h2 className={`text-4xl font-bold mb-12 tracking-wide ${themeState === 'dark' ? 'text-white' : ''}`} style={themeState === 'dark' ? {} : { color: "#1e3a8a" }}>{t.whyTitle}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {t.features.map((feature, idx) => (
-              <div key={idx} className="relative group bg-[#1e3a8a] border border-[#e0e0e0] rounded-2xl shadow-lg h-72 flex flex-col items-center justify-center cursor-pointer overflow-hidden transition-transform">
+              <div key={idx} className={`relative group border border-[#e0e0e0] rounded-2xl shadow-lg h-72 flex flex-col items-center justify-center cursor-pointer overflow-hidden transition-transform ${themeState === 'dark' ? 'bg-white' : 'bg-[#1e3a8a]'}`}>
                 {/* Icon */}
                 <div className="mb-4 z-10">
                   {idx === 0 && (
@@ -514,8 +530,8 @@ export default function Home1({ theme = "light" }) {
                   )}
                 </div>
                 <div className="z-10">
-                  <h3 className="text-xl font-semibold mb-2" style={{ color: "#fff" }}>{feature.title}</h3>
-                  <p className="text-white mb-4">{feature.desc}</p>
+                  <h3 className={`text-xl font-semibold mb-2 ${themeState === 'dark' ? 'text-black group-hover:text-white' : ''}`}>{feature.title}</h3>
+                  <p className={`mb-4 ${themeState === 'dark' ? 'text-black group-hover:text-white' : 'text-white'}`}>{feature.desc}</p>
                 </div>
                 <img
                   src={idx === 0 ? instructorImg : idx === 1 ? learningImg : communityImg}
@@ -523,7 +539,7 @@ export default function Home1({ theme = "light" }) {
                   className="absolute left-0 bottom-0 w-full h-full object-cover rounded-2xl translate-y-full group-hover:translate-y-0 opacity-100 transition-transform duration-500 ease-in-out z-0"
                   style={{ transitionProperty: 'transform' }}
                 />
-                <div className="absolute inset-0 bg-black/80 group-hover:bg-black/40 transition-colors duration-500 z-0"></div>
+                <div className={`absolute inset-0 ${themeState === 'dark' ? 'bg-black/10 group-hover:bg-black/5' : 'bg-black/80 group-hover:bg-black/40'} transition-colors duration-500 z-0`}></div>
               </div>
             ))}
           </div>
@@ -594,14 +610,14 @@ export default function Home1({ theme = "light" }) {
       </section>
       {/* CTA Section (matches Home2 style) */}
       <section
-        className="w-full py-16 flex items-center justify-center bg-[#fff]"
+        className={`w-full py-16 flex items-center justify-center ${themeState === 'dark' ? 'bg-[#232b3b]' : 'bg-[#fff]'}`}
       >
         <div className="max-w-2xl mx-auto text-center px-6">
-          <h2 className="text-4xl font-bold mb-4 text-[#1e3a8a]">{t.ctaTitle}</h2>
-          <p className="text-lg mb-8 text-[#1e3a8a]">{t.ctaDesc}</p>
+          <h2 className={`text-4xl font-bold mb-4 ${themeState === 'dark' ? 'text-white' : 'text-[#1e3a8a]'}`}>{t.ctaTitle}</h2>
+          <p className={`text-lg mb-8 ${themeState === 'dark' ? 'text-white' : 'text-[#1e3a8a]'}`}>{t.ctaDesc}</p>
           <a
             href="/contactus"
-            className="inline-block font-semibold px-8 py-4 rounded-lg shadow transition-colors text-xl bg-[#1e3a8a] text-[#fff] hover:bg-[#fff]"
+            className={`inline-block font-semibold px-8 py-4 rounded-lg shadow transition-colors text-xl ${themeState === 'dark' ? 'bg-[#1e3a8a] text-white hover:bg-white hover:text-[#1e3a8a]' : 'bg-[#1e3a8a] text-[#fff] hover:bg-[#fff]'}`}
           >
             {t.ctaBtn}
           </a>
