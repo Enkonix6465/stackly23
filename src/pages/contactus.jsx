@@ -284,12 +284,12 @@ export default function ContactHero() {
       </section>
 
       {/* Location Section */}
-      <section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
+  <section className="py-20 bg-[#1e3a8a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-[#fff] font-semibold uppercase mb-2">
             {t.locationSmall}
           </p>
-          <h2 className={`text-3xl md:text-4xl font-extrabold mb-10 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-10 text-white">
             {t.locationTitle}
           </h2>
           <div className="rounded-2xl overflow-hidden shadow-lg">
@@ -308,13 +308,13 @@ export default function ContactHero() {
       </section>
 
       {/* FAQ Section */}
-  <section className="py-20 bg-[#e6f7ff]">
+  <section className={`py-20 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`}> 
         <div className="max-w-7xl mx-auto px-6 grid  md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-[#1e3a8a] font-semibold uppercase mb-2">
               {t.faqSmall}
             </p>
-    <h2 className="text-4xl md:text-5xl font-extrabold mb-8 text-gray-900">
+    <h2 className={`text-4xl md:text-5xl font-extrabold mb-8 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               {t.faqTitle}
             </h2>
             <img 
@@ -327,13 +327,13 @@ export default function ContactHero() {
             {faqs.map((faq, index) => (
               <div 
                 key={index} 
-        className="bg-gray-50 border-gray-100 rounded-xl shadow-sm border"
+                className={theme === 'dark' ? "bg-[#222] border-gray-700 rounded-xl shadow-sm border text-white" : "bg-gray-50 border-gray-100 rounded-xl shadow-sm border"}
               >
                 <button 
                   onClick={() => toggleFAQ(index)}
-      className="w-full flex justify-between items-center p-6 text-left"
+                  className={theme === 'dark' ? "w-full flex justify-between items-center p-6 text-left text-white" : "w-full flex justify-between items-center p-6 text-left"}
                 >
-      <span className="font-semibold text-lg text-gray-900">
+                  <span className={theme === 'dark' ? "font-semibold text-lg text-white" : "font-semibold text-lg text-gray-900"}>
                     {faq.question}
                   </span>
                   <span className="text-[#1e3a8a] text-2xl">
@@ -341,7 +341,7 @@ export default function ContactHero() {
                   </span>
                 </button>
                 {openIndex === index && (
-      <div className="px-6 pb-6 text-gray-600">
+                  <div className={theme === 'dark' ? "px-6 pb-6 text-gray-300" : "px-6 pb-6 text-gray-600"}>
                     {faq.answer}
                   </div>
                 )}
@@ -352,9 +352,9 @@ export default function ContactHero() {
       </section>
 
       {/* Newsletter Section */}
-      <section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
+  <section className="py-20 bg-[#1e3a8a]">
         <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 ${theme === 'dark' ? 'text-[#1e3a8a]' : 'text-gray-900'}`}>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-white">
             {t.newsletterTitle}
           </h2>
           <p className="text-lg mb-8 text-white">
@@ -370,7 +370,7 @@ export default function ContactHero() {
             <input 
               type="email" 
               placeholder={t.newsletterPlaceholder} 
-              className={`flex-1 px-6 py-4 rounded-xl border w-full sm:w-auto focus:outline-none focus:border-[#1e3a8a] ${theme === 'dark' ? 'border-gray-700 bg-[#181818] text-white' : 'border-gray-300 text-gray-800 bg-white'}`}
+              className="flex-1 px-6 py-4 rounded-xl border w-full sm:w-auto focus:outline-none focus:border-[#1e3a8a] border-gray-300 text-gray-800 bg-white"
               disabled={newsletterSubmitted}
             />
             <button 
