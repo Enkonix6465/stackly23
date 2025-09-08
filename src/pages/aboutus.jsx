@@ -1,4 +1,6 @@
 import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import aboutHero from "../assets/abouthero.mp4";
 import missionImg from "../assets/mission.png";
 import visionImg from "../assets/vision.jpeg";
@@ -185,6 +187,11 @@ export default function AboutPage() {
       };
       window.addEventListener('theme-changed', handleThemeChange);
       window.addEventListener('storage', handleThemeChange);
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: false,
+      });
       return () => {
         window.removeEventListener('theme-changed', handleThemeChange);
         window.removeEventListener('storage', handleThemeChange);
@@ -279,7 +286,7 @@ export default function AboutPage() {
     } dir={isRTL ? 'rtl' : 'ltr'}>
 
       {/* Hero Section */}
-      <section className="relative w-full h-screen overflow-hidden">
+  <section className="relative w-full h-screen overflow-hidden" data-aos="fade-down">
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           src={aboutHero}
@@ -306,7 +313,7 @@ export default function AboutPage() {
 
 
       {/* Our Journey Timeline Section - Horizontal, Circular Milestones */}
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`}>
+  <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`} data-aos="slide-right">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-14" style={{ color: '#1e3a8a' }}>{t.journeyTitle}</h2>
           <div className="relative flex flex-col items-center">
@@ -315,7 +322,7 @@ export default function AboutPage() {
             {/* Timeline Items */}
             <div className="relative w-full flex flex-row justify-between items-center z-10">
               {t.journeyTimeline.map((item, idx, arr) => (
-                <div key={item.year} className="flex flex-col items-center w-32">
+                <div key={item.year} className="flex flex-col items-center w-32" data-aos={idx % 2 === 0 ? "slide-left" : "slide-right"} data-aos-delay={idx * 150}>
                   <div className="mb-2 text-base font-semibold uppercase tracking-wide" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>{item.word}</div>
                   <div className="w-20 h-20 rounded-full border-4 border-[#1e3a8a] bg-white flex items-center justify-center shadow-lg text-2xl font-bold text-[#1e3a8a]">
                     {item.year}
@@ -333,14 +340,14 @@ export default function AboutPage() {
 
 
 
-  <section className={`w-full py-16 bg-[#1e3a8a]`}>
+  <section className={`w-full py-16 bg-[#1e3a8a]`} data-aos="fade-up">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <h2 className="text-4xl font-bold text-center mb-12" style={{ color: '#fff' }}>
             {t.visionMissionValuesTitle}
           </h2>
-          <div className="grid grid-cols-3 md:grid-cols-3 gap-8 text-center">
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-8 text-center">
             {/* Mission Card */}
-            <div className="rounded-2xl shadow-lg flex flex-col items-center bg-white overflow-hidden">
+              <div className="rounded-2xl shadow-lg flex flex-col items-center bg-white overflow-hidden" data-aos="slide-right" data-aos-delay="100">
               <div className="relative w-full min-h-[9rem] max-h-44 flex items-center justify-center">
                 <div style={{backgroundColor: '#1e3a8a'}} className="absolute inset-0 w-full h-full z-0"></div>
                 <img src={missionImg} alt="Mission" className="absolute inset-0 w-full h-full object-fit z-10" />
@@ -351,7 +358,7 @@ export default function AboutPage() {
               </div>
             </div>
             {/* Vision Card */}
-            <div className="rounded-2xl shadow-lg flex flex-col items-center bg-white overflow-hidden">
+              <div className="rounded-2xl shadow-lg flex flex-col items-center bg-white overflow-hidden" data-aos="slide-up" data-aos-delay="200">
               <div className="relative w-full min-h-[9rem] max-h-44 flex items-center justify-center">
                 <img src={visionImg} alt="Vision" className="absolute inset-0 w-full h-full object-fit" />
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -361,7 +368,7 @@ export default function AboutPage() {
               </div>
             </div>
             {/* Values Card */}
-            <div className="rounded-2xl shadow-lg flex flex-col items-center bg-white overflow-hidden">
+              <div className="rounded-2xl shadow-lg flex flex-col items-center bg-white overflow-hidden" data-aos="slide-left" data-aos-delay="300">
               <div className="relative w-full min-h-[9rem] max-h-44 flex items-center justify-center">
                 <img src={valuesImg} alt="Values" className="absolute inset-0 w-full h-full object-fit" />
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -377,7 +384,7 @@ export default function AboutPage() {
       {/* Awards & Certificates Section */}
       <section className={
         `w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`
-      }>
+      } data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-6 text-justify lg:px-8 grid  lg:grid-cols-2 gap-27 items-center">
           {/* Content Left */}
           <div>
@@ -387,18 +394,18 @@ export default function AboutPage() {
           </div>
           {/* Image Right */}
           <div className="flex justify-center">
-            <img src={awardsImg} alt="Awards & Certificates" className="rounded-2xl shadow-xl w-full max-w-md object-cover" />
+            <img src={awardsImg} alt="Awards & Certificates" className="rounded-2xl shadow-xl w-full max-w-md object-cover" data-aos="zoom-in" data-aos-delay="200" />
           </div>
         </div>
       </section>
 
 
-  <section className={`w-full py-16 bg-[#1e3a8a]`}>
+  <section className={`w-full py-16 bg-[#1e3a8a]`} data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-10" style={{ color: '#fff' }}>{t.instructorsTitle}</h2>
           <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {instructors.map((inst, idx) => (
-              <div key={idx} className="bg-white rounded-2xl shadow-lg flex flex-col items-center py-8 px-4">
+              <div key={idx} className="bg-white rounded-2xl shadow-lg flex flex-col items-center py-8 px-4" data-aos={idx % 2 === 0 ? "slide-left" : "slide-right"} data-aos-delay={idx * 150}>
                 <img src={inst.img} alt={inst.name} className="w-28 h-28 object-cover rounded-full mb-4 border-4 border-[#e6f7ff]" />
                 <span className="text-sm text-gray-400 mb-1">{inst.role}</span>
                 <h3 className="text-lg font-bold mb-2 text-[#1e3a8a]">{inst.name}</h3>
@@ -415,14 +422,14 @@ export default function AboutPage() {
       </section>
 
 
-      <section className={`py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`}>
+  <section className={`py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`} data-aos="fade-up"> 
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-2 items-stretch gap-8">
           {/* Left: Image */}
           <div className="md:w-1/2 w-full flex items-center justify-center">
-            <img src={whatwethinkImg} alt="What We Think" className="rounded-2xl shadow-xl w-full h-full object-cover max-h-[400px] min-h-[300px]" />
+            <img src={whatwethinkImg} alt="What We Think" className="rounded-2xl shadow-xl w-full h-full object-cover max-h-[400px] min-h-[300px]" data-aos="zoom-in" data-aos-delay="200" />
           </div>
           {/* Right: Content */}
-          <div className={`md:w-1/2   w-full flex flex-col justify-center`}>
+          <div className={`md:w-1/2   w-full flex flex-col justify-center`} data-aos="slide-right" data-aos-delay="200">
             <h2 className="text-4xl font-bold mb-6 text-[#1e3a8a]">{t.whatWeThinkTitle}</h2>
             <p className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-black'}  mb-4`}>{t.whatWeThinkDesc}</p>
             <ul className={`list-disc ${theme === 'dark' ? 'text-white' : 'text-black'} pl-5 space-y-2 `}>

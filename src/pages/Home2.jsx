@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useRef, useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import home2Video from "../assets/home2hero.mp4";
 import logo1 from "../assets/1.png";
 import logo2 from "../assets/2.png";
@@ -92,6 +94,11 @@ export default function Home2() {
     };
     window.addEventListener('theme-changed', handleThemeChange);
     window.addEventListener('storage', handleThemeChange);
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
     return () => {
       window.removeEventListener('theme-changed', handleThemeChange);
       window.removeEventListener('storage', handleThemeChange);
@@ -403,6 +410,7 @@ export default function Home2() {
       {/* Hero Section */}
       <section
         className="relative w-full h-screen overflow-hidden"
+        data-aos="fade-down"
       >
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
@@ -439,6 +447,7 @@ export default function Home2() {
         className={
           `w-full py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#fff]'}`
         }
+        data-aos="slide-right"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className={`text-3xl font-bold mb-8 text-center ${theme === 'dark' ? 'text-white' : ''}`} id="upcoming" style={theme === 'dark' ? {} : { color: '#1e3a8a' }}>{t.upcomingTitle}</h2>
@@ -448,7 +457,10 @@ export default function Home2() {
                 <div key={idx} className={
                   `rounded-xl shadow p-6 flex flex-col items-center ` +
                   (theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]')
-                }>
+                }
+                  data-aos={idx % 2 === 0 ? "slide-left" : "slide-right"}
+                  data-aos-delay={idx * 150}
+                >
                   <h3 className="text-xl font-semibold mb-2" style={{ color: theme === 'dark' ? '#fff' : '#1e3a8a' }}>{webinar.title}</h3>
                   <div className={theme === 'dark' ? 'text-gray-400 mb-2' : 'text-gray-600 mb-2'}>{webinar.date}</div>
                   <div className={theme === 'dark' ? 'text-gray-400 mb-2' : 'text-gray-600 mb-2'}>{webinar.time}</div>
@@ -507,7 +519,7 @@ export default function Home2() {
       </section>
 
       {/* Scholarships & Financial Support Section */}
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#1e3a8a]' : 'bg-[#1e3a8a]'}`}>
+  <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#1e3a8a]' : 'bg-[#1e3a8a]'}`} data-aos="fade-up">
         <div className="w-full mx-auto px-6 lg:px-8 grid text-justify lg:grid-cols-2 gap-12 items-center">
           {/* Left Side Info */}
           <div className="flex-1 flex flex-col justify-center md:pr-8 mb-8 md:mb-0">
@@ -527,7 +539,10 @@ export default function Home2() {
           {/* Right Side Cards - 2x2 grid, visually aligned */}
           <div className="grid lg:grid-cols-2 gap-6">
             {t.scholarshipsOffers.map((offer, idx) => (
-              <div key={idx} className="rounded-xl p-6 shadow-lg bg-white text-[#1e3a8a] min-h-[120px] flex flex-col justify-center">
+              <div key={idx} className="rounded-xl p-6 shadow-lg bg-white text-[#1e3a8a] min-h-[120px] flex flex-col justify-center"
+                data-aos={idx % 2 === 0 ? "slide-right" : "slide-left"}
+                data-aos-delay={idx * 200}
+              >
                 <h3 className="font-bold text-lg mb-2">{offer.title}</h3>
                 <p className="text-sm font-medium">{offer.desc}</p>
               </div>
@@ -535,7 +550,7 @@ export default function Home2() {
           </div>
         </div>
       </section>
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#FFF]'}`}> 
+  <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#FFF]'}`} data-aos="fade-up"> 
         <div className="max-w-6xl mx-auto px-4 md:px-8 py-10 bg-white/90 rounded-2xl shadow-lg border border-[#e0f2fe]">
           <div className="grid grid-cols-2 md:grid-cols-2 gap-8 mb-10 items-center">
             {/* Left: Large Heading */}
@@ -557,7 +572,9 @@ export default function Home2() {
           {/* Metrics Row */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-[#1e3a8a] text-center mt-6">
             {t.impactStats.map((stat, idx) => (
-              <ImpactStat key={idx} end={stat.end} suffix={stat.suffix} label={stat.label} />
+              <div data-aos={idx % 2 === 0 ? "fade-up" : "fade-down"} data-aos-delay={idx * 200}>
+                <ImpactStat end={stat.end} suffix={stat.suffix} label={stat.label} />
+              </div>
             ))}
           </div>
         </div>
@@ -566,7 +583,7 @@ export default function Home2() {
 
 
 
-  <section className={`w-full py-16 bg-[#1e3a8a]`}>
+  <section className={`w-full py-16 bg-[#1e3a8a]`} data-aos="fade-up">
       <div className="max-w-6xl mx-auto px-4 md:px-8 text-center">
   <div className="mb-2 text-xl font-semibold tracking-widest uppercase" style={{ color: '#fff' }}>
           {t.partnersTitle}
@@ -576,7 +593,11 @@ export default function Home2() {
         </p>
         <div className="grid grid-cols-5 sm:grid-cols-4 gap-6 md:gap-8 justify-center items-center">
           {logos.map((logo, idx) => (
-            <div key={idx} className="bg-white rounded-xl shadow p-4 flex items-center justify-center h-24 transition-transform hover:scale-105" style={{ minWidth: '120px', minHeight: '80px' }}>
+            <div key={idx} className="bg-white rounded-xl shadow p-4 flex items-center justify-center h-24 transition-transform hover:scale-105"
+              style={{ minWidth: '120px', minHeight: '80px' }}
+              data-aos={idx % 2 === 0 ? "slide-left" : "slide-right"}
+              data-aos-delay={idx * 100}
+            >
               <img src={logo} alt={`Partner ${idx + 1}`} className="h-12 object-contain max-w-[100px]" />
             </div>
           ))}
@@ -589,6 +610,7 @@ export default function Home2() {
 
       <section
         className={`w-full py-16 flex items-center justify-center ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#fff]'}`}
+        data-aos="slide-up"
       >
         <div className="max-w-2xl mx-auto text-center px-6">
           <h2 className="text-4xl font-bold mb-4" style={{ color: theme === 'dark' ? '#fff' : '#1e3a8a' }}>{t.readyTitle}</h2>
