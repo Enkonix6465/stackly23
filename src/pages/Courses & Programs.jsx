@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// AOS already imported and initialized in useEffect
 import AOS from "aos";
 import "aos/dist/aos.css";
 import aihero from "../assets/aihero.mp4";
@@ -203,7 +204,7 @@ export default function CoursesProgramsPage() {
   return (
     <div className={`${theme === 'dark' ? 'min-h-screen bg-black text-white' : 'min-h-screen bg-white text-black'}${isRTL ? ' rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'} data-aos="fade-in">
       {/* Hero Section */}
-      <section className="relative w-full h-screen md:h-screen grid place-items-center text-center overflow-hidden" style={{ color: theme === 'dark' ? '#fff' : '#fff' }} data-aos="fade-down">
+  <section className="relative w-full h-screen md:h-screen grid place-items-center text-center overflow-hidden" style={{ color: theme === 'dark' ? '#fff' : '#fff' }} data-aos="fade-down">
         {/* Background Video */}
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
@@ -229,7 +230,7 @@ export default function CoursesProgramsPage() {
       </section>
 
       {/* Service Includes Section - Course Categories */}
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-[#fff] text-black'}`} data-aos="fade-up"> 
+  <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-[#fff] text-black'}`} data-aos="fade-up"> 
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-4" style={{ color: '#1e3a8a' }}>{t.categoriesTitle}</h2>
           <p className="text-center text-lg mb-10">{t.categoriesDesc}</p>
@@ -289,7 +290,7 @@ export default function CoursesProgramsPage() {
       </section>
 
     {/* Benefits / Outcomes (Courses & Programs Page) */}
-    <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`} data-aos="fade-up"> 
+  <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`} data-aos="fade-up"> 
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ color: '#1e3a8a' }}>{t.benefitsTitle}</h2>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg" data-aos="slide-up" data-aos-delay="100">
@@ -336,7 +337,7 @@ export default function CoursesProgramsPage() {
     } data-aos="fade-up" data-aos-delay="200">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center px-6">
         {/* Left Content */}
-        <div className="space-y-6 flex flex-col justify-center h-full" data-aos="slide-right">
+  <div className="space-y-6 flex flex-col justify-center h-full" data-aos="slide-right">
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
             {t.exploreTitle}
           </h2>

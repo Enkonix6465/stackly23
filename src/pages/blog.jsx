@@ -401,9 +401,9 @@ export default function BlogHero() {
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#fff' }}>{t.ctaTitle}</h2>
           <p className="text-lg mb-8 text-gray-100">{t.ctaDesc}</p>
-          <a href="#" className="inline-block px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 bg-white text-[#1e3a8a] hover:bg-[#e6f7ff] hover:text-[#1e3a8a] border border-[#1e3a8a]">
-            {t.ctaBtn}
-          </a>
+            <Link to="/contactus" className="inline-block px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 bg-white text-[#1e3a8a] hover:bg-[#e6f7ff] hover:text-[#1e3a8a] border border-[#1e3a8a]">
+              {t.ctaBtn}
+            </Link>
         </div>
       </section>
     </div>

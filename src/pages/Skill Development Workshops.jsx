@@ -1,5 +1,7 @@
 
 import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import cryptoHero from "../assets/crypto.mp4";
 import b1 from "../assets/b1.avif";
 import b2 from "../assets/b2.jpeg";
@@ -158,6 +160,11 @@ export default function SkillDevelopmentWorkshopsPage() {
       window.addEventListener('storage', handleThemeChange);
       window.addEventListener('language-changed', handleLanguageChange);
       window.addEventListener('storage', handleLanguageChange);
+      // AOS initialization
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
       return () => {
         window.removeEventListener('theme-changed', handleThemeChange);
         window.removeEventListener('storage', handleThemeChange);
@@ -177,7 +184,7 @@ export default function SkillDevelopmentWorkshopsPage() {
       `${theme === 'dark' ? 'min-h-screen bg-black text-white' : 'min-h-screen bg-white text-black'}${isRTL ? ' rtl' : ''}`
     } dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Hero Section */}
-      <section className="relative w-full h-screen md:h-screen grid place-items-center text-center overflow-hidden" style={{ color: theme === 'dark' ? '#fff' : '#222' }}>
+  <section className="relative w-full h-screen md:h-screen grid place-items-center text-center overflow-hidden" style={{ color: theme === 'dark' ? '#fff' : '#222' }} data-aos="fade-up">
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           src={cryptoHero}
@@ -201,7 +208,7 @@ export default function SkillDevelopmentWorkshopsPage() {
       {/* Service Includes Section */}
       <section className={
         `py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#fff]'}`
-      }>
+      } data-aos="fade-up">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-4 md:px-6">
           {/* Left Image */}
           <div className="flex justify-center">
@@ -214,7 +221,7 @@ export default function SkillDevelopmentWorkshopsPage() {
             </h2>
             <ul className="space-y-4 text-base sm:text-lg">
               {t.sectionList.map((item, idx) => (
-                <li className="flex items-center" key={item}>
+                <li className="flex items-center" key={item} data-aos="fade-right" data-aos-delay={idx * 100}>
                   <span className={`w-3 h-3 rounded-full mr-3 ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></span>
                   {item}
                 </li>
@@ -225,12 +232,12 @@ export default function SkillDevelopmentWorkshopsPage() {
       </section>
 
       {/* Key Features / What You’ll Get */}
-  <section className="w-full py-16 bg-[#e6f7ff] text-black"> 
+  <section className="w-full py-16 bg-[#e6f7ff] text-black" data-aos="fade-up"> 
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>{t.featuresTitle}</h2>
           <div className="grid grid-cols-2 md:grid-cols-2 gap-10">
             {t.features.map((item, idx) => (
-              <div key={item.num} className="flex items-start mb-6 rounded-2xl shadow-md p-6 bg-white text-black"> 
+              <div key={item.num} className="flex items-start mb-6 rounded-2xl shadow-md p-6 bg-white text-black" data-aos="zoom-in" data-aos-delay={idx * 100}> 
                 <div className="relative flex-shrink-0 mr-4">
                   <span className="text-5xl font-extrabold text-black" style={{
                     background: 'linear-gradient(90deg, #1e3a8a 60%, transparent 60%)',
@@ -251,12 +258,12 @@ export default function SkillDevelopmentWorkshopsPage() {
       </section>
 
       {/* Benefits / Outcomes */}
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`}> 
+  <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`} data-aos="fade-up"> 
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ color: '#1e3a8a' }}>{t.benefitsTitle}</h2>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
             {t.benefits.map((benefit, idx) => (
-              <li key={idx} className="flex items-start gap-3">
+              <li key={idx} className="flex items-start gap-3" data-aos="fade-right" data-aos-delay={idx * 100}>
                 <span className="text-2xl text-[#1e3a8a]">✔</span>
                 {benefit}
               </li>
@@ -266,7 +273,7 @@ export default function SkillDevelopmentWorkshopsPage() {
       </section>
 
       {/* FAQ Section */}
-  <section className="w-full py-16 bg-white text-black"> 
+  <section className="w-full py-16 bg-white text-black" data-aos="fade-up"> 
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>{t.faqTitle}</h2>
           <div className="grid lg:grid-cols-2 gap-6">
@@ -275,6 +282,8 @@ export default function SkillDevelopmentWorkshopsPage() {
                 key={index}
                 className="rounded-2xl shadow-md p-6 cursor-pointer transition hover:shadow-lg bg-white text-black"
                 onClick={() => toggleFAQ(index)}
+                data-aos="fade-left"
+                data-aos-delay={index * 100}
               >
                 <div className="flex justify-between items-center">
                   <h3 className="text-lg font-semibold">{faq.question}</h3>
@@ -294,10 +303,10 @@ export default function SkillDevelopmentWorkshopsPage() {
       {/* CTA Section */}
       <section className={
         `py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`
-      }>
+      } data-aos="fade-up">
         <div className="max-w-7xl mx-auto grid  lg:grid-cols-2 gap-10 items-center px-6">
           {/* Left Content */}
-          <div className="space-y-6 flex flex-col justify-center h-full">
+          <div className="space-y-6 flex flex-col justify-center h-full" data-aos="fade-right">
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
               <span dangerouslySetInnerHTML={{ __html: t.ctaTitle }} />
             </h2>
@@ -314,7 +323,7 @@ export default function SkillDevelopmentWorkshopsPage() {
           </div>
 
           {/* Right Image */}
-          <div className="flex justify-center items-center h-full">
+          <div className="flex justify-center items-center h-full" data-aos="fade-left">
             <img
               src={b3}
               alt="Workshops CTA"

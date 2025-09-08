@@ -39,12 +39,12 @@ function App() {
                   <Route path="home2" element={<Home2Hero />} />
                   <Route path="aboutus" element={<AboutHero />} />
                   <Route path="services" element={<ServiceHero />} />
-                  <Route path="Courses & Programs" element={<AIServicePage />} />
-                  <Route path="Live Classes & Mentorship" element={<WebDevServicePage />} />
-                  <Route path="Certifications & Career Support" element={<CertificationsCareerSupportPage />} />
-                  <Route path="Skill Development Workshops" element={<BlockchainPage />} />
-                  <Route path="Learning Resources & Tools" element={<LearningResourcesPage />} />
-                  <Route path="Community & Networking" element={<CommunityNetworkingPage />} />
+                  <Route path="courses-programs" element={<AIServicePage />} />
+                  <Route path="live-classes-mentorship" element={<WebDevServicePage />} />
+                  <Route path="certifications-career-support" element={<CertificationsCareerSupportPage />} />
+                  <Route path="skill-development-workshops" element={<BlockchainPage />} />
+                  <Route path="learning-resources-tools" element={<LearningResourcesPage />} />
+                  <Route path="community-networking" element={<CommunityNetworkingPage />} />
                   <Route path="blog" element={<BlogHero />} />
                   <Route path="/blog/:id" element={<BlogDetail />} />
                   <Route path="contactus" element={<ContactHero />} />

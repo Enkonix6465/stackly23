@@ -293,7 +293,29 @@ export default function Home2() {
   const t = translations[language] || translations['English'];
   // Show register modal state
   const [showRegister, setShowRegister] = React.useState(null);
-  // Theme state synced with Header
+  // General registration modal state
+  const [showGeneralRegister, setShowGeneralRegister] = React.useState(false);
+  const [generalRegisterForm, setGeneralRegisterForm] = React.useState({ name: '', email: '' });
+  const handleGeneralRegisterInput = e => {
+    setGeneralRegisterForm({ ...generalRegisterForm, [e.target.name]: e.target.value });
+  };
+  const handleGeneralRegisterSubmit = e => {
+    e.preventDefault();
+    alert('Registered: ' + generalRegisterForm.name + ' / ' + generalRegisterForm.email);
+    setShowGeneralRegister(false);
+    setGeneralRegisterForm({ name: '', email: '' });
+  };
+  // Webinar registration form state and handlers
+  const [registerForm, setRegisterForm] = React.useState({ name: '', email: '' });
+  const handleRegisterInput = e => {
+    setRegisterForm({ ...registerForm, [e.target.name]: e.target.value });
+  };
+  const handleRegisterSubmit = (e, webinar) => {
+    e.preventDefault();
+    alert('Registered for ' + webinar.title + ': ' + registerForm.name + ' / ' + registerForm.email);
+    setShowRegister(null);
+    setRegisterForm({ name: '', email: '' });
+  };
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme') || 'light';
@@ -572,7 +594,7 @@ export default function Home2() {
           {/* Metrics Row */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-[#1e3a8a] text-center mt-6">
             {t.impactStats.map((stat, idx) => (
-              <div data-aos={idx % 2 === 0 ? "fade-up" : "fade-down"} data-aos-delay={idx * 200}>
+              <div key={idx} data-aos={idx % 2 === 0 ? "fade-up" : "fade-down"} data-aos-delay={idx * 200}>
                 <ImpactStat end={stat.end} suffix={stat.suffix} label={stat.label} />
               </div>
             ))}
@@ -623,6 +645,40 @@ export default function Home2() {
           </Link>
         </div>
       </section>
+
+      {/* General Registration Modal */}
+      {showGeneralRegister && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md relative">
+            <h2 className="text-2xl font-bold mb-4 text-[#1e3a8a]">Register</h2>
+            <form className="space-y-4" onSubmit={handleGeneralRegisterSubmit}>
+              <input
+                type="text"
+                name="name"
+                value={generalRegisterForm.name}
+                onChange={handleGeneralRegisterInput}
+                placeholder="Your Name"
+                className="border rounded px-3 py-2 w-full bg-white text-black border-gray-300"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                value={generalRegisterForm.email}
+                onChange={handleGeneralRegisterInput}
+                placeholder="Your Email"
+                className="border rounded px-3 py-2 w-full bg-white text-black border-gray-300"
+                required
+              />
+              <div className="flex gap-2">
+                <button type="submit" className="bg-[#1e3a8a] text-white rounded px-4 py-2 transition-colors">Submit</button>
+                <button type="button" className="bg-gray-300 text-black rounded px-4 py-2 transition-colors" onClick={() => setShowGeneralRegister(false)}>Cancel</button>
+              </div>
+            </form>
+            <button className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-xl" onClick={() => setShowGeneralRegister(false)}>&times;</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

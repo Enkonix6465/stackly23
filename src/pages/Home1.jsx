@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useLocation } from "react-router-dom";
@@ -83,7 +84,11 @@ export default function Home1({ theme = "light" }) {
       };
     }
   }, []);
-  // Section toggles
+  // Navigation for CTA
+  const navigate = useNavigate();
+  // Ref for hero and courses sections
+  const heroRef = useRef(null);
+  const coursesRef = useRef(null);
   const [showHero, setShowHero] = useState(true);
   const [showCourses, setShowCourses] = useState(true);
   const [showAbout, setShowAbout] = useState(true);
@@ -395,7 +400,7 @@ export default function Home1({ theme = "light" }) {
         {showHero ? t.hideHero : t.showHero}
       </button>
       {showHero && (
-  <section className={`relative w-full h-screen overflow-hidden ${themeState === 'dark' ? 'bg-black' : 'bg-white'}` } data-aos="fade-down">
+        <section ref={heroRef} className={`relative w-full h-screen overflow-hidden ${themeState === 'dark' ? 'bg-black' : 'bg-white'}` } data-aos="fade-down">
           <video
             className="absolute top-0 left-0 w-full h-full object-cover"
             src={heroVideo}
@@ -411,7 +416,14 @@ export default function Home1({ theme = "light" }) {
             <p className={`mt-4 max-w-3xl text-lg md:text-xl ${themeState === 'dark' ? 'text-white' : 'text-white'}` }>
               {t.heroDesc}
             </p>
-            <button className="bg-white text-[#1e3a8a] px-6 py-3 mt-5 rounded-lg transition-colors font-semibold border border-[#1e3a8a] hover:bg-[#f0f4fa]">
+            <button
+              className="bg-white text-[#1e3a8a] px-6 py-3 mt-5 rounded-lg transition-colors font-semibold border border-[#1e3a8a] hover:bg-[#f0f4fa]"
+              onClick={() => {
+                if (coursesRef.current) {
+                  coursesRef.current.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
               {t.heroBtn}
             </button>
           </div>
@@ -419,7 +431,7 @@ export default function Home1({ theme = "light" }) {
       )}
 
       {/* Courses Section */}
-  <section className={`w-full py-16 ${themeState === 'dark' ? 'bg-[#232b3b] text-white' : 'bg-[#e6f7ff] text-black'}`} data-aos="slide-right">
+  <section ref={coursesRef} className={`w-full py-16 ${themeState === 'dark' ? 'bg-[#232b3b] text-white' : 'bg-[#e6f7ff] text-black'}`} data-aos="slide-right">
         <div className="max-w-7xl mx-auto px-6">
           <h2
             className={`text-4xl font-bold text-center mb-4 ${themeState === 'dark' ? 'text-white' : ''}`}
@@ -633,12 +645,12 @@ export default function Home1({ theme = "light" }) {
         <div className="max-w-2xl mx-auto text-center px-6">
           <h2 className={`text-4xl font-bold mb-4 ${themeState === 'dark' ? 'text-white' : 'text-[#1e3a8a]'}`}>{t.ctaTitle}</h2>
           <p className={`text-lg mb-8 ${themeState === 'dark' ? 'text-white' : 'text-[#1e3a8a]'}`}>{t.ctaDesc}</p>
-          <a
-            href="/contactus"
+          <button
             className={`inline-block font-semibold px-8 py-4 rounded-lg shadow transition-colors text-xl ${themeState === 'dark' ? 'bg-[#1e3a8a] text-white hover:bg-white hover:text-[#1e3a8a]' : 'bg-[#1e3a8a] text-[#fff] hover:bg-[#fff]'}`}
+            onClick={() => navigate('/contactus')}
           >
             {t.ctaBtn}
-          </a>
+          </button>
         </div>
       </section>
 
