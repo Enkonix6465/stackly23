@@ -1,4 +1,6 @@
 import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import serviceHeroVideo from "../assets/servicehero.mp4";
 
@@ -147,6 +149,12 @@ export default function ServiceHero() {
   const [theme, setTheme] = React.useState('light');
   const [language, setLanguage] = React.useState(() => localStorage.getItem('language') || 'English');
   React.useEffect(() => {
+    // Initialize and refresh AOS on every render for full-page animation
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+    AOS.refresh();
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme') || 'light';
       setTheme(storedTheme);
@@ -171,20 +179,21 @@ export default function ServiceHero() {
         window.removeEventListener('storage', handleLanguageChange);
       };
     }
-  }, []);
+  });
 
   const t = translations[language] || translations['English'];
   const isRTL = language === 'Arabic' || language === 'Hebrew';
 
-  return (
-    <div
-      className={
-        `${theme === 'dark' ? 'min-h-screen bg-black text-white' : 'min-h-screen bg-white text-black'}${isRTL ? ' rtl' : ''}`
-      }
-      dir={isRTL ? 'rtl' : 'ltr'}
-    >
-      {/* Hero Section */}
-      <section className="relative w-full h-screen overflow-hidden">
+    return (
+      <div
+        className={
+          `${theme === 'dark' ? 'min-h-screen bg-black text-white' : 'min-h-screen bg-white text-black'}${isRTL ? ' rtl' : ''}`
+        }
+        dir={isRTL ? 'rtl' : 'ltr'}
+        data-aos="fade-in"
+      >
+  {/* Hero Section */}
+  <section className="relative w-full h-screen overflow-hidden" data-aos="fade-down">
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           src={serviceHeroVideo}
@@ -205,9 +214,7 @@ export default function ServiceHero() {
       </section>
 
       {/* Services Section */}
-      <section className={
-        `py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`
-      }>
+  <section className={`py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`} data-aos="slide-right">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>{t.exploreServices}</h2>
           <div className="grid gap-12">
@@ -215,6 +222,8 @@ export default function ServiceHero() {
               <div
                 key={index}
                 className="grid md:grid-cols-2 items-center gap-6"
+                data-aos={index % 2 === 0 ? "slide-left" : "slide-right"}
+                data-aos-delay={index * 150}
               >
                 {/* Image */}
                 <div className={`${index % 2 !== 0 ? "md:order-2" : ""}`}>
@@ -224,7 +233,6 @@ export default function ServiceHero() {
                     className="w-full h-80 rounded-lg shadow-lg"
                   />
                 </div>
-
                 {/* Content */}
                 <div className={`${index % 2 !== 0 ? "md:order-1" : ""}`}>
                   <h3 className="text-2xl font-semibold mb-4" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>{service.title}</h3>
@@ -245,11 +253,11 @@ export default function ServiceHero() {
         </div>
       </section>
 
-      {/* Values Section */}
-  <section className="w-full py-16 bg-[#1e3a8a]">
+  {/* Values Section */}
+  <section className="w-full py-16 bg-[#1e3a8a]" data-aos="zoom-in">
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-10" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>{t.valuesTitle}</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="100">
             <div className="rounded-xl shadow-md p-8 text-center bg-white text-[#1e3a8a]">
               <h3 className="text-xl font-semibold mb-3" style={{ color: '#1e3a8a' }}>{t.excellence}</h3>
               <p className="text-base">{t.excellenceDesc}</p>
@@ -266,15 +274,13 @@ export default function ServiceHero() {
         </div>
       </section>
 
-      {/* How to Get Started Section */}
-      <section className={
-        `py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#e6f7ff]'}`
-      }>
+  {/* How to Get Started Section */}
+  <section className={`py-16 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#e6f7ff]'}`} data-aos="fade-up">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>{t.howToStart}</h2>
           <div className="grid md:grid-cols-4 gap-10">
             {/* Step 1 */}
-            <div className="flex flex-col items-center hover:scale-105 transition smooth text-center">
+            <div className="flex flex-col items-center hover:scale-105 transition smooth text-center" data-aos="slide-up" data-aos-delay="100">
               <div className={
                 `rounded-full w-20 h-20 flex items-center justify-center mb-4 shadow-lg ` +
                 (theme === 'dark' ? 'bg-[#181818]' : 'bg-white')
@@ -285,7 +291,7 @@ export default function ServiceHero() {
               <p className={theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}>{t.browseServicesDesc}</p>
             </div>
             {/* Step 2 */}
-            <div className="flex flex-col items-center hover:scale-105 transition smooth text-center">
+            <div className="flex flex-col items-center hover:scale-105 transition smooth text-center" data-aos="slide-up" data-aos-delay="200">
               <div className={
                 `rounded-full w-20 h-20 flex items-center justify-center mb-4 shadow-lg ` +
                 (theme === 'dark' ? 'bg-[#181818]' : 'bg-white')
@@ -296,7 +302,7 @@ export default function ServiceHero() {
               <p className={theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}>{t.connectExpertsDesc}</p>
             </div>
             {/* Step 3 */}
-            <div className="flex flex-col items-center hover:scale-105 transition smooth text-center">
+            <div className="flex flex-col items-center hover:scale-105 transition smooth text-center" data-aos="slide-up" data-aos-delay="300">
               <div className={
                 `rounded-full w-20 h-20 flex items-center justify-center mb-4 shadow-lg ` +
                 (theme === 'dark' ? 'bg-[#181818]' : 'bg-white')
@@ -307,7 +313,7 @@ export default function ServiceHero() {
               <p className={theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}>{t.enrollLearnDesc}</p>
             </div>
             {/* Step 4 */}
-            <div className="flex flex-col items-center hover:scale-105 transition smooth text-center">
+            <div className="flex flex-col items-center hover:scale-105 transition smooth text-center" data-aos="slide-up" data-aos-delay="400">
               <div className={
                 `rounded-full w-20 h-20 flex items-center justify-center mb-4 shadow-lg ` +
                 (theme === 'dark' ? 'bg-[#181818]' : 'bg-white')
@@ -318,14 +324,15 @@ export default function ServiceHero() {
               <p className={theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}>{t.achieveSuccessDesc}</p>
             </div>
           </div>
+          {/* ...existing code... */}
         </div>
       </section>
 
-      {/* Technology & Tools Section */}
-  <section className="w-full py-16 bg-[#1e3a8a]">
+  {/* Technology & Tools Section */}
+  <section className="w-full py-16 bg-[#1e3a8a]" data-aos="fade-up">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold mb-12 text-center" style={{ color: '#fff' }}>{t.techTools}</h2>
-          <div className="flex  md:flex-row md:items-start gap-10">
+          <div className="flex  md:flex-row md:items-start gap-10" data-aos="zoom-in" data-aos-delay="100">
             {/* Left: Paragraph */}
             <div className="md:w-1/2 w-full flex items-center justify-center md:justify-start mb-8 md-:mb-0">
               <p
@@ -378,15 +385,13 @@ export default function ServiceHero() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className={
-        `w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`
-      }>
+  {/* Pricing Section */}
+  <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`} data-aos="fade-up">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold text-center mb-6" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>{t.pricingTitle}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Basic Plan */}
-            <div className={`rounded-2xl shadow-lg p-8 flex flex-col items-center ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-[#1e3a8a]'}`}>
+            <div className={`rounded-2xl shadow-lg p-8 flex flex-col items-center ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-[#1e3a8a]'}`} data-aos="slide-left" data-aos-delay="100">
               <h3 className="text-2xl font-semibold mb-2">{t.basic}</h3>
               <div className="text-4xl font-bold mb-4" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>$19<span className="text-lg font-normal">/mo</span></div>
               <ul className="mb-6 space-y-2 text-left">
@@ -397,7 +402,7 @@ export default function ServiceHero() {
               <button className={`px-6 py-2 rounded font-semibold transition ${theme === 'dark' ? 'bg-[#1e3a8a] text-white hover:bg-blue-400' : 'bg-[#1e3a8a] text-white hover:bg-blue-400'}`}>{t.chooseBasic}</button>
             </div>
             {/* Pro Plan */}
-            <div className={`rounded-2xl shadow-lg p-8 flex flex-col items-center border-4 ${theme === 'dark' ? 'bg-[#181818] border-[#1e3a8a] text-white' : 'bg-white border-[#1e3a8a] text-[#1e3a8a]'}`}>
+            <div className={`rounded-2xl shadow-lg p-8 flex flex-col items-center border-4 ${theme === 'dark' ? 'bg-[#181818] border-[#1e3a8a] text-white' : 'bg-white border-[#1e3a8a] text-[#1e3a8a]'}`} data-aos="slide-up" data-aos-delay="200">
               <h3 className="text-2xl font-semibold mb-2">{t.pro}</h3>
               <div className="text-4xl font-bold mb-4" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>$49<span className="text-lg font-normal">/mo</span></div>
               <ul className="mb-6 space-y-2 text-left">
@@ -409,7 +414,7 @@ export default function ServiceHero() {
               <button className={`px-6 py-2 rounded font-semibold transition ${theme === 'dark' ? 'bg-[#1e3a8a] text-white hover:bg-blue-400' : 'bg-[#1e3a8a] text-white hover:bg-blue-400'}`}>{t.choosePro}</button>
             </div>
             {/* Enterprise Plan */}
-            <div className={`rounded-2xl shadow-lg p-8 flex flex-col items-center ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-[#1e3a8a]'}`}>
+            <div className={`rounded-2xl shadow-lg p-8 flex flex-col items-center ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-[#1e3a8a]'}`} data-aos="slide-right" data-aos-delay="300">
               <h3 className="text-2xl font-semibold mb-2">{t.enterprise}</h3>
               <div className="text-4xl font-bold mb-4" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>$99<span className="text-lg font-normal">/mo</span></div>
               <ul className="mb-6 space-y-2 text-left">
@@ -424,8 +429,8 @@ export default function ServiceHero() {
         </div>
       </section>
 
-      {/* Ready to Join Section */}
-  <section className="w-full py-16 bg-[#1e3a8a]">
+  {/* Ready to Join Section */}
+  <section className="w-full py-16 bg-[#1e3a8a]" data-aos="fade-up" data-aos-delay="200">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-6" style={{ color: '#fff' }}>{t.readyJoin}</h2>
           <p className="text-lg mb-8 text-white">{t.readyJoinDesc}</p>
