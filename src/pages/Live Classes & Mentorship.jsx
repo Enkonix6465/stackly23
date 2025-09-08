@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import web from "../assets/web.mp4";
 import w1 from "../assets/w1.avif";
 import w2 from "../assets/w2.jpeg";
@@ -134,6 +136,8 @@ export default function LiveWorkshopPage() {
   const [theme, setTheme] = useState('light');
   const [language, setLanguage] = useState(() => localStorage.getItem('language') || 'English');
   useEffect(() => {
+    AOS.init({ duration: 1000, once: false });
+    AOS.refresh();
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme') || 'light';
       setTheme(storedTheme);
@@ -168,9 +172,9 @@ export default function LiveWorkshopPage() {
   return (
     <div className={
       `${theme === 'dark' ? 'min-h-screen bg-black text-white' : 'min-h-screen bg-white text-black'}${isRTL ? ' rtl' : ''}`
-    } dir={isRTL ? 'rtl' : 'ltr'}>
+    } dir={isRTL ? 'rtl' : 'ltr'} data-aos="fade-in">
       {/* Hero Section */}
-      <section className="relative w-full h-screen md:h-screen grid place-items-center text-center overflow-hidden" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>
+      <section className="relative w-full h-screen md:h-screen grid place-items-center text-center overflow-hidden" style={{ color: theme === 'dark' ? '#fff' : '#fff' }} data-aos="fade-down">
         {/* Background Video */}
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
@@ -194,7 +198,7 @@ export default function LiveWorkshopPage() {
       </section>
 
       {/* Service Includes Section - Live Class Categories */}
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-[#f8fafc] text-black'}`}> 
+      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-[#f8fafc] text-black'}`} data-aos="fade-up"> 
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-4" style={{ color: '#1e3a8a' }}>
             {t.tracksTitle}
@@ -202,9 +206,9 @@ export default function LiveWorkshopPage() {
           <p className="text-center text-lg mb-10">
             {t.tracksDesc}
           </p>
-          <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 gap-8" data-aos="zoom-in" data-aos-delay="100">
             {t.tracks.map((track, idx) => (
-              <div key={idx} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col">
+              <div key={idx} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col" data-aos="slide-up" data-aos-delay={idx * 150}>
                 <img src={track.image} alt={track.title} className="w-full h-44 object-cover" />
                 <div className="p-5 flex-1 flex flex-col">
                   <h3 className="text-xl font-bold mb-1 text-[#00BFFF]">{track.title}</h3>
@@ -232,12 +236,12 @@ export default function LiveWorkshopPage() {
       </section>
 
       {/* Key Features / What You’ll Get */}
-  <section className="w-full py-16 bg-[#e6f7ff] text-black"> 
+  <section className="w-full py-16 bg-[#e6f7ff] text-black" data-aos="fade-up"> 
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: theme === 'dark' ? '#fff' : '#1e3a8a' }}>{t.featuresTitle}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-10" data-aos="zoom-in" data-aos-delay="100">
             {t.features.map((item, idx) => (
-              <div key={item.num} className={`flex items-start mb-6 rounded-2xl shadow-md p-6 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`}> 
+              <div key={item.num} className={`flex items-start mb-6 rounded-2xl shadow-md p-6 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`} data-aos="slide-right" data-aos-delay={idx * 100}> 
                 <div className="relative flex-shrink-0 mr-4">
                   <span className={`text-5xl font-extrabold ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{
                     background: 'linear-gradient(90deg, #1e3a8a 60%, transparent 60%)',
@@ -258,27 +262,29 @@ export default function LiveWorkshopPage() {
       </section>
 
       {/* Benefits / Outcomes */}
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`}> 
+      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`} data-aos="fade-up"> 
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ color: '#1e3a8a' }}>{t.benefitsTitle}</h2>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg" data-aos="slide-up" data-aos-delay="100">
             {t.benefits.map((benefit, idx) => (
-              <li key={idx} className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>{benefit}</li>
+              <li key={idx} className="flex items-start gap-3" data-aos="fade-up" data-aos-delay={idx * 100}><span className="text-2xl text-[#1e3a8a]">✔</span>{benefit}</li>
             ))}
           </ul>
         </div>
       </section>
 
       {/* Frequently Asked Questions */}
-  <section className="w-full py-16 bg-white text-black"> 
+  <section className="w-full py-16 bg-white text-black" data-aos="fade-up"> 
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: theme === 'dark' ? '#fff' : '#1e3a8a' }}>{t.faqTitle}</h2>
-          <div className="grid lg:grid-cols-2 gap-6">
+          <div className="grid lg:grid-cols-2 gap-6" data-aos="zoom-in" data-aos-delay="100">
             {t.faqs.map((faq, index) => (
               <div
                 key={index}
                 className={`rounded-2xl shadow-md p-6 cursor-pointer transition hover:shadow-lg ${theme === 'dark' ? 'bg-white text-[#1e3a8a]' : 'bg-white text-black'}`}
                 onClick={() => toggleFAQ(index)}
+                data-aos="slide-up"
+                data-aos-delay={index * 100}
               >
                 {/* Question */}
                 <div className="flex justify-between items-center">
@@ -300,10 +306,10 @@ export default function LiveWorkshopPage() {
       {/* CTA Section */}
       <section className={
         `py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`
-      }>
+      } data-aos="fade-up" data-aos-delay="200">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center px-6">
           {/* Left Content */}
-          <div className="space-y-6 flex flex-col justify-center h-full">
+          <div className="space-y-6 flex flex-col justify-center h-full" data-aos="slide-right">
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
               <span dangerouslySetInnerHTML={{ __html: t.ctaTitle }} />
             </h2>
@@ -319,7 +325,7 @@ export default function LiveWorkshopPage() {
             </button>
           </div>
           {/* Right Image */}
-          <div className="flex justify-center items-center h-full">
+          <div className="flex justify-center items-center h-full" data-aos="slide-left">
             <img
               src={w3}
               alt="Live Classes and Mentorship"

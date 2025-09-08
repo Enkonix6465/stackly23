@@ -1,5 +1,6 @@
-
 import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import d1 from "../assets/b1.avif";
 import data from "../assets/data.mp4";
 
@@ -136,6 +137,8 @@ export default function CertificationsCareerSupportPage() {
 	const [theme, setTheme] = useState("light");
 	const [language, setLanguage] = useState(() => localStorage.getItem("language") || "English");
 	useEffect(() => {
+		AOS.init({ duration: 1000, once: false });
+		AOS.refresh();
 		if (typeof window !== "undefined") {
 			const storedTheme = localStorage.getItem("theme") || "light";
 			setTheme(storedTheme);
@@ -170,11 +173,12 @@ export default function CertificationsCareerSupportPage() {
 	return (
 		<div className={
 			`${theme === "dark" ? "min-h-screen bg-black text-white" : "min-h-screen bg-white text-black"}${isRTL ? " rtl" : ""}`
-		} dir={isRTL ? "rtl" : "ltr"}>
+		} dir={isRTL ? "rtl" : "ltr"} data-aos="fade-in">
 			{/* Hero Section */}
 			<section
 				className="relative w-full h-screen md:h-screen grid place-items-center text-center overflow-hidden"
 				style={{ color: theme === "dark" ? "#fff" : "#fff" }}
+				data-aos="fade-down"
 			>
 				{/* Background Video */}
 				<video
@@ -197,10 +201,10 @@ export default function CertificationsCareerSupportPage() {
 			</section>
 
 			{/* Certifications & Career Support Section */}
-			<section className={`py-16 ${theme === "dark" ? "bg-[#222]" : "bg-[#fff]"}`}>
+			<section className={`py-16 ${theme === "dark" ? "bg-[#222]" : "bg-[#fff]"}`} data-aos="fade-up">
 				<div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-4 md:px-6">
 					{/* Left Image */}
-					<div className="flex justify-center">
+					<div className="flex justify-center" data-aos="slide-right">
 						<img
 							src={d1}
 							alt={t.heroTitle}
@@ -208,7 +212,7 @@ export default function CertificationsCareerSupportPage() {
 						/>
 					</div>
 					{/* Right Content */}
-					<div>
+					<div data-aos="slide-left">
 						<h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 break-words leading-tight" style={{ color: '#1e3a8a' }}>
 							{t.sectionTitle}
 						</h2>
@@ -227,14 +231,14 @@ export default function CertificationsCareerSupportPage() {
 			</section>
 
 			{/* Key Features / What You’ll Get */}
-				<section className="w-full py-16 bg-[#e6f7ff] text-black">
+				<section className="w-full py-16 bg-[#e6f7ff] text-black" data-aos="fade-up">
 				<div className="max-w-6xl mx-auto px-6">
 									<h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>
 						{t.featuresTitle}
 					</h2>
-					<div className="grid grid-cols-2 md:grid-cols-2 gap-10">
+					<div className="grid grid-cols-2 md:grid-cols-2 gap-10" data-aos="zoom-in" data-aos-delay="100">
 						{t.features.map((item, idx) => (
-												<div key={item.num} className="flex items-start mb-6 rounded-2xl shadow-md p-6 bg-white text-black"> 
+							<div key={item.num} className="flex items-start mb-6 rounded-2xl shadow-md p-6 bg-white text-black" data-aos="slide-up" data-aos-delay={idx * 100}> 
 								<div className="relative flex-shrink-0 mr-4">
 															<span className="text-5xl font-extrabold text-black" style={{
 																background: "linear-gradient(90deg, #1e3a8a 60%, transparent 60%)",
@@ -257,35 +261,34 @@ export default function CertificationsCareerSupportPage() {
 			</section>
 
 			{/* Benefits / Outcomes */}
-			<section className={`w-full py-16 ${theme === "dark" ? "bg-[#222] text-white" : "bg-white text-black"}`}>
+			<section className={`w-full py-16 ${theme === "dark" ? "bg-[#222] text-white" : "bg-white text-black"}`} data-aos="fade-up">
 				<div className="max-w-6xl mx-auto px-6">
 					<h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ color: '#1e3a8a' }}>
 						{t.benefitsTitle}
 					</h2>
-					<ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
+					<ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg" data-aos="slide-up" data-aos-delay="100">
 						{t.benefits.map((benefit, idx) => (
-							<li key={idx} className="flex items-start gap-3">
-								<span className="text-2xl text-[#1e3a8a]">✔</span>
-								{benefit}
-							</li>
+							<li key={idx} className="flex items-start gap-3" data-aos="fade-up" data-aos-delay={idx * 100}><span className="text-2xl text-[#1e3a8a]">✔</span>{benefit}</li>
 						))}
 					</ul>
 				</div>
 			</section>
 
 			{/* Frequently Asked Questions */}
-				<section className="py-16 bg-white text-black">
+				<section className="py-16 bg-white text-black" data-aos="fade-up">
 				<div className="max-w-6xl mx-auto px-6">
 									<h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>
 						{t.faqTitle}
 					</h2>
-					<div className="grid lg:grid-cols-2 gap-6">
+					<div className="grid lg:grid-cols-2 gap-6" data-aos="zoom-in" data-aos-delay="100">
 						{t.faqs.map((faq, index) => (
-																		<div
-																			key={index}
-																			className={`rounded-2xl shadow-md p-6 cursor-pointer transition hover:shadow-lg bg-white ${theme === 'dark' ? 'text-[#1e3a8a]' : 'text-black'}`}
-																			onClick={() => toggleFAQ(index)}
-																		>
+							<div
+								key={index}
+								className={`rounded-2xl shadow-md p-6 cursor-pointer transition hover:shadow-lg bg-white ${theme === 'dark' ? 'text-[#1e3a8a]' : 'text-black'}`}
+								onClick={() => toggleFAQ(index)}
+								data-aos="slide-up"
+								data-aos-delay={index * 100}
+							>
 								<div className="flex justify-between items-center">
 															<h3 className="text-lg font-semibold">{faq.question}</h3>
 									<span className="font-bold text-xl" style={{ color: '#1e3a8a' }}>
@@ -302,7 +305,7 @@ export default function CertificationsCareerSupportPage() {
 			</section>
 
 			{/* Call to Action Section */}
-			<section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
+			<section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`} data-aos="fade-up" data-aos-delay="200">
 				<div className="max-w-6xl mx-auto px-6 text-center">
 					<h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#fff' }}>
 						{t.ctaTitle}

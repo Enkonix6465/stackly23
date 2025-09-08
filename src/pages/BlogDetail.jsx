@@ -1,5 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import blog1 from "../assets/blog1.jpeg";
 import blog2 from "../assets/blog2.webp";
 import blog3 from "../assets/blog3.avif";
@@ -61,6 +63,11 @@ export default function BlogDetail() {
       }
     }
   }, [language]);
+
+  React.useEffect(() => {
+    AOS.init({ duration: 1000, once: false });
+    AOS.refresh();
+  });
 
   const t = blogTranslations[language] || blogTranslations['English'];
   const { id } = useParams();
@@ -211,23 +218,22 @@ export default function BlogDetail() {
     return (
       <div className={
         `text-center py-20 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`
-      }>
-        <h2 className="text-2xl font-bold">{t.blogNotFound}</h2>
-        <Link to="/blog" className="text-[#1e3a8a] underline mt-4 block">
+      } data-aos="fade-in">
+        <h2 className="text-2xl font-bold" data-aos="fade-down">{t.blogNotFound}</h2>
+        <Link to="/blog" className="text-[#1e3a8a] underline mt-4 block" data-aos="fade-up">
           {t.backToBlogs}
         </Link>
       </div>
     );
   }
-
   return (
-    <div className={theme === 'dark' ? 'pt-20 min-h-screen bg-black text-white' : 'pt-20 min-h-screen bg-white text-black'} dir={language === 'Arabic' || language === 'Hebrew' ? 'rtl' : 'ltr'}>
+    <div className={theme === 'dark' ? 'pt-20 min-h-screen bg-black text-white' : 'pt-20 min-h-screen bg-white text-black'} dir={language === 'Arabic' || language === 'Hebrew' ? 'rtl' : 'ltr'} data-aos="fade-in">
       {/* Back Link */}
-      <Link to="/blog" className="text-[#1e3a8a] underline mt-4 block">
+      <Link to="/blog" className="text-[#1e3a8a] underline mt-4 block" data-aos="fade-up">
         {t.backToBlogs}
       </Link>
       {/* Blog Hero */}
-      <section className="relative w-full h-[80vh] flex items-center justify-center">
+      <section className="relative w-full h-[80vh] flex items-center justify-center" data-aos="fade-down">
         <img
           src={blog.image}
           alt={blog.title[language]}
@@ -235,19 +241,18 @@ export default function BlogDetail() {
         />
         <div className="absolute inset-0 bg-black/50"></div>
       </section>
-
       {/* Blog Content */}
-      <section className="max-w-5xl mx-auto px-6 py-12">
-        <h1 className="text-3xl font-bold text-center mb-8" style={{ color: '#1e3a8a' }}>{blog.title[language]}</h1>
-        <p className={`text-lg md:text-xl max-w-5xl text-center mx-auto ${theme === 'dark' ? 'text-gray-200' : 'text-gray-800'}`}>
+      <section className="max-w-5xl mx-auto px-6 py-12" data-aos="fade-up">
+        <h1 className="text-3xl font-bold text-center mb-8" style={{ color: '#1e3a8a' }} data-aos="zoom-in">{blog.title[language]}</h1>
+        <p className={`text-lg md:text-xl max-w-5xl text-center mx-auto ${theme === 'dark' ? 'text-gray-200' : 'text-gray-800'}`} data-aos="fade-up">
           {blog.intro[language]}
         </p>
         {blog.sections.map((sec, index) => (
-          <div key={index} className="mb-10">
-            <h2 className="text-2xl font-bold mb-4" style={{ color: '#1e3a8a' }}>
+          <div key={index} className="mb-10" data-aos="slide-up" data-aos-delay={index * 150}>
+            <h2 className="text-2xl font-bold mb-4" style={{ color: '#1e3a8a' }} data-aos="fade-right">
               {sec.heading[language]}
             </h2>
-            <p className={`leading-relaxed ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>{sec.content[language]}</p>
+            <p className={`leading-relaxed ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`} data-aos="fade-left">{sec.content[language]}</p>
           </div>
         ))}
       </section>

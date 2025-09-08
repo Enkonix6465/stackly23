@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import aihero from "../assets/aihero.mp4";
 import a1 from "../assets/a1.jpg";
 import a2 from "../assets/a2.jpeg";
@@ -16,6 +18,8 @@ export default function CoursesProgramsPage() {
   const [openIndex, setOpenIndex] = useState(null);
 
   React.useEffect(() => {
+    AOS.init({ duration: 1000, once: false });
+    AOS.refresh();
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme') || 'light';
       setTheme(storedTheme);
@@ -197,9 +201,9 @@ export default function CoursesProgramsPage() {
   };
 
   return (
-    <div className={`${theme === 'dark' ? 'min-h-screen bg-black text-white' : 'min-h-screen bg-white text-black'}${isRTL ? ' rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
+    <div className={`${theme === 'dark' ? 'min-h-screen bg-black text-white' : 'min-h-screen bg-white text-black'}${isRTL ? ' rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'} data-aos="fade-in">
       {/* Hero Section */}
-      <section className="relative w-full h-screen md:h-screen grid place-items-center text-center overflow-hidden" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>
+      <section className="relative w-full h-screen md:h-screen grid place-items-center text-center overflow-hidden" style={{ color: theme === 'dark' ? '#fff' : '#fff' }} data-aos="fade-down">
         {/* Background Video */}
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
@@ -225,13 +229,13 @@ export default function CoursesProgramsPage() {
       </section>
 
       {/* Service Includes Section - Course Categories */}
-      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-[#fff] text-black'}`}> 
+      <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-[#fff] text-black'}`} data-aos="fade-up"> 
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-4" style={{ color: '#1e3a8a' }}>{t.categoriesTitle}</h2>
           <p className="text-center text-lg mb-10">{t.categoriesDesc}</p>
-          <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8" data-aos="zoom-in" data-aos-delay="100">
             {courses.map((course, idx) => (
-              <div key={idx} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col">
+              <div key={idx} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col" data-aos="slide-up" data-aos-delay={idx * 150}>
                 <img src={course.image} alt={course.title} className="w-full h-44 object-cover" />
                 <div className="p-5 flex-1 flex flex-col">
                   <h3 className="text-xl font-bold mb-1 text-[#1e3a8a]">{course.title}</h3>
@@ -259,12 +263,12 @@ export default function CoursesProgramsPage() {
       </section>
 
       {/* Key Features / What You’ll Get */}
-  <section className="w-full py-16 bg-[#e6f7ff] text-black"> 
+  <section className="w-full py-16 bg-[#e6f7ff] text-black" data-aos="fade-up"> 
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>{t.featuresTitle}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-10" data-aos="zoom-in" data-aos-delay="100">
             {features.map((item, idx) => (
-              <div key={item.num} className="flex items-start mb-6">
+              <div key={item.num} className="flex items-start mb-6" data-aos="slide-right" data-aos-delay={idx * 100}>
                 <div className="relative flex-shrink-0 mr-4">
                   <span className="text-5xl font-extrabold text-black" style={{
                     background: 'linear-gradient(90deg, #1e3a8a 60%, transparent 60%)',
@@ -285,27 +289,29 @@ export default function CoursesProgramsPage() {
       </section>
 
     {/* Benefits / Outcomes (Courses & Programs Page) */}
-    <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`}> 
+    <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`} data-aos="fade-up"> 
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ color: '#1e3a8a' }}>{t.benefitsTitle}</h2>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg" data-aos="slide-up" data-aos-delay="100">
           {benefits.map((benefit, idx) => (
-            <li key={idx} className="flex items-start gap-3"><span className="text-2xl text-[#1e3a8a]">✔</span>{benefit}</li>
+            <li key={idx} className="flex items-start gap-3" data-aos="fade-up" data-aos-delay={idx * 100}><span className="text-2xl text-[#1e3a8a]">✔</span>{benefit}</li>
           ))}
         </ul>
       </div>
     </section>
 
     {/* Frequently Asked Questions */}
-  <section className="w-full py-16 bg-white text-black"> 
+  <section className="w-full py-16 bg-white text-black" data-aos="fade-up"> 
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>{t.faqTitle}</h2>
-        <div className="grid  lg:grid-cols-2 gap-6">
+        <div className="grid  lg:grid-cols-2 gap-6" data-aos="zoom-in" data-aos-delay="100">
           {faqs.map((faq, index) => (
             <div
               key={index}
               className={`rounded-2xl shadow-md p-6 cursor-pointer transition hover:shadow-lg ${theme === 'dark' ? 'bg-white text-[#1e3a8a]' : 'bg-white text-black'}`}
               onClick={() => toggleFAQ(index)}
+              data-aos="slide-up"
+              data-aos-delay={index * 100}
             >
               {/* Question */}
               <div className="flex justify-between items-center">
@@ -327,10 +333,10 @@ export default function CoursesProgramsPage() {
     {/* Explore Courses & Programs Section */}
     <section className={
       `py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`
-    }>
+    } data-aos="fade-up" data-aos-delay="200">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center px-6">
         {/* Left Content */}
-        <div className="space-y-6 flex flex-col justify-center h-full">
+        <div className="space-y-6 flex flex-col justify-center h-full" data-aos="slide-right">
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
             {t.exploreTitle}
           </h2>
@@ -344,7 +350,7 @@ export default function CoursesProgramsPage() {
         </div>
 
         {/* Right Image */}
-        <div className="flex justify-center items-center h-full">
+        <div className="flex justify-center items-center h-full" data-aos="slide-left">
           <img
             src={a3}
             alt="Courses & Programs"

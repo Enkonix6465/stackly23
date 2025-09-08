@@ -1,8 +1,18 @@
+import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import blogHero from "../assets/blog.mp4";
+import blog1 from "../assets/blog1.jpeg";
+import blog2 from "../assets/blog2.webp";
+import blog3 from "../assets/blog3.avif";
+import { Link } from "react-router-dom";
 
 export default function BlogHero() {
   const [theme, setTheme] = React.useState("light");
   const [language, setLanguage] = React.useState(() => localStorage.getItem('language') || 'English');
   React.useEffect(() => {
+    AOS.init({ duration: 1000, once: false });
+    AOS.refresh();
     if (typeof window !== "undefined") {
       const storedTheme = localStorage.getItem("theme") || "light";
       setTheme(storedTheme);
@@ -192,11 +202,13 @@ export default function BlogHero() {
         `${theme === "dark" ? "min-h-screen bg-black text-white" : "min-h-screen bg-white text-black"}${isRTL ? ' rtl' : ''}`
       }
       dir={isRTL ? 'rtl' : 'ltr'}
+      data-aos="fade-in"
     >
       {/* Hero Section */}
       <section
         className="relative w-full h-screen flex items-center justify-center"
         style={{ color: theme === "dark" ? "#fff" : "#222" }}
+        data-aos="fade-down"
       >
         <video
           className="absolute inset-0 w-full h-full object-cover"
@@ -222,17 +234,19 @@ export default function BlogHero() {
       </section>
 
       {/* Latest Blogs */}
-      <section className={`py-16 ${theme === "dark" ? "bg-[#181818]" : "bg-[#e6f7ff]"}`}>
+      <section className={`py-16 ${theme === "dark" ? "bg-[#181818]" : "bg-[#e6f7ff]"}`} data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
             {t.latestTitle}
           </h2>
           {latestBlogs.length > 0 ? (
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="100">
               {latestBlogs.map((blog, idx) => (
                 <article
                   key={idx}
                   className={`rounded-2xl shadow hover:shadow-lg transition duration-300 overflow-hidden ${theme === "dark" ? "bg-[#222] text-white" : "bg-gray-50 text-black"}`}
+                  data-aos="slide-up"
+                  data-aos-delay={idx * 150}
                 >
                   <img
                     src={blog.image}
@@ -263,10 +277,10 @@ export default function BlogHero() {
       </section>
 
       {/* Featured Articles */}
-      <section className="py-16 bg-[#1e3a8a]">
+      <section className="py-16 bg-[#1e3a8a]" data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">{t.featuredTitle}</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8" data-aos="zoom-in" data-aos-delay="100">
             {t.featured.map((feature, index) => (
               <article key={index} className="rounded-2xl shadow hover:shadow-lg transition duration-300 overflow-hidden bg-white text-black">
                 <img src={feature.image} alt={feature.title} className="w-full h-48 object-cover" />
@@ -282,7 +296,7 @@ export default function BlogHero() {
       </section>
 
       {/* Categories */}
-  <section className="py-16 bg-[#e6f7ff]">
+  <section className="py-16 bg-[#e6f7ff]" data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-6 grid  md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -291,7 +305,7 @@ export default function BlogHero() {
             <p className="text-lg mb-6 text-gray-700">{t.categoriesDesc}</p>
             <p className="text-gray-600">{t.categoriesSubDesc}</p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-6" data-aos="slide-right" data-aos-delay="100">
             {t.categories.map((cat, index) => (
               <div key={index} className="p-6 rounded-2xl shadow-md hover:shadow-lg transition bg-white text-black">
                 <h3 className="text-xl font-semibold mb-2 text-[#1e3a8a]">{cat.name}</h3>
@@ -303,7 +317,7 @@ export default function BlogHero() {
       </section>
 
       {/* Service Comparison */}
-      <section className={`py-16 ${theme === "dark" ? "bg-[#222]" : "bg-[#1e3a8a]"}`}>
+      <section className={`py-16 ${theme === "dark" ? "bg-[#222]" : "bg-[#1e3a8a]"}`} data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
             {t.serviceTitle}
@@ -334,10 +348,10 @@ export default function BlogHero() {
       </section>
 
       {/* Myths & Facts */}
-      <section className="py-16 bg-[#e6f7ff]">
+      <section className="py-16 bg-[#e6f7ff]" data-aos="fade-up">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>{t.mythsTitle}</h2>
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-10" data-aos="zoom-in" data-aos-delay="100">
             <div className="space-y-4">
               <div className="flex gap-2">
                 <h3 className="text-red-600 font-bold">{language === 'Arabic' ? 'خرافة:' : language === 'Hebrew' ? 'מיתוס:' : 'Myth:'}</h3>
@@ -383,7 +397,7 @@ export default function BlogHero() {
       </section>
 
       {/* Call to Action Section */}
-      <section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`}>
+      <section className={`py-20 ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#1e3a8a]'}`} data-aos="fade-up" data-aos-delay="200">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#fff' }}>{t.ctaTitle}</h2>
           <p className="text-lg mb-8 text-gray-100">{t.ctaDesc}</p>
@@ -395,10 +409,3 @@ export default function BlogHero() {
     </div>
   );
 }
-// ...existing code...
-import React from "react";
-import blogHero from "../assets/blog.mp4";
-import blog1 from "../assets/blog1.jpeg";
-import blog2 from "../assets/blog2.webp";
-import blog3 from "../assets/blog3.avif";
-import { Link } from "react-router-dom";

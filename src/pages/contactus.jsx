@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import contactVideo from "../assets/contact.mp4";
 import contact1 from "../assets/contact1.jpg";
 import contact2 from "../assets/contact2.jpg";
@@ -47,6 +49,11 @@ export default function ContactHero() {
       };
     }
   }, []);
+
+  React.useEffect(() => {
+    AOS.init({ duration: 1000, once: false });
+    AOS.refresh();
+  });
 
   const isRTL = language === 'Arabic' || language === 'Hebrew';
 
@@ -175,9 +182,9 @@ export default function ContactHero() {
   };
 
   return (
-    <div className={`${theme === 'dark' ? 'min-h-screen text-white' : 'min-h-screen text-black'}${isRTL ? ' rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
+    <div className={`${theme === 'dark' ? 'min-h-screen text-white' : 'min-h-screen text-black'}${isRTL ? ' rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'} data-aos="fade-in">
       {/* Hero Section */}
-      <section className={`relative h-screen flex items-center justify-center ${theme === 'dark' ? '' : ''}`}> 
+      <section className={`relative h-screen flex items-center justify-center ${theme === 'dark' ? '' : ''}`} data-aos="fade-down"> 
         <video
           autoPlay
           muted
@@ -200,16 +207,18 @@ export default function ContactHero() {
       </section>
 
       {/* Contact Cards Section */}
-  <section className="py-16 bg-[#1e3a8a]"> 
+  <section className="py-16 bg-[#1e3a8a]" data-aos="fade-up"> 
         <div className="max-w-6xl mx-auto px-6">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white"> 
             {t.supportTitle}
           </h2>
-          <div className="grid gap-10 md:grid-cols-3">
+          <div className="grid gap-10 md:grid-cols-3" data-aos="zoom-in" data-aos-delay="100">
             {cards.map((card, index) => (
               <div
                 key={index}
-        className="bg-white text-black rounded-2xl shadow-md hover:shadow-xl transition text-center p-6"
+                className="bg-white text-black rounded-2xl shadow-md hover:shadow-xl transition text-center p-6"
+                data-aos="slide-up"
+                data-aos-delay={index * 150}
               >
                 <img
                   src={card.img}
@@ -227,7 +236,7 @@ export default function ContactHero() {
       </section>
 
       {/* Contact Form Section */}
-      <section className={`py-20 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`}>
+      <section className={`py-20 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`} data-aos="fade-up">
         <div className="max-w-4xl mx-auto px-6">
           <p className="text-[#1e3a8a] font-semibold uppercase mb-2">
             {t.contactSmall}
@@ -284,7 +293,7 @@ export default function ContactHero() {
       </section>
 
       {/* Location Section */}
-  <section className="py-20 bg-[#1e3a8a]">
+  <section className="py-20 bg-[#1e3a8a]" data-aos="fade-up">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-[#fff] font-semibold uppercase mb-2">
             {t.locationSmall}
@@ -308,9 +317,9 @@ export default function ContactHero() {
       </section>
 
       {/* FAQ Section */}
-  <section className={`py-20 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`}> 
+  <section className={`py-20 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`} data-aos="fade-up"> 
         <div className="max-w-7xl mx-auto px-6 grid  md:grid-cols-2 gap-12 items-center">
-          <div>
+          <div data-aos="slide-right" data-aos-delay="100">
             <p className="text-[#1e3a8a] font-semibold uppercase mb-2">
               {t.faqSmall}
             </p>
@@ -323,11 +332,13 @@ export default function ContactHero() {
               className="rounded-xl shadow-lg"
             />
           </div>
-          <div className="space-y-4">
+          <div className="space-y-4" data-aos="slide-left" data-aos-delay="200">
             {faqs.map((faq, index) => (
               <div 
                 key={index} 
                 className={theme === 'dark' ? "bg-[#222] border-gray-700 rounded-xl shadow-sm border text-white" : "bg-gray-50 border-gray-100 rounded-xl shadow-sm border"}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
               >
                 <button 
                   onClick={() => toggleFAQ(index)}
@@ -352,7 +363,7 @@ export default function ContactHero() {
       </section>
 
       {/* Newsletter Section */}
-  <section className="py-20 bg-[#1e3a8a]">
+  <section className="py-20 bg-[#1e3a8a]" data-aos="fade-up" data-aos-delay="200">
         <div className="max-w-4xl mx-auto text-center px-6">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-white">
             {t.newsletterTitle}
