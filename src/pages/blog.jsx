@@ -1,3 +1,6 @@
+import learning2 from "../assets/learning (2).jpg";
+import future from "../assets/future.jpg";
+import online from "../assets/online.jpg";
 import React from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -80,9 +83,9 @@ export default function BlogHero() {
         { name: "Skill Development", desc: "Explore resources to upskill in communication, finance, technology, and more." },
       ],
       featured: [
-        { title: "Mastering Online Learning", description: "Practical tips on how to stay consistent, focused, and motivated while learning online.", image: blog1, link: "/blog/1" },
-        { title: "Future Skills You Need to Learn", description: "Discover the most in-demand skills for the next decade and how online courses can help you acquire them.", image: blog2, link: "/blog/2" },
-        { title: "Balancing Studies and Career", description: "Learn how to effectively balance work, study, and personal growth in today’s fast-paced environment.", image: blog3, link: "/blog/3" },
+  { title: "Mastering Online Learning", description: "Practical tips on how to stay consistent, focused, and motivated while learning online.", image: online, link: "/blog/1" },
+  { title: "Future Skills You Need to Learn", description: "Discover the most in-demand skills for the next decade and how online courses can help you acquire them.", image: future, link: "/blog/2" },
+  { title: "Balancing Studies and Career", description: "Learn how to effectively balance work, study, and personal growth in today’s fast-paced environment.", image: learning2, link: "/blog/3" },
       ],
       services: [
         { name: "Courses & Programs", features: ["Beginner Friendly", "Self-paced & Live Options", "Certified Curriculum", "Career-Oriented"] },

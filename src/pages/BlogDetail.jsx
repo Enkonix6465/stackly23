@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import blog1 from "../assets/blog1.jpeg";
-import blog2 from "../assets/blog2.webp";
-import blog3 from "../assets/blog3.avif";
+import blog1 from "../assets/online.jpg";
+import blog2 from "../assets/future.jpg";
+import blog3 from "../assets/learning (2).jpg";
 
 export default function BlogDetail() {
   // Theme and language state synced with Header
