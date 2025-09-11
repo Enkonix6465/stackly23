@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import d1 from "../assets/b1.avif";
+import certification from "../assets/certificate.webp";
 import data from "../assets/data.mp4";
 
 const translations = {
@@ -206,7 +207,7 @@ export default function CertificationsCareerSupportPage() {
 					{/* Left Image */}
 					<div className="flex justify-center" data-aos="slide-right">
 						<img
-							src={d1}
+										src={certification}
 							alt={t.heroTitle}
 							className="rounded-2xl shadow-lg w-full max-w-md md:max-w-full"
 						/>

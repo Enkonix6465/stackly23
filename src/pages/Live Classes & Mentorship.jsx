@@ -1,8 +1,11 @@
+import career from "../assets/career.png";
+import leader from "../assets/leader.png";
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import web from "../assets/web.mp4";
 import w1 from "../assets/w1.avif";
+import personal from "../assets/personal.jpg";
 import w2 from "../assets/w2.jpeg";
 import w3 from "../assets/w3.webp";
 
@@ -13,9 +16,9 @@ const translations = {
     tracksTitle: "Live Class & Mentorship Tracks",
     tracksDesc: "Choose from a range of tracks designed for personal, academic, and professional growth.",
     tracks: [
-      { title: "Personal Development Essentials", mentor: "Jane Doe", price: "Free Trial", duration: "12h Live", lessons: "6 Sessions", image: w1, students: 18, rating: 5 },
-      { title: "Communication & Leadership", mentor: "John Smith", price: "$49", duration: "20h Live", lessons: "8 Sessions", image: w2, students: 25, rating: 5 },
-      { title: "Career Growth Mentorship", mentor: "Emily Lee", price: "$99", duration: "30h Live", lessons: "12 Sessions", image: w3, students: 12, rating: 5 },
+  { title: "Personal Development Essentials", mentor: "Jane Doe", price: "Free Trial", duration: "12h Live", lessons: "6 Sessions", image: personal, students: 18, rating: 5 },
+  { title: "Communication & Leadership", mentor: "John Smith", price: "$49", duration: "20h Live", lessons: "8 Sessions", image: leader, students: 25, rating: 5 },
+  { title: "Career Growth Mentorship", mentor: "Emily Lee", price: "$99", duration: "30h Live", lessons: "12 Sessions", image: career, students: 12, rating: 5 },
     ],
     featuresTitle: "Key Features / What You’ll Get",
     features: [
@@ -209,7 +212,7 @@ export default function LiveWorkshopPage() {
           <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 gap-8" data-aos="zoom-in" data-aos-delay="100">
             {t.tracks.map((track, idx) => (
               <div key={idx} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col" data-aos="slide-up" data-aos-delay={idx * 150}>
-                <img src={track.image} alt={track.title} className="w-full h-44 object-cover" />
+                <img src={track.image} alt={track.title} className="w-full h-10 object-fit" />
                 <div className="p-5 flex-1 flex flex-col">
                   <h3 className="text-xl font-bold mb-1 text-[#00BFFF]">{track.title}</h3>
                   <p className="text-sm text-gray-500 mb-2">{language === 'English' ? 'Mentor' : language === 'Arabic' ? 'المرشد' : 'מנטור'}: {track.mentor}</p>

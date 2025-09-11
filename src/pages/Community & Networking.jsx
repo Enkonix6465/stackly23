@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import communityHero from "../assets/cloud.mp4";
-import c1 from "../assets/c1.jpg";
+import communityHero from "../assets/community.mp4";
+import c1 from "../assets/network.jpg";
 import c2 from "../assets/c2.png";
-import c3 from "../assets/c3.avif";
+import c3 from "../assets/community.jpg";
 
 const translations = {
   English: {

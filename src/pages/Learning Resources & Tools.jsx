@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ethicalHero from "../assets/ethical.mp4";
-import e1 from "../assets/e1.jpeg";
+import e1 from "../assets/resources2.jpg";
 import e2 from "../assets/e2 2.jpeg";
-import e3 from "../assets/e3.jpeg";
+import e3 from "../assets/resources.jpg";
 
 const translations = {
   English: {
@@ -327,11 +327,11 @@ export default function LearningResourcesPage() {
             </button>
           </div>
           {/* Right Image */}
-          <div className="flex justify-center items-center h-full" data-aos="fade-left">
+          <div className="w-full h-96 rounded-2xl shadow-lg overflow-hidden" data-aos="fade-left">
             <img
               src={e3}
               alt={interpolate(t.learning, t) + ' ' + interpolate(t.resourcesTools, t) + ' CTA'}
-              className="rounded-2xl shadow-lg w-full max-w-xl object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
