@@ -233,17 +233,11 @@ export default function CommunityNetworkingPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>{t.featuresTitle}</h2>
           <div className="grid grid-cols-2 md:grid-cols-2 gap-10">
             {t.features.map((item, idx) => (
-              <div key={item.num} className="flex items-start mb-6 rounded-2xl shadow-md p-6 bg-white text-black" data-aos="zoom-in" data-aos-delay={idx * 100}> 
-                <div className="relative flex-shrink-0 mr-4">
-                  <span className="text-5xl font-extrabold text-black" style={{
-                    background: 'linear-gradient(90deg, #1e3a8a 60%, transparent 60%)',
-                    padding: '0.1em 0.5em',
-                    borderRadius: '0.2em',
-                    color: '#111',
-                    display: 'inline-block',
-                  }}>{item.num}</span>
+              <div key={item.num} className="flex items-center mb-6 rounded-2xl shadow-md p-6 bg-white text-black" data-aos="zoom-in" data-aos-delay={idx * 100}> 
+                <div className="flex-shrink-0 mr-4 flex items-center justify-center" style={{width: '80px', height: '80px', background: '#1e3a8a', borderRadius: '0.3em'}}>
+                  <span className="text-5xl font-extrabold text-white flex items-center justify-center" style={{width: '100%', height: '100%'}}>{item.num}</span>
                 </div>
-                <div>
+                <div className="flex flex-col justify-center">
                   <h3 className="text-xl font-bold mb-1 text-black">{item.heading}</h3>
                   <p className="text-base max-w-md text-gray-600">{item.desc}</p>
                 </div>

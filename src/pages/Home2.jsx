@@ -480,7 +480,7 @@ export default function Home2() {
                   `rounded-xl shadow p-6 flex flex-col items-center ` +
                   (theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]')
                 }
-                  data-aos={idx % 2 === 0 ? "slide-left" : "slide-right"}
+                  data-aos="zoom-in"
                   data-aos-delay={idx * 150}
                 >
                   <h3 className="text-xl font-semibold mb-2" style={{ color: theme === 'dark' ? '#fff' : '#1e3a8a' }}>{webinar.title}</h3>
@@ -562,7 +562,7 @@ export default function Home2() {
           <div className="grid lg:grid-cols-2 gap-6">
             {t.scholarshipsOffers.map((offer, idx) => (
               <div key={idx} className="rounded-xl p-6 shadow-lg bg-white text-[#1e3a8a] min-h-[120px] flex flex-col justify-center"
-                data-aos={idx % 2 === 0 ? "slide-right" : "slide-left"}
+                data-aos="fade-in"
                 data-aos-delay={idx * 200}
               >
                 <h3 className="font-bold text-lg mb-2">{offer.title}</h3>
@@ -606,18 +606,18 @@ export default function Home2() {
 
 
   <section className={`w-full py-16 bg-[#1e3a8a]`} data-aos="fade-up">
-      <div className="max-w-6xl mx-auto px-4 md:px-8 text-center">
+      <div className="max-w-6xl mx-auto px-4 md:px-8  text-center">
   <div className="mb-2 text-xl font-semibold tracking-widest uppercase" style={{ color: '#fff' }}>
           {t.partnersTitle}
         </div>
   <p className={'text-white mb-10'}>
           {t.partnersDesc}
         </p>
-        <div className="grid grid-cols-5 sm:grid-cols-4 gap-6 md:gap-8 justify-center items-center">
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 md:gap-8 justify-center items-center">
           {logos.map((logo, idx) => (
             <div key={idx} className="bg-white rounded-xl shadow p-4 flex items-center justify-center h-24 transition-transform hover:scale-105"
               style={{ minWidth: '120px', minHeight: '80px' }}
-              data-aos={idx % 2 === 0 ? "slide-left" : "slide-right"}
+              data-aos="fade-on"
               data-aos-delay={idx * 100}
             >
               <img src={logo} alt={`Partner ${idx + 1}`} className="h-12 object-contain max-w-[100px]" />
@@ -631,7 +631,7 @@ export default function Home2() {
        
 
       <section
-        className={`w-full py-16 flex items-center justify-center ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#fff]'}`}
+        className={`w-full py-16 flex items-center justify-center ${theme === 'dark' ? 'bg-[#222]' : 'bg-[#e6f7ff]'}`}
         data-aos="slide-up"
       >
         <div className="max-w-2xl mx-auto text-center px-6">

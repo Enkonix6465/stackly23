@@ -210,7 +210,7 @@ export default function BlogHero() {
       {/* Hero Section */}
       <section
         className="relative w-full h-screen flex items-center justify-center"
-        style={{ color: theme === "dark" ? "#fff" : "#222" }}
+  style={{ color: theme === "dark" ? "#222" : "#222" }}
         data-aos="fade-down"
       >
         <video
@@ -223,7 +223,7 @@ export default function BlogHero() {
         <div className="absolute inset-0 bg-black/50"></div>
         <div
           className="relative text-center px-6"
-          style={{ color: theme === "dark" ? "#fff" : "#fff" }}
+          style={{ color: theme === "dark" ? "#fff" : "#1e3a8a" }}
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             {t.heroTitle}
@@ -237,7 +237,7 @@ export default function BlogHero() {
       </section>
 
       {/* Latest Blogs */}
-      <section className={`py-16 ${theme === "dark" ? "bg-[#181818]" : "bg-[#e6f7ff]"}`} data-aos="fade-up">
+  <section className={`py-16 ${theme === "dark" ? "bg-[#111]" : "bg-[#e6f7ff]"}`} data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
             {t.latestTitle}
@@ -247,7 +247,7 @@ export default function BlogHero() {
               {latestBlogs.map((blog, idx) => (
                 <article
                   key={idx}
-                  className={`rounded-2xl shadow hover:shadow-lg transition duration-300 overflow-hidden ${theme === "dark" ? "bg-[#222] text-white" : "bg-gray-50 text-black"}`}
+                  className={`rounded-2xl shadow hover:shadow-lg transition duration-300 overflow-hidden ${theme === "dark" ? "bg-[#181818] text-[#fff]" : "bg-gray-50 text-black"}`}
                   data-aos="slide-up"
                   data-aos-delay={idx * 150}
                 >
@@ -257,16 +257,16 @@ export default function BlogHero() {
                     className="w-full h-48 object-cover"
                   />
                   <div className="p-6">
-                    <h3 className={`text-xl font-semibold mb-3 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                    <h3 className={`text-xl font-semibold mb-3 ${theme === "dark" ? "text-[#fff]" : "text-gray-900"}`}>
                       {blog.title}
                     </h3>
-                    <p className={`text-sm leading-relaxed mb-2 ${theme === "dark" ? "text-gray-200" : "text-gray-600"}`}>
+                    <p className={`text-sm leading-relaxed mb-2 ${theme === "dark" ? "text-[#e0e0e0]" : "text-gray-600"}`}>
                       {blog.description}
                     </p>
-                    <div className={`text-xs mb-2 ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}>
+                    <div className={`text-xs mb-2 ${theme === "dark" ? "text-[#bdbdbd]" : "text-gray-500"}`}>
                       {language === 'Arabic' ? 'بواسطة' : language === 'Hebrew' ? 'מאת' : 'By'} {blog.author}
                     </div>
-                    <div className={`text-xs ${theme === "dark" ? "text-gray-500" : "text-gray-400"}`}>
+                    <div className={`text-xs ${theme === "dark" ? "text-[#bdbdbd]" : "text-gray-400"}`}>
                       {new Date(blog.createdAt).toLocaleString(language === 'Arabic' ? 'ar' : language === 'Hebrew' ? 'he' : 'en')}
                     </div>
                   </div>
@@ -274,7 +274,7 @@ export default function BlogHero() {
               ))}
             </div>
           ) : (
-            <p className={`text-center text-lg ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}>{t.noBlogs}</p>
+            <p className={`text-center text-lg ${theme === "dark" ? "text-[#e0e0e0]" : "text-gray-500"}`}>{t.noBlogs}</p>
           )}
         </div>
       </section>
@@ -282,7 +282,7 @@ export default function BlogHero() {
       {/* Featured Articles */}
       <section className="py-16 bg-[#1e3a8a]" data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">{t.featuredTitle}</h2>
+          <h2 className={`text-4xl md:text-5xl ${theme === "dark" ? "text-[#000]" : "text-black"}font-bold text-center mb-12`}>{t.featuredTitle}</h2>
           <div className="grid md:grid-cols-3 gap-8" data-aos="zoom-in" data-aos-delay="100">
             {t.featured.map((feature, index) => (
               <article key={index} className="rounded-2xl shadow hover:shadow-lg transition duration-300 overflow-hidden bg-white text-black">
@@ -302,7 +302,7 @@ export default function BlogHero() {
   <section className="py-16 bg-[#e6f7ff]" data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-6 grid  md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className={`text-4xl ${theme === "dark" ? "text-black" : "text-black"} md:text-5xl font-bold mb-6`}>
               {t.categoriesTitle}
             </h2>
             <p className="text-lg mb-6 text-gray-700">{t.categoriesDesc}</p>
@@ -320,7 +320,7 @@ export default function BlogHero() {
       </section>
 
       {/* Service Comparison */}
-      <section className={`py-16 ${theme === "dark" ? "bg-[#222]" : "bg-[#1e3a8a]"}`} data-aos="fade-up">
+  <section className={`py-16 ${theme === "dark" ? "bg-[#111]" : "bg-[#1e3a8a]"}`} data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
             {t.serviceTitle}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import welcomeImg from "../assets/welcome.jpg";
-import logoImg from "../assets/logo.png";
+import logoImg from "../assets/logo.jpg";
 
 export default function WelcomePage() {
   // Language dropdown state
@@ -194,15 +194,16 @@ export default function WelcomePage() {
           </div>
         )}
       </div>
-      <div className="w-full max-w-md bg-transparent rounded-xl shadow-lg p-8 flex flex-col items-center justify-center">
+  <div className="w-full max-w-5xl bg-transparent rounded-xl shadow-lg p-20 flex flex-col items-center justify-center">
         {!showSignup && !showForgot ? (
           // LOGIN FORM
           <div>
             <div className="flex flex-col items-center mb-4">
-              <img src={logoImg} alt="Logo" className="h-13 w-20 mb-2" />
+             <img src={logoImg} alt="Logo" className="h-24 w-40 mb-2" />
             </div>
             <h2 className="text-2xl font-bold text-[#1e3a8a] mb-6 text-left w-full">{t.login}</h2>
             <form className="space-y-4" onSubmit={handleLogin}>
+              <label className="block text-sm font-semibold text-[#1e3a8a] mb-1">{t.email} <span className="text-red-500">*</span></label>
               <input
                 type="email"
                 placeholder={t.email}
@@ -211,6 +212,7 @@ export default function WelcomePage() {
                 onChange={e => setLoginEmail(e.target.value)}
                 required
               />
+              <label className="block text-sm font-semibold text-[#1e3a8a] mb-1">{t.password} <span className="text-red-500">*</span></label>
               <input
                 type="password"
                 placeholder={t.password}
@@ -232,10 +234,10 @@ export default function WelcomePage() {
               </button>
             </form>
 
-            <p className="mt-4 text-sm text-white text-center">
+            <p className="mt-4 text-sm text-black text-center">
               {t.dontHaveAccount}{" "}
               <button
-                className="text-[#1e3a8a] hover:underline"
+                className="text-[#fff] hover:underline"
                 onClick={() => setShowSignup(true)}
               >
                 {t.signup}
@@ -246,7 +248,7 @@ export default function WelcomePage() {
           // FORGOT PASSWORD FORM
           <div>
             <div className="flex flex-col items-center mb-4">
-              <img src={logoImg} alt="Logo" className="h-13 w-20 mb-2" />
+              <img src={logoImg} alt="Logo" className="h-24 w-40 mb-2" />
             </div>
             <h2 className="text-2xl font-bold mb-6 text-center text-[#1e3a8a]">{t.resetPassword}</h2>
             <form className="space-y-4" onSubmit={handleForgotPassword}>
@@ -292,29 +294,36 @@ export default function WelcomePage() {
         ) : (
           // SIGNUP FORM
           <>
-                // SIGNUP FORM
+    
                 <div>
                   <div className="flex flex-col items-center mb-4">
-                    <img src={logoImg} alt="Logo" className="h-13 w-20 mb-2" />
+                    <img src={logoImg} alt="Logo" className="h-24 w-40 mb-2" />
                   </div>
-                  <h2 className="text-2xl font-bold mb-6 text-center text-[#1e3a8a]">{t.signupTitle}</h2>
+                  <h2 className="text-2xl font-bold mb-6 text-center text-[#ooo]">{t.signupTitle}</h2>
                   <form className="space-y-4" onSubmit={handleSignup}>
                     <div className="flex gap-2">
-                      <input
-                        type="text"
-                        placeholder={t.firstName}
-                        className="w-1/2 border p-3 rounded-lg"
-                        value={signupData.firstName}
-                        onChange={e => setSignupData({ ...signupData, firstName: e.target.value })}
-                        required />
-                      <input
-                        type="text"
-                        placeholder={t.lastName}
-                        className="w-1/2 border p-3 rounded-lg"
-                        value={signupData.lastName}
-                        onChange={e => setSignupData({ ...signupData, lastName: e.target.value })}
-                        required />
+                      <div className="w-1/2">
+                        <label className="block text-sm font-semibold text-[#1e3a8a] mb-1">{t.firstName} <span className="text-red-500">*</span></label>
+                        <input
+                          type="text"
+                          placeholder={t.firstName}
+                          className="w-full border p-3 rounded-lg"
+                          value={signupData.firstName}
+                          onChange={e => setSignupData({ ...signupData, firstName: e.target.value })}
+                          required />
+                      </div>
+                      <div className="w-1/2">
+                        <label className="block text-sm font-semibold text-[#1e3a8a] mb-1">{t.lastName} <span className="text-red-500">*</span></label>
+                        <input
+                          type="text"
+                          placeholder={t.lastName}
+                          className="w-full border p-3 rounded-lg"
+                          value={signupData.lastName}
+                          onChange={e => setSignupData({ ...signupData, lastName: e.target.value })}
+                          required />
+                      </div>
                     </div>
+                    <label className="block text-sm font-semibold text-[#1e3a8a] mb-1">{t.email} <span className="text-red-500">*</span></label>
                     <input
                       type="email"
                       placeholder={t.email}
@@ -322,6 +331,7 @@ export default function WelcomePage() {
                       value={signupData.email}
                       onChange={e => setSignupData({ ...signupData, email: e.target.value })}
                       required />
+                    <label className="block text-sm font-semibold text-[#1e3a8a] mb-1">{t.phone} <span className="text-red-500">*</span></label>
                     <input
                       type="tel"
                       placeholder={t.phone}
@@ -329,6 +339,7 @@ export default function WelcomePage() {
                       value={signupData.phone}
                       onChange={e => setSignupData({ ...signupData, phone: e.target.value })}
                       required />
+                    <label className="block text-sm font-semibold text-[#1e3a8a] mb-1">{t.password} <span className="text-red-500">*</span></label>
                     <input
                       type="password"
                       placeholder={t.password}
@@ -336,6 +347,7 @@ export default function WelcomePage() {
                       value={signupData.password}
                       onChange={e => setSignupData({ ...signupData, password: e.target.value })}
                       required />
+                    <label className="block text-sm font-semibold text-[#1e3a8a] mb-1">{t.confirmNewPassword} <span className="text-red-500">*</span></label>
                     <input
                       type="password"
                       placeholder={t.confirmNewPassword}
@@ -359,17 +371,8 @@ export default function WelcomePage() {
                       {t.login}
                     </button>
                   </p>
-                </div><p className="mt-4 text-sm text-white text-center">
-                  Already have an account?{" "}
-                  <button
-                    className="text-[#1e3a8a] hover:underline"
-                    onClick={() => setShowSignup(false)}
-                  >
-                    Login
-                  </button>
-                </p></>
-        )
-      }
+               </div> </>
+      )}
       </div>
     </div>
   );

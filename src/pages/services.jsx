@@ -1,3 +1,4 @@
+// ...existing imports...
 import React from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -148,6 +149,24 @@ export default function ServiceHero() {
   // Theme and language state synced with Header
   const [theme, setTheme] = React.useState('light');
   const [language, setLanguage] = React.useState(() => localStorage.getItem('language') || 'English');
+  const whatWeThinkImg = s1; // Example image, replace with actual if needed
+  const whatWeThinkTitle = language === 'Arabic' ? 'ماذا نعتقد' : 'What We Think';
+  const whatWeThinkDesc = language === 'Arabic'
+    ? 'في جوهرنا، نؤمن بأن التعليم يجب أن يكون متاحًا وجذابًا وتحويليًا للجميع. فريقنا شغوف بكسر الحواجز وخلق الفرص للمتعلمين من جميع مناحي الحياة. نحن نحتضن الابتكار والشمولية والالتزام بالتعلم مدى الحياة، ونضمن أن كل طالب يمكنه تحقيق إمكاناته الكاملة في عالم رقمي.'
+    : 'At our core, we believe education should be accessible, engaging, and transformative for everyone. Our team is passionate about breaking barriers and creating opportunities for learners from all walks of life. We embrace innovation, inclusivity, and a commitment to lifelong learning, ensuring every student can reach their full potential in a digital world.';
+  const whatWeThinkList = language === 'Arabic'
+    ? [
+        'تمكين الطلاب من خلال موارد مجانية وعالية الجودة',
+        'تعزيز مجتمع تعليمي داعم ومتعدد الثقافات',
+        'استخدام التكنولوجيا لتخصيص التعليم',
+        'تشجيع الفضول والإبداع والنمو',
+      ]
+    : [
+        'Empowering students with free, high-quality resources',
+        'Fostering a supportive and diverse learning community',
+        'Leveraging technology to personalize education',
+        'Encouraging curiosity, creativity, and growth',
+      ];
   React.useEffect(() => {
     // Initialize and refresh AOS on every render for full-page animation
     AOS.init({
@@ -192,26 +211,43 @@ export default function ServiceHero() {
         dir={isRTL ? 'rtl' : 'ltr'}
         data-aos="fade-in"
       >
-  {/* Hero Section */}
-  <section className="relative w-full h-screen overflow-hidden" data-aos="fade-down">
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          src={serviceHeroVideo}
-          autoPlay
-          loop
-          muted
-        />
-        <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-          <h1 className="text-5xl md:text-6xl font-bold" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>
-            {t.heroTitle}
-          </h1>
-          <p className={`mt-6 text-xl md:text-2xl max-w-3xl ${theme === 'dark' ? 'text-white' : 'text-white'}`}
-          >
-            {t.heroDesc}
-          </p>
-        </div>
-      </section>
+        {/* Hero Section */}
+        <section className="relative w-full h-screen overflow-hidden" data-aos="fade-down">
+          <video
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            src={serviceHeroVideo}
+            autoPlay
+            loop
+            muted
+          />
+          <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
+          <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+            <h1 className="text-5xl md:text-6xl font-bold" style={{ color: theme === 'dark' ? '#fff' : '#fff' }}>
+              {t.heroTitle}
+            </h1>
+            <p className={`mt-6 text-xl md:text-2xl max-w-3xl ${theme === 'dark' ? 'text-white' : 'text-white'}`}
+            >
+              {t.heroDesc}
+            </p>
+          </div>
+        </section>
+        {/* What We Think Section (Mobile Responsive) */}
+        <section className={`py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`} data-aos="fade-up">
+          <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 items-stretch gap-8">
+            {/* Left: Image */}
+            <div className="w-full flex items-center justify-center mb-8 md:mb-0">
+              <img src={whatWeThinkImg} alt="What We Think" className="rounded-2xl shadow-xl w-full h-auto object-cover max-h-[400px] min-h-[200px]" data-aos="zoom-in" data-aos-delay="200" />
+            </div>
+            {/* Right: Content */}
+            <div className={`w-full flex flex-col justify-center`} data-aos="slide-right" data-aos-delay="200">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-[#1e3a8a]">{whatWeThinkTitle}</h2>
+              <p className={`text-base sm:text-lg text-justify ${theme === 'dark' ? 'text-white' : 'text-black'} mb-2 sm:mb-4`}>{whatWeThinkDesc}</p>
+              <ul className={`list-disc text-justify ${theme === 'dark' ? 'text-white' : 'text-black'} pl-5 space-y-2`}>
+                {whatWeThinkList.map((item, idx) => (<li key={idx} className="text-sm sm:text-base">{item}</li>))}
+              </ul>
+            </div>
+          </div>
+        </section>
 
       {/* Services Section */}
   <section className={`py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`} data-aos="slide-right">
@@ -222,7 +258,7 @@ export default function ServiceHero() {
               <div
                 key={index}
                 className="grid md:grid-cols-2 items-center gap-6"
-                data-aos={index % 2 === 0 ? "slide-left" : "slide-right"}
+                data-aos="zoom-in"
                 data-aos-delay={index * 150}
               >
                 {/* Image */}
@@ -330,50 +366,50 @@ export default function ServiceHero() {
 
   {/* Technology & Tools Section */}
   <section className="w-full py-16 bg-[#1e3a8a]" data-aos="fade-up">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-12 text-center" style={{ color: '#fff' }}>{t.techTools}</h2>
-          <div className="flex  md:flex-row md:items-start gap-10" data-aos="zoom-in" data-aos-delay="100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center" style={{ color: '#fff' }}>{t.techTools}</h2>
+          <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-10" data-aos="zoom-in" data-aos-delay="100">
             {/* Left: Paragraph */}
-            <div className="md:w-1/2 w-full flex items-center justify-center md:justify-start mb-8 md-:mb-0">
+            <div className="w-full md:w-1/2 flex items-center justify-center md:justify-start mb-6 md:mb-0">
               <p
-                className="text-lg text-justify text-white"
+                className="text-base sm:text-lg text-justify text-white"
                 style={{ maxWidth: "400px" }}
               >
                 {t.techToolsDesc}
               </p>
             </div>
             {/* Right: 2x2 Grid of 4 boxes */}
-            <div className="md:w-1/2 w-full grid sm:grid-cols-2 gap-6">
+            <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* AI/ML */}
-              <div className="p-6 rounded-xl shadow-md bg-white text-[#1e3a8a]">
-                <h3 className="text-xl font-semibold mb-2" style={{ color: '#1e3a8a' }}>{t.aiMl}</h3>
-                <ul className="list-disc ml-5">
+              <div className="p-4 sm:p-6 rounded-xl shadow-md bg-white text-[#1e3a8a]">
+                <h3 className="text-base sm:text-xl font-semibold mb-2" style={{ color: '#1e3a8a' }}>{t.aiMl}</h3>
+                <ul className="list-disc ml-4 sm:ml-5 text-sm sm:text-base">
                   <li>TensorFlow</li>
                   <li>PyTorch</li>
                 </ul>
               </div>
               {/* Web Dev */}
-              <div className="p-6 rounded-xl shadow-md bg-white text-[#1e3a8a]">
-                <h3 className="text-xl font-semibold mb-2" style={{ color: '#1e3a8a' }}>{t.webDev}</h3>
-                <ul className="list-disc ml-5">
+              <div className="p-4 sm:p-6 rounded-xl shadow-md bg-white text-[#1e3a8a]">
+                <h3 className="text-base sm:text-xl font-semibold mb-2" style={{ color: '#1e3a8a' }}>{t.webDev}</h3>
+                <ul className="list-disc ml-4 sm:ml-5 text-sm sm:text-base">
                   <li>React</li>
                   <li>Node.js</li>
                   <li>Django</li>
                 </ul>
               </div>
               {/* Data Science */}
-              <div className="p-6 rounded-xl shadow-md bg-white text-[#1e3a8a]">
-                <h3 className="text-xl font-semibold mb-2" style={{ color: '#1e3a8a' }}>{t.dataScience}</h3>
-                <ul className="list-disc ml-5">
+              <div className="p-4 sm:p-6 rounded-xl shadow-md bg-white text-[#1e3a8a]">
+                <h3 className="text-base sm:text-xl font-semibold mb-2" style={{ color: '#1e3a8a' }}>{t.dataScience}</h3>
+                <ul className="list-disc ml-4 sm:ml-5 text-sm sm:text-base">
                   <li>Python</li>
                   <li>R</li>
                   <li>Tableau</li>
                 </ul>
               </div>
               {/* Blockchain & Cloud */}
-              <div className="p-6 rounded-xl shadow-md bg-white text-[#1e3a8a]">
-                <h3 className="text-xl font-semibold mb-2" style={{ color: '#1e3a8a' }}>{t.blockchainCloud}</h3>
-                <ul className="list-disc ml-5">
+              <div className="p-4 sm:p-6 rounded-xl shadow-md bg-white text-[#1e3a8a]">
+                <h3 className="text-base sm:text-xl font-semibold mb-2" style={{ color: '#1e3a8a' }}>{t.blockchainCloud}</h3>
+                <ul className="list-disc ml-4 sm:ml-5 text-sm sm:text-base">
                   <li>Ethereum</li>
                   <li>Solidity</li>
                   <li>AWS</li>
@@ -391,7 +427,7 @@ export default function ServiceHero() {
           <h2 className="text-4xl font-bold text-center mb-6" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>{t.pricingTitle}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Basic Plan */}
-            <div className={`rounded-2xl shadow-lg p-8 flex flex-col items-center ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-[#1e3a8a]'}`} data-aos="slide-left" data-aos-delay="100">
+            <div className={`rounded-2xl shadow-lg p-8 flex flex-col items-center ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-[#1e3a8a]'}`} data-aos="slide-right" data-aos-delay="100">
               <h3 className="text-2xl font-semibold mb-2">{t.basic}</h3>
               <div className="text-4xl font-bold mb-4" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>$19<span className="text-lg font-normal">/mo</span></div>
               <ul className="mb-6 space-y-2 text-left">

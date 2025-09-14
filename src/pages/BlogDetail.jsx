@@ -137,13 +137,187 @@ export default function BlogDetail() {
             Arabic: "يكمن مستقبل التعلم عبر الإنترنت في التقنيات الغامرة مثل الفصول الدراسية الافتراضية، المدرسين المدعومين بالذكاء الاصطناعي، ومنصات التعلم التكيفية التي تخصص المحتوى للاحتياجات الفردية. سيصبح التعلم مدى الحياة هو القاعدة مع تطور الصناعات بسرعة، وسيواصل المهنيون تحديث مهاراتهم من خلال الدورات القصيرة والشهادات. لن يكمل التعليم عبر الإنترنت الطرق التقليدية فحسب، بل قد يصبح الوضع الأساسي للتعلم في العصر الرقمي.",
             Hebrew: "עתיד הלמידה המקוונת טמון בטכנולוגיות סוחפות כמו כיתות מציאות מדומה, מורים מבוססי בינה מלאכותית ופלטפורמות למידה אדפטיביות שמותאמות לצרכים האישיים. למידה לאורך כל החיים תהפוך לנורמה ככל שהתעשיות יתפתחו במהירות, ואנשי מקצוע יעדכנו את כישוריהם באופן מתמיד באמצעות קורסים קצרים והסמכות. החינוך המקוון לא רק ישלים את השיטות המסורתיות אלא עשוי להפוך לאמצעי הלמידה העיקרי בעידן הדיגיטלי."
           }
+        }
+      ]
+    },
+    {
+      id: "2",
+      title: {
+        English: "Future Skills You Need to Learn",
+        Arabic: "مهارات المستقبل التي تحتاج لتعلمها",
+        Hebrew: "מיומנויות העתיד שצריך ללמוד"
+      },
+      image: blog2,
+      intro: {
+        English: "Discover the most in-demand skills for the next decade and how online courses can help you acquire them. Stay ahead in your career by learning what matters most in the digital age.",
+        Arabic: "اكتشف أكثر المهارات المطلوبة للعقد القادم وكيف يمكن للدورات عبر الإنترنت مساعدتك في اكتسابها. كن في المقدمة في حياتك المهنية من خلال تعلم ما يهم في العصر الرقمي.",
+        Hebrew: "גלה את המיומנויות המבוקשות ביותר לעשור הקרוב וכיצד קורסים אונליין יכולים לעזור לך לרכוש אותן. היה מוביל בקריירה שלך על ידי למידת מה שחשוב בעידן הדיגיטלי."
+      },
+      sections: [
+        {
+          heading: {
+            English: "Top Future Skills",
+            Arabic: "أهم مهارات المستقبل",
+            Hebrew: "מיומנויות העתיד המובילות"
+          },
+          content: {
+            English: "Skills like data analysis, digital marketing, coding, project management, and emotional intelligence are increasingly vital. Online learning platforms offer specialized courses to help you master these skills and stay competitive.",
+            Arabic: "مهارات مثل تحليل البيانات، التسويق الرقمي، البرمجة، إدارة المشاريع، والذكاء العاطفي أصبحت أكثر أهمية. توفر منصات التعلم عبر الإنترنت دورات متخصصة لمساعدتك على إتقان هذه المهارات والبقاء في المنافسة.",
+            Hebrew: "מיומנויות כמו ניתוח נתונים, שיווק דיגיטלי, קידוד, ניהול פרויקטים ואינטליגנציה רגשית הופכות לחשובות יותר ויותר. פלטפורמות לימוד אונליין מציעות קורסים ייחודיים שיעזרו לך לשלוט במיומנויות אלו ולהישאר תחרותי."
+          }
         },
+        {
+          heading: {
+            English: "Why Future Skills Matter",
+            Arabic: "لماذا مهارات المستقبل مهمة",
+            Hebrew: "למה מיומנויות העתיד חשובות"
+          },
+          content: {
+            English: "The workplace is evolving rapidly. Employers seek adaptable professionals who can learn new technologies and collaborate globally. Future skills ensure you’re ready for new opportunities and challenges.",
+            Arabic: "مكان العمل يتطور بسرعة. يبحث أصحاب العمل عن محترفين قادرين على التكيف وتعلم تقنيات جديدة والتعاون عالميًا. مهارات المستقبل تضمن استعدادك للفرص والتحديات الجديدة.",
+            Hebrew: "מקום העבודה משתנה במהירות. מעסיקים מחפשים אנשי מקצוע גמישים שיכולים ללמוד טכנולוגיות חדשות ולשתף פעולה גלובלית. מיומנויות העתיד מבטיחות שתהיה מוכן להזדמנויות ואתגרים חדשים."
+          }
+        },
+        {
+          heading: {
+            English: "How to Learn Future Skills",
+            Arabic: "كيف تتعلم مهارات المستقبل",
+            Hebrew: "איך ללמוד מיומנויות עתיד"
+          },
+          content: {
+            English: "Use online courses, join communities, and practice regularly. Set clear goals, track your progress, and seek feedback from mentors and peers to accelerate your growth.",
+            Arabic: "استخدم الدورات عبر الإنترنت، انضم إلى المجتمعات، وتمرن بانتظام. حدد أهدافًا واضحة، تتبع تقدمك، واطلب ملاحظات من المرشدين والأقران لتسريع نموك.",
+            Hebrew: "השתמש בקורסים אונליין, הצטרף לקהילות ותרגל באופן קבוע. קבע מטרות ברורות, עקוב אחרי ההתקדמות שלך וקבל משוב ממנטורים ועמיתים כדי להאיץ את הצמיחה שלך."
+          }
+        },
+        {
+          heading: {
+            English: "Practical Applications",
+            Arabic: "تطبيقات عملية",
+            Hebrew: "יישומים מעשיים"
+          },
+          content: {
+            English: "Apply future skills in real-world scenarios such as building a portfolio, contributing to open-source projects, or volunteering for tech initiatives. These experiences help you gain confidence and demonstrate your abilities to employers.",
+            Arabic: "طبّق مهارات المستقبل في سيناريوهات واقعية مثل بناء ملف أعمال، المساهمة في مشاريع مفتوحة المصدر، أو التطوع في مبادرات تقنية. هذه التجارب تساعدك على اكتساب الثقة وإظهار قدراتك لأصحاب العمل.",
+            Hebrew: "השתמש במיומנויות העתיד במצבים אמיתיים כמו בניית תיק עבודות, תרומה לפרויקטים בקוד פתוח או התנדבות ביוזמות טכנולוגיות. חוויות אלו עוזרות לך לצבור ביטחון ולהציג את היכולות שלך למעסיקים."
+          }
+        },
+        {
+          heading: {
+            English: "Resources for Learning",
+            Arabic: "مصادر للتعلم",
+            Hebrew: "משאבים ללמידה"
+          },
+          content: {
+            English: "Explore online platforms, podcasts, webinars, and books dedicated to future skills. Join online communities and forums to stay updated and network with professionals in your field.",
+            Arabic: "استكشف منصات الإنترنت، البودكاست، الندوات، والكتب المخصصة لمهارات المستقبل. انضم إلى المجتمعات والمنتديات عبر الإنترنت للبقاء على اطلاع وبناء شبكة علاقات مع محترفين في مجالك.",
+            Hebrew: "גלה פלטפורמות אונליין, פודקאסטים, וובינרים וספרים המוקדשים למיומנויות העתיד. הצטרף לקהילות ופורומים ברשת כדי להישאר מעודכן וליצור קשרים עם אנשי מקצוע בתחום שלך."
+          }
+        },
+        {
+          heading: {
+            English: "Industry Examples",
+            Arabic: "أمثلة من الصناعة",
+            Hebrew: "דוגמאות מהתעשייה"
+          },
+          content: {
+            English: "Tech companies, financial institutions, and healthcare organizations are actively seeking candidates with future skills. Case studies show how professionals have advanced their careers by mastering these abilities.",
+            Arabic: "شركات التقنية، المؤسسات المالية، والمنظمات الصحية تبحث بنشاط عن مرشحين يمتلكون مهارات المستقبل. دراسات الحالة تظهر كيف تقدم المحترفون في حياتهم المهنية من خلال إتقان هذه المهارات.",
+            Hebrew: "חברות טכנולוגיה, מוסדות פיננסיים וארגוני בריאות מחפשים באופן פעיל מועמדים עם מיומנויות העתיד. מחקרי מקרה מראים כיצד אנשי מקצוע קידמו את הקריירה שלהם על ידי שליטה במיומנויות אלו."
+          }
+        }
       ],
     },
-    // ...repeat for blog 2 and blog 3, adding full translations for all sections
+    {
+      id: "3",
+      title: {
+        English: "Balancing Studies and Career",
+        Arabic: "موازنة الدراسة والعمل",
+        Hebrew: "איזון לימודים וקריירה"
+      },
+      image: blog3,
+      intro: {
+        English: "Learn how to effectively balance work, study, and personal growth in today’s fast-paced environment. Discover strategies to manage your time, set priorities, and achieve your goals.",
+        Arabic: "تعلم كيفية تحقيق التوازن بين العمل والدراسة والنمو الشخصي في بيئة سريعة التغير. اكتشف استراتيجيات لإدارة وقتك، تحديد الأولويات، وتحقيق أهدافك.",
+        Hebrew: "למד כיצד לאזן בין עבודה, לימודים וצמיחה אישית בסביבה מהירה. גלה אסטרטגיות לניהול זמן, קביעת סדרי עדיפויות והשגת מטרותיך."
+      },
+      sections: [
+        {
+          heading: {
+            English: "Time Management Tips",
+            Arabic: "نصائح لإدارة الوقت",
+            Hebrew: "טיפים לניהול זמן"
+          },
+          content: {
+            English: "Create a daily schedule, set realistic goals, and use productivity tools. Prioritize tasks and avoid multitasking to stay focused and reduce stress.",
+            Arabic: "أنشئ جدولًا يوميًا، حدد أهدافًا واقعية، واستخدم أدوات الإنتاجية. رتب المهام حسب الأولوية وتجنب تعدد المهام للبقاء مركزًا وتقليل التوتر.",
+            Hebrew: "צור לוח זמנים יומי, קבע מטרות ריאליות והשתמש בכלי פרודוקטיביות. סדר עדיפויות למשימות והימנע מריבוי משימות כדי להישאר ממוקד ולהפחית לחץ."
+          }
+        },
+        {
+          heading: {
+            English: "Setting Priorities",
+            Arabic: "تحديد الأولويات",
+            Hebrew: "קביעת סדרי עדיפויות"
+          },
+          content: {
+            English: "Identify what matters most in your studies and career. Focus on high-impact activities and learn to say no to distractions.",
+            Arabic: "حدد ما هو الأكثر أهمية في دراستك وحياتك المهنية. ركز على الأنشطة ذات التأثير العالي وتعلم قول لا للمشتتات.",
+            Hebrew: "זהה מה חשוב ביותר בלימודים ובקריירה שלך. התמקד בפעילויות בעלות השפעה גבוהה ולמד לומר לא להסחות דעת."
+          }
+        },
+        {
+          heading: {
+            English: "Achieving Personal Growth",
+            Arabic: "تحقيق النمو الشخصي",
+            Hebrew: "השגת צמיחה אישית"
+          },
+          content: {
+            English: "Balance work and study with self-care, hobbies, and social connections. Celebrate your achievements and reflect on your progress regularly.",
+            Arabic: "وازن بين العمل والدراسة مع العناية الذاتية، الهوايات، والروابط الاجتماعية. احتفل بإنجازاتك وراجع تقدمك بانتظام.",
+            Hebrew: "איזן בין עבודה ולימודים עם טיפוח עצמי, תחביבים וקשרים חברתיים. חגוג את ההישגים שלך וחשוב על ההתקדמות שלך באופן קבוע."
+          }
+        },
+        {
+          heading: {
+            English: "Work-Life Balance Strategies",
+            Arabic: "استراتيجيات التوازن بين العمل والحياة",
+            Hebrew: "אסטרטגיות לאיזון עבודה-חיים"
+          },
+          content: {
+            English: "Set boundaries for work and study hours, schedule regular breaks, and make time for hobbies and relaxation. Use digital tools to track your progress and avoid burnout.",
+            Arabic: "حدد حدودًا لساعات العمل والدراسة، وجدول فترات راحة منتظمة، وخصص وقتًا للهوايات والاسترخاء. استخدم الأدوات الرقمية لتتبع تقدمك وتجنب الإرهاق.",
+            Hebrew: "קבע גבולות לשעות עבודה ולימודים, תכנן הפסקות קבועות וקדש זמן לתחביבים ומנוחה. השתמש בכלים דיגיטליים כדי לעקוב אחרי ההתקדמות שלך ולמנוע שחיקה."
+          }
+        },
+        {
+          heading: {
+            English: "Mental Health Tips",
+            Arabic: "نصائح للصحة النفسية",
+            Hebrew: "טיפים לבריאות הנפש"
+          },
+          content: {
+            English: "Practice mindfulness, connect with supportive friends or mentors, and seek professional help if needed. Remember that personal growth includes caring for your mental well-being.",
+            Arabic: "مارس التأمل الذهني، تواصل مع أصدقاء أو مرشدين داعمين، واطلب المساعدة المهنية إذا لزم الأمر. تذكر أن النمو الشخصي يشمل الاهتمام بصحتك النفسية.",
+            Hebrew: "תרגל מיינדפולנס, שמור על קשר עם חברים או מנטורים תומכים ופנה לעזרה מקצועית אם צריך. זכור שצמיחה אישית כוללת גם דאגה לבריאות הנפש שלך."
+          }
+        },
+        {
+          heading: {
+            English: "Success Stories",
+            Arabic: "قصص نجاح",
+            Hebrew: "סיפורי הצלחה"
+          },
+          content: {
+            English: "Read about individuals who have successfully balanced studies and career, and learn from their experiences. Their journeys can inspire you to create your own path to success.",
+            Arabic: "اقرأ عن أشخاص نجحوا في تحقيق التوازن بين الدراسة والعمل، وتعلم من تجاربهم. يمكن أن تلهمك رحلاتهم لصنع طريقك الخاص نحو النجاح.",
+            Hebrew: "קרא על אנשים שהצליחו לאזן בין לימודים לקריירה ולמד מהניסיון שלהם. המסע שלהם יכול להעניק לך השראה ליצור את הדרך שלך להצלחה."
+          }
+        }
+      ],
+    }
   ];
 
-  
 
   const blog = blogs.find((b) => b.id === id);
 

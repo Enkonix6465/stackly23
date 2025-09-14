@@ -395,25 +395,25 @@ export default function Home1({ theme = "light" }) {
       >
         {themeState === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
       </button>
-      {/* Hero Section Toggle */}
-      <button className="my-4 px-4 py-2 rounded bg-[#1e3a8a] text-white font-semibold" onClick={() => setShowHero((v) => !v)}>
-        {showHero ? t.hideHero : t.showHero}
-      </button>
+       
       {showHero && (
         <section ref={heroRef} className={`relative w-full h-screen overflow-hidden ${themeState === 'dark' ? 'bg-black' : 'bg-white'}` } data-aos="fade-down">
           <video
-            className="absolute top-0 left-0 w-full h-full object-cover"
+            className="absolute top-0 left-0 w-full h-full object-cover opacity-60"
             src={heroVideo}
             autoPlay
             muted
             loop
             playsInline
           ></video>
+          {/* Overlay for increased contrast, lighter for mobile */}
+           {/* Fallback image for mobile if video fails or is hidden */}
+           
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-            <h1 className="text-4xl md:text-6xl font-bold" style={{ color: "#1e3a8a" }}>
+            <h1 className="text-2xl md:text-6xl  font-bold text-white drop-shadow-lg">
               {t.heroTitle}
             </h1>
-            <p className={`mt-4 max-w-3xl text-lg md:text-xl ${themeState === 'dark' ? 'text-white' : 'text-white'}` }>
+            <p className="mt-4 max-w-3xl text-lg md:text-xl text-white drop-shadow-lg">
               {t.heroDesc}
             </p>
             <button
@@ -430,9 +430,9 @@ export default function Home1({ theme = "light" }) {
         </section>
       )}
 
-      {/* Courses Section */}
+    {/* Courses Section */}
   <section ref={coursesRef} className={`w-full py-16 ${themeState === 'dark' ? 'bg-[#232b3b] text-white' : 'bg-[#e6f7ff] text-black'}`} data-aos="slide-right">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl  mx-auto md:px-6">
           <h2
             className={`text-4xl font-bold text-center mb-4 ${themeState === 'dark' ? 'text-white' : ''}`}
             style={themeState === 'dark' ? {} : { color: "#1e3a8a" }}
@@ -454,7 +454,7 @@ export default function Home1({ theme = "light" }) {
                 <div
                   key={idx}
                   className={`rounded-xl shadow hover:shadow-lg overflow-hidden relative border flex flex-col items-center ${themeState === 'dark' ? 'bg-[#232b3b] border-gray-700' : 'bg-[#dff4ff] border-[#b3e6ff]'}`}
-                  data-aos={idx % 2 === 0 ? "slide-left" : "slide-right"}
+                  data-aos="zoom-in"
                   data-aos-delay={idx * 150}
                 >
                   {/* Image */}
@@ -534,13 +534,13 @@ export default function Home1({ theme = "light" }) {
       </section>
 
       {/* Why Choose Us Section */}
-  <section className={`py-16 ${themeState === 'dark' ? 'bg-[#232b3b]' : 'bg-white'}`} data-aos="slide-left"> 
+  <section className={`py-16 ${themeState === 'dark' ? 'bg-[#232b3b]' : 'bg-white'}`} data-aos="slide-right"> 
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className={`text-4xl font-bold mb-12 tracking-wide ${themeState === 'dark' ? 'text-white' : ''}`} style={themeState === 'dark' ? {} : { color: "#1e3a8a" }}>{t.whyTitle}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {t.features.map((feature, idx) => (
               <div key={idx} className={`relative group border border-[#e0e0e0] rounded-2xl shadow-lg h-72 flex flex-col items-center justify-center cursor-pointer overflow-hidden transition-transform ${themeState === 'dark' ? 'bg-white' : 'bg-[#1e3a8a]'}`}
-                data-aos={idx % 2 === 0 ? "slide-right" : "slide-left"}
+                data-aos="zoom-in"
                 data-aos-delay={idx * 200}
               >
                 {/* Icon */}
@@ -574,13 +574,13 @@ export default function Home1({ theme = "light" }) {
 
       {/* Testimonials Section */}
   <section className="py-16 bg-[#1e3a8a]" data-aos="fade-up">
-        <div className="max-w-6xl mx-auto px-6 text-center">
+        <div className=" mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-12 tracking-wide uppercase" style={{ color: "#fff" }}>
             {t.testimonialsTitle}
           </h2>
-          <div className="flex flex-row gap-8 justify-center items-stretch w-full">
+          <div className="flex flex-wrap gap-8 justify-center items-stretch w-full">
             {[0, 1, 2].map((idx) => (
-              <div key={idx} className="bg-[#f5f7fa] border border-[#e0e0e0] p-6 text-left flex flex-col justify-between items-start min-w-[320px] max-w-[350px] w-full h-[340px] min-h-[340px] rounded-xl"
+              <div key={idx} className="bg-[#f5f7fa] border border-[#e0e0e0] p-6 text-left flex flex-col justify-between items-start min-w-[280px] max-w-[350px] w-full h-[340px] min-h-[340px] rounded-xl"
                 data-aos={idx % 2 === 0 ? "fade-up" : "fade-down"}
                 data-aos-delay={idx * 200}
               >
@@ -589,7 +589,7 @@ export default function Home1({ theme = "light" }) {
                   {Array.from({ length: 5 }).map((_, i) => (
                     <svg
                       key={i}
-                      className="w-5 h-5 text-yellow-500"
+                      className="w-5 h-5  text-yellow-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -639,7 +639,7 @@ export default function Home1({ theme = "light" }) {
       </section>
       {/* CTA Section (matches Home2 style) */}
       <section
-        className={`w-full py-16 flex items-center justify-center ${themeState === 'dark' ? 'bg-[#232b3b]' : 'bg-[#fff]'}`}
+        className="w-full py-16 flex items-center justify-center bg-[#e6f7ff]"
         data-aos="slide-up"
       >
         <div className="max-w-2xl mx-auto text-center px-6">

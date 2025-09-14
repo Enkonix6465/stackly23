@@ -367,7 +367,7 @@ export default function UserDetailsSection() {
       )}>
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
-          "text-[#1e3a8a]"
+          theme === "dark" ? "text-white" : "text-[#1e3a8a]"
         )}>{t.userSignupDetails}</h2>
         {signupDetails.length > 0 ? (
           <div className="overflow-x-auto">
@@ -416,7 +416,7 @@ export default function UserDetailsSection() {
       )}>
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
-          "text-[#1e3a8a]"
+          theme === "dark" ? "text-white" : "text-[#1e3a8a]"
         )}>{t.instructorDetails}</h2>
         {instructorDetails.length > 0 ? (
           <div className="overflow-x-auto">
@@ -452,24 +452,26 @@ export default function UserDetailsSection() {
         )}
       </div>
 
-      {/* Dashboard Graphs */}
+
+      {/* Dashboard Graphs - 3 graphs side by side */}
       <div className={clsx(
         "rounded-xl shadow p-6 mt-6",
         theme === "dark" ? "bg-[#181f2a]" : "bg-white"
       )}>
         <h2 className={clsx(
           "text-2xl font-bold mb-8 text-center",
-          "text-[#1e3a8a]"
+          theme === "dark" ? "text-white" : "text-[#1e3a8a]"
         )}>{t.dashboardGraphs}</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
+        <div className="flex md:flex-row flex-col items-stretch justify-center gap-8">
+          {/* Signups Per Day */}
+          <div className="flex-1 flex flex-col items-center justify-center">
             <h3 className={clsx(
               "text-lg font-semibold mb-4 text-center",
-              "text-[#1e3a8a]"
+              theme === "dark" ? "text-white" : "text-[#1e3a8a]"
             )}>{t.signupsPerDay}</h3>
             {signupGraphData.length > 0 ? (
-              <ResponsiveContainer width="100%" height={250}>
-                <BarChart data={signupGraphData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+              <ResponsiveContainer width="100%" height={160}>
+                <BarChart data={signupGraphData} margin={{ top: 10, right: 20, left: 0, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke={theme === "dark" ? "#374151" : "#e5e7eb"} />
                   <XAxis dataKey="date" stroke={theme === "dark" ? "#fff" : "#22223b"} />
                   <YAxis allowDecimals={false} stroke={theme === "dark" ? "#fff" : "#22223b"} />
@@ -481,12 +483,13 @@ export default function UserDetailsSection() {
               <p className={clsx(theme === "dark" ? "text-gray-400" : "text-gray-500")}>{t.noSignupGraph}</p>
             )}
           </div>
-          <div>
+          {/* Instructors Per Expertise */}
+          <div className="flex-1 flex flex-col items-center justify-center">
             <h3 className={clsx(
               "text-lg font-semibold mb-4 text-center",
-              "text-[#1e3a8a]"
+              theme === "dark" ? "text-white" : "text-[#1e3a8a]"
             )}>{t.instructorsPerExpertise}</h3>
-            <ResponsiveContainer width="100%" height={250}>
+            <ResponsiveContainer width="100%" height={160}>
               <BarChart data={[
                 { expertise: t.dataScience, count: 5 },
                 { expertise: t.webDevelopment, count: 8 },
@@ -502,51 +505,50 @@ export default function UserDetailsSection() {
               </BarChart>
             </ResponsiveContainer>
           </div>
+          {/* Course Enrollments Per Category */}
+          <div className="flex-1 flex flex-col items-center justify-center">
+            <h3 className={clsx(
+              "text-lg font-semibold mb-4 text-center",
+              theme === "dark" ? "text-white" : "text-[#1e3a8a]"
+            )}>{t.courseEnrollments}</h3>
+            <ResponsiveContainer width="100%" height={160}>
+              <BarChart data={[
+                { category: t.dataScience, enrollments: 120 },
+                { category: t.webDevelopment, enrollments: 200 },
+                { category: t.aiMl, enrollments: 80 },
+                { category: t.business, enrollments: 150 },
+                { category: t.design, enrollments: 60 }
+              ]} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke={theme === "dark" ? "#374151" : "#e5e7eb"} />
+                <XAxis dataKey="category" stroke={theme === "dark" ? "#fff" : "#22223b"} />
+                <YAxis allowDecimals={false} stroke={theme === "dark" ? "#fff" : "#22223b"} />
+                <Tooltip contentStyle={{ background: theme === "dark" ? "#181f2a" : "#fff", color: theme === "dark" ? "#fff" : "#22223b" }} formatter={(value, name, props) => [`${t.courseEnrollments} : ${value}`, '']} />
+                <Bar dataKey="enrollments" fill="#1e3a8a" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
 
 
 
 
-      {/* Course Enrollments Per Category (Static Graph) */}
-      <div className={clsx(
-        "rounded-xl shadow p-6 mt-8",
-        theme === "dark" ? "bg-[#181f2a]" : "bg-white"
-      )}>
-        <h2 className={clsx(
-          "text-2xl font-bold mb-4 text-center",
-          "text-[#1e3a8a]"
-        )}>{t.courseEnrollments}</h2>
-        <ResponsiveContainer width="100%" height={250}>
-          <BarChart data={[
-            { category: t.dataScience, enrollments: 120 },
-            { category: t.webDevelopment, enrollments: 200 },
-            { category: t.aiMl, enrollments: 80 },
-            { category: t.business, enrollments: 150 },
-            { category: t.design, enrollments: 60 }
-          ]} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke={theme === "dark" ? "#374151" : "#e5e7eb"} />
-            <XAxis dataKey="category" stroke={theme === "dark" ? "#fff" : "#22223b"} />
-            <YAxis allowDecimals={false} stroke={theme === "dark" ? "#fff" : "#22223b"} />
-            <Tooltip contentStyle={{ background: theme === "dark" ? "#181f2a" : "#fff", color: theme === "dark" ? "#fff" : "#22223b" }} formatter={(value, name, props) => [`${t.courseEnrollments} : ${value}`, '']} />
-            <Bar dataKey="enrollments" fill="#1e3a8a" />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+
+  {/* Course Enrollments Per Category graph is now in dashboard graphs section above */}
 
       {/* Webinar Registrations Section */}
       <div className={clsx(
-        "rounded-xl shadow p-6 mt-8",
+  "rounded-xl shadow p-4 sm:p-6 mt-8",
         theme === "dark" ? "bg-[#181f2a]" : "bg-white"
       )}>
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
-          "text-[#1e3a8a]"
+          theme === "dark" ? "text-white" : "text-[#1e3a8a]"
         )}>{t.webinarRegistrations}</h2>
         {webinarRegistrations.length > 0 ? (
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto w-full">
             <table className={clsx(
-              "min-w-full border rounded-lg",
+              "min-w-full border rounded-lg text-xs sm:text-sm",
               theme === "dark" ? "border-gray-700" : "border-gray-200"
             )}>
               <thead className="bg-[#1e3a8a] text-white">
@@ -580,15 +582,15 @@ export default function UserDetailsSection() {
 
       {/* Add New Blog Section */}
       <div className={clsx(
-        "rounded-xl shadow p-6 mt-8",
+  "rounded-xl shadow p-4 sm:p-6 mt-8",
         theme === "dark" ? "bg-[#181f2a]" : "bg-white"
       )}>
         <h2 className={clsx(
           "text-2xl font-bold mb-4",
-          "text-[#1e3a8a]"
+          theme === "dark" ? "text-white" : "text-[#1e3a8a]"
         )}>{t.addNewBlog}</h2>
         <form className="mb-6 w-full" onSubmit={handleBlogSubmit}>
-          <div className="flex flex-col md:flex-row gap-4 mb-4">
+          <div className="flex flex-col sm:flex-row gap-4 mb-4 w-full">
             <input
               type="text"
               name="title"
@@ -614,7 +616,7 @@ export default function UserDetailsSection() {
               required
             />
           </div>
-          <div className="flex flex-col md:flex-row gap-4 mb-4">
+          <div className="flex flex-col sm:flex-row gap-4 mb-4 w-full">
             <input
               type="text"
               name="author"

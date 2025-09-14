@@ -314,29 +314,39 @@ export default function AboutPage() {
 
       {/* Our Journey Timeline Section - Horizontal, Circular Milestones */}
   <section className={`w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`} data-aos="slide-right">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-14" style={{ color: '#1e3a8a' }}>{t.journeyTitle}</h2>
-          <div className="relative flex flex-col items-center">
-            {/* Timeline Line */}
-            <div className="absolute top-1/2 left-0 w-full h-1 bg-[#1e3a8a] z-0" style={{ transform: 'translateY(-50%)' }}></div>
-            {/* Timeline Items */}
-            <div className="relative w-full flex flex-row justify-between items-center z-10">
-              {t.journeyTimeline.map((item, idx, arr) => (
-                <div key={item.year} className="flex flex-col items-center w-32" data-aos={idx % 2 === 0 ? "slide-left" : "slide-right"} data-aos-delay={idx * 150}>
-                  <div className="mb-2 text-base font-semibold uppercase tracking-wide" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>{item.word}</div>
-                  <div className="w-20 h-20 rounded-full border-4 border-[#1e3a8a] bg-white flex items-center justify-center shadow-lg text-2xl font-bold text-[#1e3a8a]">
-                    {item.year}
-                  </div>
-                  {idx < arr.length - 1 && (
-                    <div className="w-2 h-2 bg-[#1e3a8a] rounded-full mt-1 mb-1"></div>
-                  )}
-                  <div className="mt-3 text-xs text-center font-medium" style={{ color: theme === 'dark' ? '#e0e0e0' : '#222' }}>{item.desc}</div>
+    <div className="max-w-6xl mx-auto px-4">
+      <h2 className="text-4xl font-bold text-center mb-14" style={{ color: '#1e3a8a' }}>{t.journeyTitle}</h2>
+      <div className="relative flex flex-col items-center justify-center">
+        {/* Timeline Line - hidden on mobile, visible on md+ */}
+        <div className="hidden md:block absolute top-[72px] left-1/2 transform -translate-x-1/2 h-1 bg-[#1e3a8a] z-0" style={{ width: '80%', minWidth: '320px', maxWidth: '700px' }}></div>
+        {/* Unified horizontal scroll for headings, items, and descriptions */}
+        <div className="overflow-x-auto md:overflow-x-hidden w-full flex justify-center">
+          <div className="w-max md:w-full flex flex-col items-center justify-center">
+            {/* Timeline Headings */}
+            <div className="flex flex-row justify-center items-end mb-2 z-10 gap-6 md:gap-0">
+              {t.journeyTimeline.map((item, idx) => (
+                <div key={item.year} className="flex flex-col items-center min-w-[8rem] md:w-32">
+                  <div className="text-base font-semibold uppercase tracking-wide text-center" style={{ color: theme === 'dark' ? '#1e3a8a' : '#1e3a8a' }}>{item.word}</div>
                 </div>
               ))}
             </div>
+            {/* Timeline Items */}
+            <div className="relative flex flex-row justify-center items-center z-10 gap-6 md:gap-0">
+              {t.journeyTimeline.map((item, idx, arr) => (
+                <div key={item.year} className="flex flex-col items-center min-w-[8rem] md:w-32 min-h-[120px] justify-start">
+                  <div className="w-20 h-20 rounded-full border-4 border-[#1e3a8a] bg-white flex items-center justify-center shadow-lg text-2xl font-bold text-[#1e3a8a]" style={{ zIndex: 2 }}>{item.year}</div>
+                  {idx < arr.length - 1 && (
+                    <div className="w-2 h-2 bg-[#1e3a8a] rounded-full mt-1 mb-1 hidden md:block" style={{ zIndex: 2 }}></div>
+                  )}
+                </div>
+              ))}
+            </div>
+             
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
 
 
@@ -345,36 +355,36 @@ export default function AboutPage() {
           <h2 className="text-4xl font-bold text-center mb-12" style={{ color: '#fff' }}>
             {t.visionMissionValuesTitle}
           </h2>
-            <div className="grid grid-cols-3 md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center">
             {/* Mission Card */}
-              <div className="rounded-2xl shadow-lg flex flex-col items-center bg-white overflow-hidden" data-aos="slide-right" data-aos-delay="100">
+            <div className="rounded-2xl shadow-lg flex flex-col items-center bg-white overflow-hidden" data-aos="slide-right" data-aos-delay="100">
               <div className="relative w-full min-h-[9rem] max-h-44 flex items-center justify-center">
                 <div style={{backgroundColor: '#1e3a8a'}} className="absolute inset-0 w-full h-full z-0"></div>
-                <img src={missionImg} alt="Mission" className="absolute inset-0 w-full h-full object-fit z-10" />
+                <img src={missionImg} alt="Mission" className="absolute inset-0 w-full h-full object-cover z-10" />
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
               </div>
-              <div className="p-6 pt-10 text-center">
-                <p className="text-gray-700">{t.mission}</p>
+              <div className="p-4 sm:p-6 pt-8 sm:pt-10 text-center">
+                <p className="text-gray-700 text-sm sm:text-base">{t.mission}</p>
               </div>
             </div>
             {/* Vision Card */}
-              <div className="rounded-2xl shadow-lg flex flex-col items-center bg-white overflow-hidden" data-aos="slide-up" data-aos-delay="200">
+            <div className="rounded-2xl shadow-lg flex flex-col items-center bg-white overflow-hidden" data-aos="slide-up" data-aos-delay="200">
               <div className="relative w-full min-h-[9rem] max-h-44 flex items-center justify-center">
-                <img src={visionImg} alt="Vision" className="absolute inset-0 w-full h-full object-fit" />
+                <img src={visionImg} alt="Vision" className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
               </div>
-              <div className="p-6 pt-10 text-center">
-                <p className="text-gray-700">{t.vision}</p>
+              <div className="p-4 sm:p-6 pt-8 sm:pt-10 text-center">
+                <p className="text-gray-700 text-sm sm:text-base">{t.vision}</p>
               </div>
             </div>
             {/* Values Card */}
-              <div className="rounded-2xl shadow-lg flex flex-col items-center bg-white overflow-hidden" data-aos="slide-left" data-aos-delay="300">
+            <div className="rounded-2xl shadow-lg flex flex-col items-center bg-white overflow-hidden" data-aos="slide-right" data-aos-delay="300">
               <div className="relative w-full min-h-[9rem] max-h-44 flex items-center justify-center">
-                <img src={valuesImg} alt="Values" className="absolute inset-0 w-full h-full object-fit" />
+                <img src={valuesImg} alt="Values" className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
               </div>
-              <div className="p-6 pt-10 text-center">
-                <p className="text-gray-700">{t.values}</p>
+              <div className="p-4 sm:p-6 pt-8 sm:pt-10 text-center">
+                <p className="text-gray-700 text-sm sm:text-base">{t.values}</p>
               </div>
             </div>
           </div>
@@ -385,7 +395,7 @@ export default function AboutPage() {
       <section className={
         `w-full py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`
       } data-aos="fade-up">
-        <div className="max-w-7xl mx-auto px-6 text-justify lg:px-8 grid  lg:grid-cols-2 gap-27 items-center">
+        <div className="max-w-7xl mx-auto px-6 text-justify lg:px-8 grid  md:grid-cols-2 gap-27 items-center">
           {/* Content Left */}
           <div>
             <h2 className="text-4xl font-bold mb-6" style={{ color: '#1e3a8a' }}>{t.awardsTitle}</h2>
@@ -403,17 +413,17 @@ export default function AboutPage() {
   <section className={`w-full py-16 bg-[#1e3a8a]`} data-aos="fade-up">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-10" style={{ color: '#fff' }}>{t.instructorsTitle}</h2>
-          <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {instructors.map((inst, idx) => (
-              <div key={idx} className="bg-white rounded-2xl shadow-lg flex flex-col items-center py-8 px-4" data-aos={idx % 2 === 0 ? "slide-left" : "slide-right"} data-aos-delay={idx * 150}>
-                <img src={inst.img} alt={inst.name} className="w-28 h-28 object-cover rounded-full mb-4 border-4 border-[#e6f7ff]" />
-                <span className="text-sm text-gray-400 mb-1">{inst.role}</span>
-                <h3 className="text-lg font-bold mb-2 text-[#1e3a8a]">{inst.name}</h3>
-                <p className="text-gray-500 text-center text-sm mb-4">{inst.desc}</p>
+              <div key={idx} className="bg-white rounded-2xl shadow-lg flex flex-col items-center py-6 px-2 sm:py-8 sm:px-4" data-aos={idx % 2 === 0 ? "slide-right" : "slide-right"} data-aos-delay={idx * 150}>
+                <img src={inst.img} alt={inst.name} className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-full mb-4 border-4 border-[#e6f7ff]" />
+                <span className="text-xs sm:text-sm text-gray-400 mb-1">{inst.role}</span>
+                <h3 className="text-base sm:text-lg font-bold mb-2 text-[#1e3a8a]">{inst.name}</h3>
+                <p className="text-gray-500 text-center text-xs sm:text-sm mb-4">{inst.desc}</p>
                 <div className="flex gap-4 mt-auto">
-                  <a href="#" className="text-[#1e3a8a] hover:text-[#0077b6] text-xl"><i className="fab fa-facebook-f"></i></a>
-                  <a href="#" className="text-[#1e3a8a] hover:text-[#0077b6] text-xl"><i className="fab fa-twitter"></i></a>
-                  <a href="#" className="text-[#1e3a8a] hover:text-[#0077b6] text-xl"><i className="fab fa-instagram"></i></a>
+                  <a href="#" className="text-[#1e3a8a] hover:text-[#0077b6] text-lg sm:text-xl"><i className="fab fa-facebook-f"></i></a>
+                  <a href="#" className="text-[#1e3a8a] hover:text-[#0077b6] text-lg sm:text-xl"><i className="fab fa-twitter"></i></a>
+                  <a href="#" className="text-[#1e3a8a] hover:text-[#0077b6] text-lg sm:text-xl"><i className="fab fa-instagram"></i></a>
                 </div>
               </div>
             ))}
@@ -423,17 +433,17 @@ export default function AboutPage() {
 
 
   <section className={`py-16 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`} data-aos="fade-up"> 
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-2 items-stretch gap-8">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 items-stretch gap-8">
           {/* Left: Image */}
-          <div className="md:w-1/2 w-full flex items-center justify-center">
-            <img src={whatwethinkImg} alt="What We Think" className="rounded-2xl shadow-xl w-full h-full object-cover max-h-[400px] min-h-[300px]" data-aos="zoom-in" data-aos-delay="200" />
+          <div className="w-full flex items-center justify-center mb-8 md:mb-0">
+            <img src={whatwethinkImg} alt="What We Think" className="rounded-2xl shadow-xl w-full h-auto object-cover max-h-[400px] min-h-[200px]" data-aos="zoom-in" data-aos-delay="200" />
           </div>
           {/* Right: Content */}
-          <div className={`md:w-1/2   w-full flex flex-col justify-center`} data-aos="slide-right" data-aos-delay="200">
-            <h2 className="text-4xl font-bold mb-6 text-[#1e3a8a]">{t.whatWeThinkTitle}</h2>
-            <p className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-black'}  mb-4`}>{t.whatWeThinkDesc}</p>
-            <ul className={`list-disc ${theme === 'dark' ? 'text-white' : 'text-black'} pl-5 space-y-2 `}>
-              {t.whatWeThinkList.map((item, idx) => (<li key={idx}>{item}</li>))}
+          <div className={`w-full flex flex-col justify-center`} data-aos="slide-right" data-aos-delay="200">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-[#1e3a8a]">{t.whatWeThinkTitle}</h2>
+            <p className={`text-base sm:text-lg text-justify ${theme === 'dark' ? 'text-white' : 'text-black'} mb-2 sm:mb-4`}>{t.whatWeThinkDesc}</p>
+            <ul className={`list-disc text-justify ${theme === 'dark' ? 'text-white' : 'text-black'} pl-5 space-y-2`}>
+              {t.whatWeThinkList.map((item, idx) => (<li key={idx} className="text-sm sm:text-base">{item}</li>))}
             </ul>
           </div>
         </div>

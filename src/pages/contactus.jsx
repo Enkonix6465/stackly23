@@ -238,9 +238,7 @@ export default function ContactHero() {
       {/* Contact Form Section */}
       <section className={`py-20 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`} data-aos="fade-up">
         <div className="max-w-4xl mx-auto px-6">
-          <p className="text-[#1e3a8a] font-semibold uppercase mb-2">
-            {t.contactSmall}
-          </p>
+           
           <h2 className={`text-3xl md:text-4xl font-extrabold mb-10 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}` }>
             {t.contactTitle}
           </h2>
@@ -295,9 +293,7 @@ export default function ContactHero() {
       {/* Location Section */}
   <section className="py-20 bg-[#1e3a8a]" data-aos="fade-up">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-[#fff] font-semibold uppercase mb-2">
-            {t.locationSmall}
-          </p>
+           
           <h2 className="text-3xl md:text-4xl font-extrabold mb-10 text-white">
             {t.locationTitle}
           </h2>
@@ -320,9 +316,7 @@ export default function ContactHero() {
   <section className={`py-20 ${theme === 'dark' ? 'bg-[#181818]' : 'bg-[#e6f7ff]'}`} data-aos="fade-up"> 
         <div className="max-w-7xl mx-auto px-6 grid  md:grid-cols-2 gap-12 items-center">
           <div data-aos="slide-right" data-aos-delay="100">
-            <p className="text-[#1e3a8a] font-semibold uppercase mb-2">
-              {t.faqSmall}
-            </p>
+             
     <h2 className={`text-4xl md:text-5xl font-extrabold mb-8 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               {t.faqTitle}
             </h2>

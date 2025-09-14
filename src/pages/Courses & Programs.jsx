@@ -234,7 +234,7 @@ export default function CoursesProgramsPage() {
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-4" style={{ color: '#1e3a8a' }}>{t.categoriesTitle}</h2>
           <p className="text-center text-lg mb-10">{t.categoriesDesc}</p>
-          <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8" data-aos="zoom-in" data-aos-delay="100">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8" data-aos="zoom-in" data-aos-delay="100">
             {courses.map((course, idx) => (
               <div key={idx} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col" data-aos="slide-up" data-aos-delay={idx * 150}>
                 <img src={course.image} alt={course.title} className="w-full h-44 object-cover" />
@@ -267,19 +267,13 @@ export default function CoursesProgramsPage() {
   <section className="w-full py-16 bg-[#e6f7ff] text-black" data-aos="fade-up"> 
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1e3a8a' }}>{t.featuresTitle}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-10" data-aos="zoom-in" data-aos-delay="100">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-10" data-aos="zoom-in" data-aos-delay="100">
             {features.map((item, idx) => (
-              <div key={item.num} className="flex items-start mb-6" data-aos="slide-right" data-aos-delay={idx * 100}>
-                <div className="relative flex-shrink-0 mr-4">
-                  <span className="text-5xl font-extrabold text-black" style={{
-                    background: 'linear-gradient(90deg, #1e3a8a 60%, transparent 60%)',
-                    padding: '0.1em 0.5em',
-                    borderRadius: '0.2em',
-                    color: '#111',
-                    display: 'inline-block',
-                  }}>{item.num}</span>
+              <div key={item.num} className="flex flex-col sm:flex-row items-center mb-6 sm:mb-0" data-aos="slide-right" data-aos-delay={idx * 100}>
+                <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4 flex items-center justify-center" style={{width: '80px', height: '80px', background: '#1e3a8a', borderRadius: '0.3em'}}>
+                  <span className="text-5xl font-extrabold text-white flex items-center justify-center" style={{width: '100%', height: '100%'}}>{item.num}</span>
                 </div>
-                <div>
+                <div className="flex flex-col justify-center text-center sm:text-left">
                   <h3 className="text-xl font-bold mb-1 text-black">{item.heading}</h3>
                   <p className="text-gray-600 text-base max-w-md">{item.desc}</p>
                 </div>
@@ -351,7 +345,7 @@ export default function CoursesProgramsPage() {
         </div>
 
         {/* Right Image */}
-        <div className="flex justify-center items-center h-full" data-aos="slide-left">
+        <div className="flex justify-center items-center h-full" data-aos="slide-right">
           <img
             src={a3}
             alt="Courses & Programs"

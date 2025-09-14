@@ -3,6 +3,7 @@ import ScrollToTop from '../pages/scroll-top';
 
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import { Globe } from 'lucide-react';
 
 const translations = {
   English: {
@@ -156,81 +157,33 @@ const Header = () => {
             </button>
           </div>
           {/* Right side - Navigation and Icons */}
-          <div className="hidden min-[480px]:flex items-right space-x-16">
-            {/* Languages Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => {
-                if (languageDropdownTimeout.current) clearTimeout(languageDropdownTimeout.current);
-                setIsLanguageDropdownOpen(true);
-              }}
-              onMouseLeave={() => {
-                languageDropdownTimeout.current = setTimeout(() => setIsLanguageDropdownOpen(false), 200);
-              }}
-            >
+          <div className="hidden min-[480px]:flex justify-center items-center  gap-5">
+
+            <div className="relative">
               <button
+                onClick={toggleHomeDropdown}
                 className={`flex items-center ${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
                 aria-haspopup="true"
-                aria-expanded={isLanguageDropdownOpen}
-                onClick={() => setIsLanguageDropdownOpen((v) => !v)}
+                aria-expanded={isHomeDropdownOpen}
               >
-                {t.languages}
+                {t.home}
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {isLanguageDropdownOpen && (
-                <div className={`absolute top-full left-0 mt-2 w-40 rounded-md shadow-lg border py-2 z-50 ${theme === 'dark' ? 'bg-[#1E2A38] border-[#141B25]' : 'bg-white border-gray-200'}`}>
-                  <button
-                    className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'English' ? 'font-bold' : ''} ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`}
-                    onClick={() => { setSelectedLanguage('English'); localStorage.setItem('language', 'English'); window.dispatchEvent(new Event('language-changed')); setIsLanguageDropdownOpen(false); }}
-                  >
-                    English
-                  </button>
-                  <button
-                    className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'Arabic' ? 'font-bold' : ''} ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`}
-                    onClick={() => { setSelectedLanguage('Arabic'); localStorage.setItem('language', 'Arabic'); window.dispatchEvent(new Event('language-changed')); setIsLanguageDropdownOpen(false); }}
-                  >
-                    Arabic
-                  </button>
-                  <button
-                    className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'Hebrew' ? 'font-bold' : ''} ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`}
-                    onClick={() => { setSelectedLanguage('Hebrew'); localStorage.setItem('language', 'Hebrew'); window.dispatchEvent(new Event('language-changed')); setIsLanguageDropdownOpen(false); }}
-                  >
-                    Hebrew
-                  </button>
+              {isHomeDropdownOpen && (
+                <div className={`absolute top-full left-0 mt-2 w-48 rounded-md shadow-lg border py-2 ${theme === 'dark' ? 'bg-[#1E2A38] border-[#141B25]' : 'bg-white border-gray-200'}`}>
+                  <Link to="/home1" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsHomeDropdownOpen(false)}>{t.home1}</Link>
+                  <Link to="/home2" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsHomeDropdownOpen(false)}>{t.home2}</Link>
                 </div>
               )}
             </div>
-              <div className="relative">
-                <button
-                  onClick={toggleHomeDropdown}
-                  className={`flex items-center ${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
-                  aria-haspopup="true"
-                  aria-expanded={isHomeDropdownOpen}
-                >
-                  {t.home}
-                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {isHomeDropdownOpen && (
-                  <div className={`absolute top-full left-0 mt-2 w-48 rounded-md shadow-lg border py-2 ${theme === 'dark' ? 'bg-[#1E2A38] border-[#141B25]' : 'bg-white border-gray-200'}`}>
-                    <Link to="/home1" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsHomeDropdownOpen(false)}>{t.home1}</Link>
-                    <Link to="/home2" className={`block px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`} onClick={() => setIsHomeDropdownOpen(false)}>{t.home2}</Link>
-                  </div>
-                )}
-              </div>
-            </div>
-
-
             <Link
               to="/aboutus"
               className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
             >
               {t.aboutUs}
-            </Link>            
-
+            </Link>
             {/* Services Dropdown */}
             <div
               className="relative"
@@ -265,8 +218,6 @@ const Header = () => {
                 </div>
               )}
             </div>
-            
-          
             <Link
               to="/blog"
               className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
@@ -280,177 +231,148 @@ const Header = () => {
             >
               {t.contactUs}
             </Link>
-
             {/* Dark Mode Toggle */}
-            <button
-              className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 ${theme === 'dark' ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-[#e0e7ff] border-[#1e3a8a] hover:bg-[#c7d2fe]'}`}
-              onClick={toggleTheme}
-              aria-label="Toggle dark mode"
-            >
-              {theme === 'dark' ? (
-                <svg className="w-5 h-5 text-[#1e3a8a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12H3m15.07 4.93l-.71-.71M6.34 6.34l-.71-.71m12.02 12.02l-.71-.71M6.34 17.66l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5 text-[#1e3a8a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-              )}
-            </button>
-
-            {/* Avatar with Logout Dropdown */}
-             <div className="relative">
-              {(() => {
-                // Always use first letter of firstname and lastname for initials
-                const firstname = (localStorage.getItem('firstname') || '').trim();
-                const lastname = (localStorage.getItem('lastname') || '').trim();
-                const email = (localStorage.getItem('email') || '').trim();
-                let initials = '';
-                if (firstname.length > 0) {
-                  initials += firstname[0].toUpperCase();
-                }
-                if (lastname.length > 0) {
-                  initials += lastname[0].toUpperCase();
-                }
-                if (!initials) {
-                  initials = '?';
-                }
-  return (
-    <>
-      <ScrollToTop />
-                    <button
-                      className="w-10 h-10 rounded-full bg-[#1e3a8a] flex items-center justify-center text-white font-semibold focus:outline-none"
-                      onClick={() => setIsAvatarDropdownOpen((v) => !v)}
-                    >
-                      {initials}
-                    </button>
-                    {isAvatarDropdownOpen && (
-                      <div className={`absolute right-0 mt-2 w-40 rounded-md shadow-lg border py-2 z-50 ${theme === 'dark' ? 'bg-[#1E2A38] border-[#141B25]' : 'bg-white border-gray-200'}`}> 
-                        {email === 'admin@enkonix.in' && (
-                          <button
-                            className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#1e3a8a]' : 'text-gray-800 hover:bg-[#e0e7ff]'}`}
-                            onClick={() => { setIsAvatarDropdownOpen(false); navigate('/admindashboard'); }}
-                          >
-                            {t.backToAdmin}
-                          </button>
-                        )}
-                        {/* User Dashboard link for non-admin users */}
-                        {email && email !== 'admin@enkonix.in' && (
-                          <button
-                            className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#1e3a8a]' : 'text-gray-800 hover:bg-[#e0e7ff]'}`}
-                            onClick={() => { setIsAvatarDropdownOpen(false); navigate('/userdashboard'); }}
-                          >
-                            {t.userDashboard}
-                          </button>
-                        )}
+          <button
+            className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 ${theme === 'dark' ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-[#e0e7ff] border-[#1e3a8a] hover:bg-[#c7d2fe]'}`}
+            onClick={toggleTheme}
+            aria-label="Toggle dark mode"
+          >
+            {theme === 'dark' ? (
+              <svg className="w-5 h-5 text-[#1e3a8a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12H3m15.07 4.93l-.71-.71M6.34 6.34l-.71-.71m12.02 12.02l-.71-.71M6.34 17.66l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5 text-[#1e3a8a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            )}
+          </button>
+          {/* Avatar with Logout Dropdown */}
+          <div className="relative">
+            {(() => {
+              // Always use first letter of firstname and lastname for initials
+              const firstname = (localStorage.getItem('firstname') || '').trim();
+              const lastname = (localStorage.getItem('lastname') || '').trim();
+              const email = (localStorage.getItem('email') || '').trim();
+              let initials = '';
+              if (firstname.length > 0) {
+                initials += firstname[0].toUpperCase();
+              }
+              if (lastname.length > 0) {
+                initials += lastname[0].toUpperCase();
+              }
+              if (!initials) {
+                initials = '?';
+              }
+              return (
+                <>
+                  <ScrollToTop />
+                  <button
+                    className="w-10 h-10 rounded-full bg-[#1e3a8a] flex items-center justify-center text-white font-semibold focus:outline-none"
+                    onClick={() => setIsAvatarDropdownOpen((v) => !v)}
+                  >
+                    {initials}
+                  </button>
+                  {isAvatarDropdownOpen && (
+                    <div className={`absolute right-0 mt-2 w-40 rounded-md shadow-lg border py-2 z-50 ${theme === 'dark' ? 'bg-[#1E2A38] border-[#141B25]' : 'bg-white border-gray-200'}`}>
+                      {email === 'admin@enkonix.in' && (
                         <button
                           className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#1e3a8a]' : 'text-gray-800 hover:bg-[#e0e7ff]'}`}
-                          onClick={() => { setIsAvatarDropdownOpen(false); navigate('/welcome'); }}
+                          onClick={() => { setIsAvatarDropdownOpen(false); navigate('/admindashboard'); }}
                         >
-                          {t.logout}
+                          {t.backToAdmin}
                         </button>
-                      </div>
-                    )}
-                  </>
-                );
-              })()}
-            </div>
-          </div>
-
-          {/* Mobile icons - Only visible on very small screens */}
-          <div className="flex items-center space-x-4 min-[480px]:hidden">
-            {/* Languages Dropdown (Mobile) */}
-            <div className="relative">
-              <button
-                className="w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 bg-[#e0e7ff] border-[#1e3a8a] hover:bg-[#c7d2fe]"
-                onClick={() => setIsLanguageDropdownOpen((v) => !v)}
-                aria-label="Select language"
-              >
-                <span className="text-[#1e3a8a] font-semibold">🌐</span>
-              </button>
-              {isLanguageDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg border border-gray-200 py-2 z-50">
-                  <button className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'English' ? 'font-bold' : ''} text-gray-800 hover:bg-blue-100`} onClick={() => { setSelectedLanguage('English'); setIsLanguageDropdownOpen(false); }}>English</button>
-                  <button className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'Arabic' ? 'font-bold' : ''} text-gray-800 hover:bg-blue-100`} onClick={() => { setSelectedLanguage('Arabic'); setIsLanguageDropdownOpen(false); }}>Arabic</button>
-                  <button className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'Hebrew' ? 'font-bold' : ''} text-gray-800 hover:bg-blue-100`} onClick={() => { setSelectedLanguage('Hebrew'); setIsLanguageDropdownOpen(false); }}>Hebrew</button>
-                </div>
-              )}
-            </div>
-            <button
-              className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 ${theme === 'dark' ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-[#e0e7ff] border-[#1e3a8a] hover:bg-[#c7d2fe]'}`}
-              onClick={toggleTheme}
-              aria-label="Toggle dark mode"
-            >
-              {theme === 'dark' ? (
-                <svg className="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12H3m15.07 4.93l-.71-.71M6.34 6.34l-.71-.71m12.02 12.02l-.71-.71M6.34 17.66l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-              )}
-            </button>
-
-            {/* Avatar with Logout Dropdown (Mobile) */}
-            <div className="relative">
-              {(() => {
-                // Always use first letter of firstname and lastname for initials
-                const firstname = (localStorage.getItem('firstname') || '').trim();
-                const lastname = (localStorage.getItem('lastname') || '').trim();
-                const email = (localStorage.getItem('email') || '').trim();
-                let initials = '';
-                if (firstname.length > 0) {
-                  initials += firstname[0].toUpperCase();
-                }
-                if (lastname.length > 0) {
-                  initials += lastname[0].toUpperCase();
-                }
-                if (!initials) {
-                  initials = '?';
-                }
-                return (
-                  <>
-                    <button
-                      className="w-10 h-10 rounded-full bg-[#1e3a8a] flex items-center justify-center text-white font-semibold focus:outline-none"
-                      onClick={() => setIsAvatarDropdownOpen((v) => !v)}
-                    >
-                      {initials}
-                    </button>
-                    {isAvatarDropdownOpen && (
-                      <div className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg border border-gray-200 py-2 z-50">
-                        {email === 'admin@enkonix.in' && (
-                          <button
-                            className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-blue-100"
-                            onClick={() => { setIsAvatarDropdownOpen(false); window.location.href = '/admindashboard'; }}
-                          >
-                            Back to Admin Dashboard
-                          </button>
-                        )}
+                      )}
+                      {/* User Dashboard link for non-admin users */}
+                      {email && email !== 'admin@enkonix.in' && (
                         <button
-                          className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-blue-100"
-                          onClick={() => { setIsAvatarDropdownOpen(false); window.location.href = '/'; }}
+                          className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#1e3a8a]' : 'text-gray-800 hover:bg-[#e0e7ff]'}`}
+                          onClick={() => { setIsAvatarDropdownOpen(false); navigate('/userdashboard'); }}
                         >
-                          Logout
+                          {t.userDashboard}
                         </button>
-                      </div>
-                    )}
-                  </>
-                );
-              })()}
-            </div>
+                      )}
+                      <button
+                        className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white hover:bg-[#1e3a8a]' : 'text-gray-800 hover:bg-[#e0e7ff]'}`}
+                        onClick={() => { setIsAvatarDropdownOpen(false); navigate('/welcome'); }}
+                      >
+                        {t.logout}
+                      </button>
+                    </div>
 
-            {/* Mobile menu button */}
+                  )}
+                </>
+              );
+            })()}
+          </div>
+          {/* Languages Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => {
+              if (languageDropdownTimeout.current) clearTimeout(languageDropdownTimeout.current);
+              setIsLanguageDropdownOpen(true);
+            }}
+            onMouseLeave={() => {
+              languageDropdownTimeout.current = setTimeout(() => setIsLanguageDropdownOpen(false), 200);
+            }}
+          >
             <button
-              onClick={toggleMobileMenu}
-              className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors duration-200"
+              className={`flex items-center ${theme === 'dark' ? 'text-white' : 'text-black'} hover:text-[#1e3a8a] transition-colors duration-200`}
+              aria-haspopup="true"
+              aria-expanded={isLanguageDropdownOpen}
+              onClick={() => setIsLanguageDropdownOpen((v) => !v)}
             >
-              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <Globe className="w-5 h-5 text-[#1e3a8a]" />
+              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </button>
+            {isLanguageDropdownOpen && (
+              <div className={`absolute top-full -right-0  mt-2 w-40 rounded-md shadow-lg border py-2 ${theme === 'dark' ? 'bg-[#1E2A38] border-[#141B25]' : 'bg-white border-gray-200'}`}>
+                <button
+                  className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'English' ? 'font-bold' : ''} ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`}
+                  onClick={() => { setSelectedLanguage('English'); localStorage.setItem('language', 'English'); window.dispatchEvent(new Event('language-changed')); setIsLanguageDropdownOpen(false); }}
+                >
+                  English
+                </button>
+                <button
+                  className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'Arabic' ? 'font-bold' : ''} ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`}
+                  onClick={() => { setSelectedLanguage('Arabic'); localStorage.setItem('language', 'Arabic'); window.dispatchEvent(new Event('language-changed')); setIsLanguageDropdownOpen(false); }}
+                >
+                  Arabic
+                </button>
+                <button
+                  className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'Hebrew' ? 'font-bold' : ''} ${theme === 'dark' ? 'text-white hover:bg-[#22304a]' : 'text-gray-800 hover:bg-gray-100'}`}
+                  onClick={() => { setSelectedLanguage('Hebrew'); localStorage.setItem('language', 'Hebrew'); window.dispatchEvent(new Event('language-changed')); setIsLanguageDropdownOpen(false); }}
+                >
+                  Hebrew
+                </button>
+              </div>
+            )}
           </div>
-              
+
+          </div>
+          {/* Mobile icons - Only visible on very small screens */}
+        <div className="flex items-center space-x-4 min-[480px]:hidden">
+          
+          
+          
+
+          {/* Mobile menu button */}
+          <button
+            onClick={toggleMobileMenu}
+            className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors duration-200"
+          >
+            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        </div>
+
+        
+
 
         {/* Mobile Navigation Menu - Only visible on very small screens */}
         {isMobileMenuOpen && (
@@ -512,8 +434,92 @@ const Header = () => {
                 {t.contactUs}
               </Link>
             </div>
+          <div className="flex items-center justify-around px-4 pb-4 space-x-4">
+            {/* Languages Dropdown (Mobile) */}
+          <div className="relative">
+            <button
+              className="w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 bg-[#e0e7ff] border-[#1e3a8a] hover:bg-[#c7d2fe]"
+              onClick={() => setIsLanguageDropdownOpen((v) => !v)}
+              aria-label="Select language"
+            >
+              <span className="text-[#1e3a8a] font-semibold">🌐</span>
+            </button>
+            {isLanguageDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg border border-gray-200 py-2 z-50">
+                <button className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'English' ? 'font-bold' : ''} text-gray-800 hover:bg-blue-100`} onClick={() => { setSelectedLanguage('English'); setIsLanguageDropdownOpen(false); }}>English</button>
+                <button className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'Arabic' ? 'font-bold' : ''} text-gray-800 hover:bg-blue-100`} onClick={() => { setSelectedLanguage('Arabic'); setIsLanguageDropdownOpen(false); }}>Arabic</button>
+                <button className={`block w-full text-left px-4 py-2 ${selectedLanguage === 'Hebrew' ? 'font-bold' : ''} text-gray-800 hover:bg-blue-100`} onClick={() => { setSelectedLanguage('Hebrew'); setIsLanguageDropdownOpen(false); }}>Hebrew</button>
+              </div>
+            )}
           </div>
+          {/* Avatar with Logout Dropdown (Mobile) */}
+          <div className="relative">
+            {(() => {
+              // Always use first letter of firstname and lastname for initials
+              const firstname = (localStorage.getItem('firstname') || '').trim();
+              const lastname = (localStorage.getItem('lastname') || '').trim();
+              const email = (localStorage.getItem('email') || '').trim();
+              let initials = '';
+              if (firstname.length > 0) {
+                initials += firstname[0].toUpperCase();
+              }
+              if (lastname.length > 0) {
+                initials += lastname[0].toUpperCase();
+              }
+              if (!initials) {
+                initials = '?';
+              }
+              return (
+                <>
+                  <button
+                    className="w-10 h-10 rounded-full bg-[#1e3a8a] flex items-center justify-center text-white font-semibold focus:outline-none"
+                    onClick={() => setIsAvatarDropdownOpen((v) => !v)}
+                  >
+                    {initials}
+                  </button>
+                  {isAvatarDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg border border-gray-200 py-2 z-50">
+                      {email === 'admin@enkonix.in' && (
+                        <button
+                          className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-blue-100"
+                          onClick={() => { setIsAvatarDropdownOpen(false); window.location.href = '/admindashboard'; }}
+                        >
+                          Back to Admin Dashboard
+                        </button>
+                      )}
+                      <button
+                        className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-blue-100"
+                        onClick={() => { setIsAvatarDropdownOpen(false); window.location.href = '/'; }}
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </>
+              );
+            })()}
+          </div>
+           <button
+            className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 ${theme === 'dark' ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-[#e0e7ff] border-[#1e3a8a] hover:bg-[#c7d2fe]'}`}
+            onClick={toggleTheme}
+            aria-label="Toggle dark mode"
+          >
+            {theme === 'dark' ? (
+              <svg className="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12H3m15.07 4.93l-.71-.71M6.34 6.34l-.71-.71m12.02 12.02l-.71-.71M6.34 17.66l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            )}
+          </button> 
+
+
+          </div>
+         </div> 
         )}
+        
       </div>
     </header>
   );
