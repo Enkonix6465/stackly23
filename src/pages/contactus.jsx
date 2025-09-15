@@ -326,7 +326,7 @@ export default function ContactHero() {
               className="rounded-xl shadow-lg"
             />
           </div>
-          <div className="space-y-4" data-aos="slide-left" data-aos-delay="200">
+          <div className="space-y-4" data-aos="slide-right" data-aos-delay="200">
             {faqs.map((faq, index) => (
               <div 
                 key={index} 

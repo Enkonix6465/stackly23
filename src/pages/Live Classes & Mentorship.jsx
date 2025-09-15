@@ -209,10 +209,10 @@ export default function LiveWorkshopPage() {
           <p className="text-center text-lg mb-10">
             {t.tracksDesc}
           </p>
-          <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 gap-8" data-aos="zoom-in" data-aos-delay="100">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="zoom-in" data-aos-delay="100">
             {t.tracks.map((track, idx) => (
               <div key={idx} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col" data-aos="slide-up" data-aos-delay={idx * 150}>
-                <img src={track.image} alt={track.title} className="w-full h-10 object-fit" />
+                <img src={track.image} alt={track.title} className="w-full h-40 sm:h-48 md:h-56 object-cover" />
                 <div className="p-5 flex-1 flex flex-col">
                   <h3 className="text-xl font-bold mb-1 text-[#00BFFF]">{track.title}</h3>
                   <p className="text-sm text-gray-500 mb-2">{language === 'English' ? 'Mentor' : language === 'Arabic' ? 'المرشد' : 'מנטור'}: {track.mentor}</p>
@@ -242,13 +242,13 @@ export default function LiveWorkshopPage() {
   <section className="w-full py-16 bg-[#e6f7ff] text-black" data-aos="fade-up"> 
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: theme === 'dark' ? '#fff' : '#1e3a8a' }}>{t.featuresTitle}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-10" data-aos="zoom-in" data-aos-delay="100">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-10" data-aos="zoom-in" data-aos-delay="100">
             {t.features.map((item, idx) => (
-              <div key={item.num} className={`flex items-center mb-6 rounded-2xl shadow-md p-6 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`} data-aos="slide-right" data-aos-delay={idx * 100}> 
-                <div className="flex-shrink-0 mr-4 flex items-center justify-center" style={{width: '80px', height: '80px', background: '#1e3a8a', borderRadius: '0.3em'}}>
+              <div key={item.num} className={`flex flex-col sm:flex-row items-center mb-6 sm:mb-0 rounded-2xl shadow-md p-6 ${theme === 'dark' ? 'bg-[#222] text-white' : 'bg-white text-black'}`} data-aos="slide-right" data-aos-delay={idx * 100}> 
+                <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4 flex items-center justify-center" style={{width: '80px', height: '80px', background: '#1e3a8a', borderRadius: '0.3em'}}>
                   <span className={`text-5xl font-extrabold text-white flex items-center justify-center`} style={{width: '100%', height: '100%'}}>{item.num}</span>
                 </div>
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col justify-center text-center sm:text-left">
                   <h3 className={`text-xl font-bold mb-1 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>{item.heading}</h3>
                   <p className={`text-base max-w-md ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>{item.desc}</p>
                 </div>
@@ -322,7 +322,7 @@ export default function LiveWorkshopPage() {
             </button>
           </div>
           {/* Right Image */}
-          <div className="flex justify-center items-center h-full" data-aos="slide-left">
+          <div className="flex justify-center items-center h-full" data-aos="slide-right">
             <img
               src={w3}
               alt="Live Classes and Mentorship"
